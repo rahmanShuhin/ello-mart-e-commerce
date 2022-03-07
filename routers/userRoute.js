@@ -1,0 +1,9 @@
+const router = require("express").Router();
+
+//localhost:4000/api/users/register
+router.post("/register", (req, res) => {});
+
+//localhost:4000/api/users/login
+router.post("/login", (req, res) => {});
+
+module.exports = router;
