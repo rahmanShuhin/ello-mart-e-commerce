@@ -34,20 +34,20 @@ nav {
 }
 .navbar div {
 }
-.left {
+.navbar-left {
   grid-column: 1/2;
   color: #fff;
   text-decoration: none;
 }
-.center {
+.navbar-center {
   grid-column: 2/3;
 }
-.search-input {
+.navbar-center-search-input {
   width: 100%;
   padding: 1rem;
   border-radius: 1.5rem;
 }
-.right {
+.navbar-right {
   grid-column: 3/4;
   display: flex;
   align-items: center;
@@ -55,10 +55,34 @@ nav {
   text-align: center;
   justify-content: space-around;
 }
-.right i {
+.navbar-right i {
   color: var(--yellow);
   padding: 0.2rem;
 }
-.call {
+.navbar-right-calls {
   margin-right: 0px;
+}
+/* bottom section */
+
+.navbar-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.navbar-bottom-names ul {
+  list-style-type: none;
+
+  display: flex;
+
+  padding-left: 0;
+}
+.navbar-bottom-names li {
+  padding: 0.4rem;
+  margin: 0.2rem;
+}
+
+.navbar-bottom-support {
+  padding: 0.4rem;
+  margin-right: 2rem;
 }
