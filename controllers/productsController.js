@@ -2,17 +2,41 @@ const Product = require("../model/Product");
 const verification = require("../validators/isAdmin");
 
 module.exports = {
-  //get all products
+  //---------get all products----------
   async getProducts(req, res) {
     try {
       await Product.find({}).then(function (data) {
         res.status(200).send(data);
       });
     } catch (error) {
-      console.log(error);
+      return res.status(400).json({
+        success: false,
+        message: error.message,
+      });
     }
   },
-  //create product
+  //---------get single product by id----------
+  async getOneProduct(req, res) {
+    try {
+      const product = await Product.findById(req.params.id);
+      if (!product) {
+        return res.status(500).json({
+          success: false,
+          message: "Product not found",
+        });
+      }
+      res.status(200).json({
+        success: true,
+        product,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  },
+  //----------create product----------
   async postProduct(req, res) {
     try {
       const product = await Product.create(req.body);
@@ -28,7 +52,7 @@ module.exports = {
       console.log(error);
     }
   },
-  //update product
+  //-------------update product--------------
   async updateProduct(req, res) {
     try {
       let product = await Product.findByIdAndUpdate(req.params.id);
@@ -58,7 +82,7 @@ module.exports = {
     }
   },
 
-  //delete a product
+  //------------------delete a product--------------
   async deleteProduct(req, res) {
     try {
       let product = await Product.findById(req.params.id);
