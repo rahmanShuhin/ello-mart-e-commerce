@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
+import searchIcon from "../../assets/icons/charm_search.svg";
 import "./Navbar.css";
-
 export default function Navbar() {
   return (
     <div className="navbar">
@@ -12,13 +12,14 @@ export default function Navbar() {
         </div>
         {/* <SearchBar></SearchBar> */}
         <div className="navbar-center">
-          <label>
+          <span className="navbar-search">
             <input
               className="navbar-center-search-input"
               placeholder="search"
               type="text"
             />
-          </label>
+            <img src={searchIcon} alt="" />
+          </span>
         </div>
         <div className="navbar-right">
           <div className="navbar-right-calls">
@@ -31,7 +32,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <nav className="navbar-bottom">
+      <section className="navbar-bottom">
         <div className="navbar-bottom-names">
           <ul>
             <li>NEW IN </li>
@@ -46,7 +47,7 @@ export default function Navbar() {
         <div className="navbar-bottom-support">
           <h1>help | lang</h1>
         </div>
-      </nav>
+      </section>
     </div>
   );
 }

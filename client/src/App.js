@@ -1,11 +1,10 @@
+import axios from "axios";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
-
-import axios from "axios";
-import { useState } from "react";
-
 import "./styles/App.css";
+
 function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

@@ -24,15 +24,18 @@
 }
 
 nav {
-  display: grid;
-  grid-template-columns: 0.75fr 1.25fr 1fr;
-
+  display: flex;
+  /* grid-template-columns: 0.75fr 1.25fr 1fr; */
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
 
   max-width: 90vw;
 }
-.navbar div {
+.navbar-center span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .navbar-left {
   grid-column: 1/2;
@@ -41,6 +44,10 @@ nav {
 }
 .navbar-center {
   grid-column: 2/3;
+  flex: 1;
+}
+.navbar-search {
+  max-width: 500px;
 }
 .navbar-center-search-input {
   width: 100%;
