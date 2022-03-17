@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const userRouter = require("./routers/userRoute");
 const productRouter = require("./routers/productRoute");
-
+const errorMiddleWare = require("./middlewares/error");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,6 +26,9 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}...`);
 });
+
+//middleware for error
+app.use(errorMiddleWare);
 
 // //routing import
 // const userRouter = require("./routers/userRoute");

@@ -6,7 +6,7 @@ const {
   deleteProduct,
   getOneProduct,
 } = require("../controllers/productsController");
-const verification = require("../validators/isAdmin");
+const verification = require("../middlewares/isAdminValidators");
 //localhost:4000/api/products
 router.get("/api/products/", getProducts);
 
@@ -14,7 +14,7 @@ router.get("/api/products/", getProducts);
 router.get("/api/products/:id", getOneProduct);
 
 //localhost:4000/api/products:------post product-------admin only
-router.post("/api/products/", verification, postProduct);
+router.post("/api/products/", postProduct);
 
 //localhost:4000/api/products:------update a product-------admin only
 router.put("/api/products/:id", verification, updateProduct);
