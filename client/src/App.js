@@ -58,7 +58,7 @@ function App() {
       </BrowserRouter>
 
       {/* testing login */}
-      {/* <h1
+      <h1
         style={{
           textAlign: "center",
           backgroundColor: "black",
@@ -111,7 +111,7 @@ function App() {
             login
           </button>
         </form>
-      )} */}
+      )}
     </div>
   );
 }
