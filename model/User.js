@@ -26,6 +26,9 @@ const userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  role: {
+    type: String,
+  },
   time: {
     type: Date,
     default: Date.now,

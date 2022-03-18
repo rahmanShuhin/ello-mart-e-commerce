@@ -32,7 +32,7 @@ const logOut = (req, res)=>{
 }
 
 const createSendToken = async(user, statusCode, res) => {
-    const token = await getToken.generateAccessToken(user._id, statusCode)
+    const token = await getToken.generateAccessToken(user._id,user.name, statusCode)
     const timeLimit = 31536000000; // one year
 
     const cookieOptions = {

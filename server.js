@@ -1,24 +1,20 @@
-const { urlencoded } = require("express")
 const express = require("express")
 const bd = require('./database/index')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const cors = require('cors')
+const middleware = require('./middlewares/index')
 const userRouter = require('./routers/userRoute')
 
 const app = express()
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-app.use(cookieParser());
-app.use(cors())
 
 require('dotenv').config();
 
 //BD CONNECTION
 bd.connectToAtlas();
 
-app.use(userRouter)
+//middleware
+app.use(...middleware);
 
+//router connection
+app.use(userRouter)
 
 
 //server connection
