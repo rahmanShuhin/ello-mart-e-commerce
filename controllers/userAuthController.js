@@ -14,7 +14,6 @@ const login = catchAsync( async(req, res) => {
     if(!user){
         return next( new AppError('Email or password does not match',400))
     }
-    console.log(user)
     const isMatch = await bcrypt.compare(password, user.password)
 
     if(!isMatch){
