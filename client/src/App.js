@@ -16,7 +16,7 @@ function App() {
   const handleSubmitRegistration = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:4000/api/user/register`, {
+      .post(`/api/user/register`, {
         name,
         email,
         password,
@@ -33,7 +33,7 @@ function App() {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:4000/api/user/login`, {
+      .post(`/api/user/login`, {
         email,
         password,
       })
