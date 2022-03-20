@@ -2,6 +2,7 @@ const express = require("express");
 const bd = require("./database/index");
 const middleware = require("./middlewares/index");
 const userRouter = require("./routers/userRoute");
+const productRouter = require("./routers/productRoute");
 const errorMiddleWare = require("./middlewares/error");
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(...middleware);
 
 //router connection
 app.use(userRouter);
+app.use(productRouter);
 
 //server connection
 const PORT = process.env.PORT || 4000;

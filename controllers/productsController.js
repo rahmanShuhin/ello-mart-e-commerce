@@ -1,7 +1,7 @@
 const Product = require("../model/Product");
 const verification = require("../middlewares/isAdminValidators");
 const AppError = require("../utils/appError");
-
+const mongoose = require("mongoose");
 module.exports = {
   //---------get all products----------
   async getProducts(req, res, next) {
@@ -16,8 +16,14 @@ module.exports = {
   //---------get single product by id----------
   async getOneProduct(req, res, next) {
     try {
+      const isValidId = mongoose.Types.ObjectId.isValid(req.params.id);
+      //check for is it valid mongoose _id
+      if (!isValidId) {
+        return next(new AppError("Product Not Found", 404));
+      }
+      //find the product
       const product = await Product.findById(req.params.id);
-      console.log(product);
+
       if (!product) {
         return next(new AppError("Product Not Found", 404));
       }
