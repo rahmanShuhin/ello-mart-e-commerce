@@ -7,8 +7,7 @@
 
 .header--wrapper {
   max-width: 90vw;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,5 +35,25 @@
 
 .header--wrapper--contact > div, .header--wrapper--help > div {
   padding: 0.4rem;
+}
+
+.navbar {
+  background-color: #fff;
+  height: 5rem;
+}
+
+.navbar--wrapper {
+  max-width: 90vw;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 /*# sourceMappingURL=Navbar.css.map */

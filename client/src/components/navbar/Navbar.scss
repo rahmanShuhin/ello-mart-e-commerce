@@ -1,7 +1,7 @@
 $blue: #0f3460;
 $red: #e94560;
 $background-white: #f6f9fc;
-
+// needs refactoring
 .header {
   background: $blue;
   color: #fff;
@@ -9,8 +9,7 @@ $background-white: #f6f9fc;
   font-size: 0.7rem;
   &--wrapper {
     max-width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,5 +24,17 @@ $background-white: #f6f9fc;
         padding: 0.4rem;
       }
     }
+  }
+}
+.navbar {
+  background-color: #fff;
+  height: 5rem;
+  &--wrapper {
+    max-width: 90vw;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    height: 100%;
   }
 }
