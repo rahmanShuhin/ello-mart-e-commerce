@@ -1,28 +1,28 @@
 import { Link } from "react-router-dom";
 import searchIcon from "../../assets/icons/charm_search.svg";
-import "./Navbar.css";
+import "./Navbar.scss";
 export default function Navbar() {
   return (
     <div className="navbar">
       <nav className="navbar-upper">
-        <div className="navbar-left">
+        <div className="navbar-upper-left">
           <Link to="/">
             <h1>HomeLogo</h1>
           </Link>
         </div>
         {/* <SearchBar></SearchBar> */}
-        <div className="navbar-center">
-          <span className="navbar-search">
+        <div className="navbar-upper-center">
+          <span className="navbar-upper-center-search">
             <input
-              className="navbar-center-search-input"
+              className="navbar-upper-center-search-input"
               placeholder="search"
               type="text"
             />
             <img src={searchIcon} alt="" />
           </span>
         </div>
-        <div className="navbar-right">
-          <div className="navbar-right-calls">
+        <div className="navbar-upper-right">
+          <div className="navbar-upper-right-calls">
             <h1>available</h1>
             <p>call now</p>
           </div>
