@@ -1,31 +1,24 @@
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 export default function Navbar() {
   return (
-    <div className="navbar">
-      <nav>
-        <div className="left">
-          <Link to="/">
-            <h1>HomeLogo</h1>
-          </Link>
-        </div>
-        {/* <SearchBar></SearchBar> */}
-        <div className="center">
-          <label>
-            <input className="search-input" placeholder="search" type="text" />
-          </label>
-        </div>
-        <div className="right">
-          <div className="calls">
-            <h1>available</h1>
-            <p>call now</p>
+    <nav className="header">
+      <div className="header--wrapper">
+        <article className="header--wrapper--contact">
+          <div>
+            i <span>+88012 3456 7894</span>{" "}
           </div>
-          <i>icon</i>
-          <i>icon</i>
-          <i>icon</i>
-        </div>
-      </nav>
-    </div>
+          <div>
+            i <span>aldflasfj@gmail.com</span>{" "}
+          </div>
+        </article>
+        <article className="header--wrapper--help">
+          <div>Faq</div>
+          <div>need help</div>
+          <div>lang</div>
+          <div>currency</div>
+        </article>
+      </div>
+    </nav>
   );
 }

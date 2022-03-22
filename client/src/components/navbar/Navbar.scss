@@ -1,0 +1,29 @@
+$blue: #0f3460;
+$red: #e94560;
+$background-white: #f6f9fc;
+
+.header {
+  background: $blue;
+  color: #fff;
+  height: 2.5rem;
+  font-size: 0.7rem;
+  &--wrapper {
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    &--contact,
+    &--help {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      > div {
+        padding: 0.4rem;
+      }
+    }
+  }
+}
