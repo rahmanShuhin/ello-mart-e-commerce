@@ -14,7 +14,6 @@ const login = catchAsync( async(req, res) => {
     if(!user){
         return next( new AppError('Email or password does not match',400))
     }
-    console.log(user)
     const isMatch = await bcrypt.compare(password, user.password)
 
     if(!isMatch){
@@ -32,7 +31,7 @@ const logOut = (req, res)=>{
 }
 
 const createSendToken = async(user, statusCode, res) => {
-    const token = await getToken.generateAccessToken(user._id, statusCode)
+    const token = await getToken.generateAccessToken(user._id,user.name, statusCode)
     const timeLimit = 31536000000; // one year
 
     const cookieOptions = {
