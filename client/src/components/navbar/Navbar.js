@@ -35,11 +35,13 @@ export default function Navbar() {
             <div className="navbar--wrapper--header--logo">
               <img src={logo} alt="" />
             </div>
-            <div>
-              <CategoryIcon />
-            </div>
-            <div>
-              <DownFilledIcon />
+            <div className="navbar--wrapper--header--category">
+              <div>
+                <CategoryIcon />
+              </div>
+              <div>
+                <DownFilledIcon />
+              </div>
             </div>
           </article>
           <article className="navbar--wrapper--search">
@@ -59,11 +61,22 @@ export default function Navbar() {
             </div>
           </article>
           <article className="navbar--wrapper--icons">
-            <div>
-              <UserIcon />
+            <div className="navicon">
+              <a href="#">
+                <i>
+                  {" "}
+                  <UserIcon />
+                </i>
+              </a>
             </div>
-            <div>
-              <BagIcon />
+            <div class="navicon">
+              <a href="#">
+                <i>
+                  {" "}
+                  <BagIcon />
+                </i>
+                <span class="navicon--badge">3</span>
+              </a>
             </div>
           </article>
         </section>
