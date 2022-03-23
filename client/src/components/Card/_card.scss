@@ -1,0 +1,97 @@
+.card--wrapper {
+    padding: 5rem 0;
+    &--inner {
+        max-width: 282px;
+        box-shadow: 0px 1px 5px #0400472a;
+        border-radius: 8px;
+        padding: 20px;
+        .card--image--holder {
+            position: relative;
+            cursor: pointer;
+            .discount--text {
+                display: inline-flex;
+                border-radius: 300px;
+                cursor: unset;
+                box-shadow: unset;
+                transition: all 150ms ease-in-out 0s;
+                padding: 5px 10px;
+                background-color: #e94560;
+                color: #fff;
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 10px;
+                font-weight: 600;
+            }
+            .card--hover--view {
+                display: none;
+                position: absolute;
+                top: 0;
+                right: 0;
+                & > div {
+                    margin-bottom: 8px;
+                }
+            }
+        }
+        .card--details--wrapper {
+            display: flex;
+            justify-content: space-between;
+            .card--details {
+                .card--title {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: 14px;
+                    text-align: left;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                    margin-top: 0px;
+                    color: rgb(55, 63, 80);
+                }
+                .card--rating {
+                    display: flex;
+                    align-items: center;
+                }
+                .card--price {
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-top: 10px;
+                    &--active {
+                        padding-right: 0.5rem;
+                        color: rgb(233, 69, 96);
+                    }
+                    &--inactive {
+                        color: rgb(125, 135, 156);
+                    }
+                }
+            }
+            .add--to--cart {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                .cart--icon--wrapper {
+                    display: grid;
+                    place-items: center;
+                    height: 30px;
+                    width: 30px;
+                    font-size: 26px;
+                    color: rgb(233, 69, 96);
+                    border-radius: 8px;
+                    box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
+                    transition: 0.2s ease-in-out;
+                    cursor: pointer;
+                    &:hover {
+                        color: #fff;
+                        background-color: rgb(233, 69, 96);
+                    }
+                }
+            }
+        }
+        &:hover {
+            .card--hover--view {
+                display: block;
+                cursor: pointer;
+            }
+        }
+    }
+}
