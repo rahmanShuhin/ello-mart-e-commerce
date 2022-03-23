@@ -3,6 +3,7 @@ $red: #e94560;
 $background-white: #f6f9fc;
 
 // needs refactoring
+
 .header {
   background: $blue;
   color: #fff;
@@ -85,11 +86,28 @@ $background-white: #f6f9fc;
           }
         }
         &--dropdown {
-          display: flex;
-          align-items: center;
           padding-left: 1rem;
           margin: auto;
           border-left: 1px solid black;
+          position: relative;
+
+          > div {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+          }
+          .dropdown-links {
+            position: absolute;
+            top: 3rem;
+            padding: 1rem;
+            background: $background-white;
+            margin: auto;
+            list-style: none;
+            text-decoration: none;
+            li {
+              margin-top: 0.2rem;
+            }
+          }
 
           h4 {
             font-weight: lighter;
@@ -132,29 +150,3 @@ $background-white: #f6f9fc;
     }
   }
 }
-// .bag-btn {
-//   background: $background-white;
-//   text-decoration: none;
-//   padding: 1rem;
-//   margin: 10px;
-//   position: relative;
-//   vertical-align: middle;
-//   text-align: center;
-//   display: inline-block;
-//   border-radius: 50%;
-//   transition: box-shadow 0.4s;
-//   &:hover {
-//     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-//   }
-// }
-
-// .bag-btn__badge {
-//   background: #ff5d5d;
-//   color: white;
-//   font-size: 12px;
-//   position: absolute;
-//   top: -10px;
-//   right: -10px;
-//   padding: 5px 8px;
-//   border-radius: 15px;
-// }

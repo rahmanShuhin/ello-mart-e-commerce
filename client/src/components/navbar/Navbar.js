@@ -1,13 +1,17 @@
 //icons
+import { useState } from "react";
 import logo from "../../assets/icons/riadmart.svg";
 import BagIcon from "./BagIcon";
 import CategoryIcon from "./CategoryIcon";
 import DownFilledIcon from "./DownFilledIcon";
 import DownIcon from "./DownIcon";
 import "./Navbar.css";
+import { categories } from "./navdata";
 import SearchIcon from "./SearchIcon";
 import UserIcon from "./UserIcon";
 export default function Navbar() {
+  const [showAllCategories, setShowAllCategories] = useState(false);
+
   return (
     <>
       <header className="header">
@@ -53,13 +57,23 @@ export default function Navbar() {
                 <input type="search" placeholder="search and hit enter.." />
               </div>
               <div className="navbar--wrapper--search--container--dropdown">
-                <h4>all categories </h4>
-                <div>
-                  <DownIcon />
-                </div>
+                {" "}
+                <div onClick={() => setShowAllCategories(!showAllCategories)}>
+                  <h4>all categories </h4>
+
+                  <div>
+                    <DownIcon />
+                  </div>
+                </div>{" "}
+                <ul className="dropdown-links">
+                  {showAllCategories &&
+                    categories.map((category) => (
+                      <li key={category.index}>{category.text}</li>
+                    ))}
+                </ul>
               </div>
             </div>
-          </article>
+          </article>{" "}
           <article className="navbar--wrapper--icons">
             <div className="navicon">
               <a href="#">
