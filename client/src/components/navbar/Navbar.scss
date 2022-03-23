@@ -1,9 +1,14 @@
+$blue: #0f3460;
+$red: #e94560;
+$background-white: #f6f9fc;
+
 // needs refactoring
 .header {
   background: $blue;
   color: #fff;
   height: 2.5rem;
   font-size: 0.7rem;
+  text-transform: capitalize;
   &--wrapper {
     max-width: 90vw;
     margin: 0 auto;
@@ -20,6 +25,9 @@
       > div {
         padding: 0.4rem;
       }
+      :hover {
+        color: #e94560;
+      }
     }
   }
 }
@@ -33,5 +41,69 @@
     justify-content: space-between;
     display: flex;
     height: 100%;
+
+    &--header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &--logo {
+        margin-bottom: 0.7rem;
+      }
+    }
+
+    &--search {
+      width: 100%;
+
+      &--container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 1px;
+        border: 0.5px solid rgba(0, 0, 0, 0.4);
+
+        border-radius: 5rem;
+        // background-color: ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--icon {
+          margin: auto;
+        }
+        &--searchbox {
+          width: 70%;
+          input {
+            height: 3rem;
+            width: 100%;
+            border: none;
+
+            &:focus-visible {
+              outline: none;
+            }
+          }
+        }
+        &--dropdown {
+          display: flex;
+          align-items: center;
+          padding-left: 1rem;
+          margin: auto;
+          border-left: 1px solid black;
+
+          h4 {
+            font-weight: lighter;
+          }
+        }
+        &:hover {
+          border: 1px solid black;
+        }
+        &:focus-within {
+          border: 0.2px solid $red;
+        }
+      }
+    }
+    &--icons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
 }

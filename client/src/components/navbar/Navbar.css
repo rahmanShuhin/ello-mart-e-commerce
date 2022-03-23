@@ -3,6 +3,7 @@
   color: #fff;
   height: 2.5rem;
   font-size: 0.7rem;
+  text-transform: capitalize;
 }
 
 .header--wrapper {
@@ -37,6 +38,10 @@
   padding: 0.4rem;
 }
 
+.header--wrapper--contact :hover, .header--wrapper--help :hover {
+  color: #e94560;
+}
+
 .navbar {
   background-color: #fff;
   height: 5rem;
@@ -55,5 +60,95 @@
   display: -ms-flexbox;
   display: flex;
   height: 100%;
+}
+
+.navbar--wrapper--header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navbar--wrapper--header--logo {
+  margin-bottom: 0.7rem;
+}
+
+.navbar--wrapper--search {
+  width: 100%;
+}
+
+.navbar--wrapper--search--container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1px;
+  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  border-radius: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar--wrapper--search--container--icon {
+  margin: auto;
+}
+
+.navbar--wrapper--search--container--searchbox {
+  width: 70%;
+}
+
+.navbar--wrapper--search--container--searchbox input {
+  height: 3rem;
+  width: 100%;
+  border: none;
+}
+
+.navbar--wrapper--search--container--searchbox input:focus-visible {
+  outline: none;
+}
+
+.navbar--wrapper--search--container--dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 1rem;
+  margin: auto;
+  border-left: 1px solid black;
+}
+
+.navbar--wrapper--search--container--dropdown h4 {
+  font-weight: lighter;
+}
+
+.navbar--wrapper--search--container:hover {
+  border: 1px solid black;
+}
+
+.navbar--wrapper--search--container:focus-within {
+  border: 0.2px solid #e94560;
+}
+
+.navbar--wrapper--icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 /*# sourceMappingURL=Navbar.css.map */
