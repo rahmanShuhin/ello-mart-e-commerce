@@ -1,7 +1,8 @@
 //icons
-import { useState } from "react";
+import { useRef, useState } from "react";
 import logo from "../../assets/icons/riadmart.svg";
 import { categories } from "../../data/navdata";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
 import DownFilledIcon from "../IconComponents/DownFilledIcon";
@@ -9,10 +10,12 @@ import DownIcon from "../IconComponents/DownIcon";
 import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import "./_navbar.scss";
+
 export default function Navbar() {
 
   const [showAllCategories, setShowAllCategories] = useState(false);
-
+  const categoryRef = useRef(null);
+  useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
   return (
     <>
     
@@ -68,7 +71,7 @@ export default function Navbar() {
                     <DownIcon />
                   </span>
                 </div>{" "}
-                <ul className={showAllCategories && "dropdown-links"}>
+                <ul ref={categoryRef} className={showAllCategories && "dropdown-links"}>
                   {showAllCategories &&
                     categories.map((category) => (
                       <li key={category.index}>{category.text}</li>

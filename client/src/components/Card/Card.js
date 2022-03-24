@@ -4,7 +4,7 @@ import FavouriteIcon from '../IconComponents/favourite'
 import StarIcon from '../IconComponents/star'
 import './_card.scss'
 
-const Card = () => {
+const Card = ({title, price, rating}) => {
   return (
     <div className="card--wrapper">
         <div className="card--wrapper--inner">
@@ -18,16 +18,18 @@ const Card = () => {
             </div> 
             <div className="card--details--wrapper">
                 <div className="card--details">
-                    <h3 className="card--title">Nike Shoe</h3>  
+                    <h3 className="card--title">{title}</h3>  
                     <div className="card--rating">
                         <StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarIcon/>
                     </div>
                     <div class="card--price">
-                        <span class="card--price--active">$110.00</span>
+                        <span class="card--price--active">${price}</span>
                         <span class="card--price--inactive"> <del>250.00</del> </span>     
                     </div>
                 </div>
                 <div className='add--to--cart'>
+                    <span className='cart--icon--wrapper'>-</span>
+                    <span className='counter-text'>1</span>
                     <span className='cart--icon--wrapper'>+</span>
                 </div>
             </div> 

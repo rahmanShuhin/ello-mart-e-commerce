@@ -1,12 +1,13 @@
 $red: #e94560;
 
 .card--wrapper {
-    padding: 5rem 0;
+    padding: 1rem 0;
     &--inner {
         max-width: 282px;
         box-shadow: 0px 1px 5px #0400472a;
         border-radius: 8px;
         padding: 20px;
+        transition: 0.2s ease-in-out;
         .card--image--holder {
             position: relative;
             cursor: pointer;
@@ -38,6 +39,7 @@ $red: #e94560;
         .card--details--wrapper {
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
             .card--details {
                 .card--title {
                     white-space: nowrap;
@@ -69,8 +71,8 @@ $red: #e94560;
             }
             .add--to--cart {
                 display: flex;
-                justify-content: center;
-                align-items: flex-end;
+                flex-direction: column;
+                align-items: center;
                 .cart--icon--wrapper {
                     display: grid;
                     place-items: center;
@@ -87,9 +89,14 @@ $red: #e94560;
                         background-color: $red;
                     }
                 }
+                .counter-text {
+                    padding: 5px 0;
+                    font-size: 14px;
+                }
             }
         }
         &:hover {
+            box-shadow: 0px 8px 45px #03004717;
             .card--hover--view {
                 display: block;
                 cursor: pointer;
