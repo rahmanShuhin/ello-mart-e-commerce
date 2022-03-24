@@ -1,0 +1,25 @@
+$header-text-color: rgb(75, 75, 75);
+
+.card--container {
+    padding: 5rem 0;
+    &--header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+        & > h3 {
+            font-size: 25px;
+            font-weight: bold;
+            color: $header-text-color;
+        }
+        & > span {
+            color: #7d879c;
+            cursor: pointer;
+        }
+    }
+    &--wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 23px;
+    }
+}
