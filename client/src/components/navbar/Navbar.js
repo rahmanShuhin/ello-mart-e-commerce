@@ -1,40 +1,45 @@
 //icons
-import { useState } from "react";
+import { useRef, useState } from "react";
 import logo from "../../assets/icons/riadmart.svg";
-import BagIcon from "./BagIcon";
-import CategoryIcon from "./CategoryIcon";
-import DownFilledIcon from "./DownFilledIcon";
-import DownIcon from "./DownIcon";
-import "./Navbar.css";
-import { categories } from "./navdata";
-import SearchIcon from "./SearchIcon";
-import UserIcon from "./UserIcon";
+import { categories } from "../../data/navdata";
+import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import BagIcon from "../IconComponents/BagIcon";
+import CategoryIcon from "../IconComponents/CategoryIcon";
+import DownFilledIcon from "../IconComponents/DownFilledIcon";
+import DownIcon from "../IconComponents/DownIcon";
+import SearchIcon from "../IconComponents/SearchIcon";
+import UserIcon from "../IconComponents/UserIcon";
+import "./_navbar.scss";
+
 export default function Navbar() {
   const [showAllCategories, setShowAllCategories] = useState(false);
-
+  const categoryRef = useRef(null);
+  useOnClickOutside(categoryRef, () => setShowAllCategories(false));
   return (
     <>
       <header className="header">
-        <div className="header--wrapper">
-          <article className="header--wrapper--contact">
-            <div>
-              📞<span> +88012 3456 7894</span>{" "}
-            </div>
-            <div>
-              📧<span> aldflasfj@gmail.com</span>{" "}
-            </div>
-          </article>
-          <article className="header--wrapper--help">
-            <div>FAQ</div>
-            <div>need help</div>
-            <div>lang</div>
-            <div>💸currency</div>
-          </article>
+        <div className="container">
+          <div className="header--wrapper">
+            <article className="header--wrapper--contact">
+              <div>
+                📞<span> +88012 3456 7894</span>{" "}
+              </div>
+              <div>
+                📧<span> aldflasfj@gmail.com</span>{" "}
+              </div>
+            </article>
+            <article className="header--wrapper--help">
+              <div>FAQ</div>
+              {/* <div>need help</div>
+              <div>lang</div> */}
+              <div>💸currency</div>
+            </article>
+          </div>
         </div>
       </header>
 
       <nav className="navbar">
-        <section className="navbar--wrapper">
+        <section className="navbar--wrapper container">
           <article className="navbar--wrapper--header">
             <div className="navbar--wrapper--header--logo">
               <img src={logo} alt="" />
@@ -59,13 +64,21 @@ export default function Navbar() {
               <div className="navbar--wrapper--search--container--dropdown">
                 {" "}
                 <div onClick={() => setShowAllCategories(!showAllCategories)}>
-                  <h4>all categories </h4>
-
-                  <div>
+                  <h4>All categories</h4>
+                  <span
+                    className={
+                      showAllCategories
+                        ? "dropdown--icon rotate"
+                        : "dropdown--icon"
+                    }
+                  >
                     <DownIcon />
-                  </div>
+                  </span>
                 </div>{" "}
-                <ul className="dropdown-links">
+                <ul
+                  ref={categoryRef}
+                  className={showAllCategories && "dropdown-links"}
+                >
                   {showAllCategories &&
                     categories.map((category) => (
                       <li key={category.index}>{category.text}</li>

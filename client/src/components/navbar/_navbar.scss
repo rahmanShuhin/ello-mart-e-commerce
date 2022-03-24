@@ -1,0 +1,177 @@
+$blue: #0f3460;
+$red: #e94560;
+$background-white: #f6f9fc;
+$background-white-hover: #e2ecf5;
+
+// needs refactoring
+
+.header {
+    background: $blue;
+    color: #fff;
+    padding: 0.3rem 0;
+    font-size: 0.7rem;
+    text-transform: capitalize;
+    &--wrapper {
+        max-width: 90vw;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        &--contact,
+        &--help {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            > div {
+                padding: 0.4rem;
+            }
+            :hover {
+                color: $red;
+            }
+        }
+    }
+}
+.navbar {
+    background-color: #fff;
+    height: 5rem;
+    &--wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        &--header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &--logo {
+                margin-bottom: 0.7rem;
+            }
+            &--category {
+                display: flex;
+            }
+        }
+
+        &--search {
+            width: 100%;
+
+            &--container {
+                width: 80%;
+                margin: 0 auto;
+                padding: 1px;
+                border: 0.5px solid rgba(0, 0, 0, 0.4);
+                border-radius: 5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &--icon {
+                    display: flex;
+                    align-items: flex-end;
+                    margin: auto;
+                }
+                &--searchbox {
+                    width: 70%;
+                    input {
+                        height: 2.5rem;
+                        width: 100%;
+                        border: none;
+
+                        &:focus-visible {
+                            outline: none;
+                        }
+                    }
+                }
+                &--dropdown {
+                    padding-left: 1rem;
+                    margin: auto;
+                    border-left: 1px solid #a9b0c0;
+                    position: relative;
+
+                    & > div {
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                        .dropdown--icon {
+                            display: flex;
+                            align-items: center;
+                            transition: 0.2s ease-in-out;
+                            margin-left: 2px;
+                        }
+                    }
+                    .dropdown-links {
+                        position: absolute;
+                        top: 2.5rem;
+                        right: -1rem;
+                        padding-top: 0.5rem;
+                        padding-bottom: 0.5rem;
+                        min-width: 180px;
+                        border-radius: 6px;
+                        background-color: rgb(255, 255, 255);
+                        box-shadow: 0px 6px 12px #00000029;
+                        z-index: 100;
+
+                        li {
+                            margin: 0rem 0;
+                            padding: 0.5rem 1rem;
+                            color: #7d879c;
+                            font-size: 14px;
+                            &:hover {
+                                background: $background-white;
+                                color: $red;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+
+                    h4 {
+                        font-weight: lighter;
+                        font-size: 14px;
+                        color: #7d879c;
+                    }
+                }
+                &:hover {
+                    border: 1px solid black;
+                }
+                &:focus-within {
+                    border: 0.2px solid $red;
+                }
+            }
+        }
+        &--icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 15px;
+            .navicon {
+                background: $background-white;
+                display: grid;
+                place-items: center;
+                height: 2.5rem;
+                width: 2.5rem;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 50%;
+                position: relative;
+                &:hover {
+                    background: $background-white-hover;
+                }
+            }
+            .navicon--badge {
+                position: absolute;
+                width: 1rem;
+                font-size: x-small;
+                padding: 0.2rem;
+                border-radius: 50%;
+                background-color: $red;
+                color: #f6f9fc;
+                top: -15%;
+                right: 5%;
+            }
+        }
+    }
+    .rotate {
+        transform: rotate(180deg);
+    }
+}
