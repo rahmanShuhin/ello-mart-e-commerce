@@ -1,0 +1,125 @@
+$blue: #0f3460;
+$red: #e94560;
+$background-white: #f6f9fc;
+$background-white-hover: #e2ecf5;
+
+footer {
+    background: $blue;
+    padding: 5rem 0;
+    color: rgb(174, 180, 190);
+}
+.footer {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    overflow: hidden;
+    width: 90vw;
+    margin: 0 auto;
+
+    &--box {
+        display: grid;
+        grid-template-columns: 1.4fr 0.6fr 0.8fr 1.2fr;
+        gap: 30px;
+        @media screen and (max-width: 960px) {
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+        }
+        @media screen and (max-width: 800px) {
+            grid-template-columns: 1fr;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        &--elements {
+            // margin-right: 1rem;
+            padding: 0.25rem;
+            h1 {
+                color: #f6f9fc;
+                font-size: 1.5rem;
+            }
+
+            &--one {
+                & > * {
+                    margin: 0.8rem 0;
+                }
+                & > P {
+                    font-size: 0.8rem;
+                    line-height: 1.5em;
+                    margin: 1.2rem 0;
+                }
+                &--appstore {
+                    display: flex;
+                }
+                &--appstore--holder {
+                    box-shadow: none;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 0.4rem;
+                    background-color: rgb(12, 42, 77);
+                    color: white;
+                    padding: 0.6rem 1rem;
+                    margin-right: 1rem;
+
+                    &--texts {
+                        margin-left: 0.5rem;
+                        & > p {
+                            font-weight: 600;
+                            font-size: 0.6rem;
+                        }
+                        & > h4 {
+                            font-weight: 800;
+                            font-size: 0.7rem;
+                        }
+                    }
+                }
+            }
+            &--two,
+            &--three {
+                ul {
+                    margin-top: 1rem;
+                    list-style: none;
+                    text-decoration: none;
+                    li {
+                        line-height: 1.5rem;
+                        padding-top: 0.4rem;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+            &--four {
+                &--texts {
+                    margin-bottom: 1rem;
+                    p {
+                        margin-top: 1.75rem;
+                        font-size: 0.9rem;
+                    }
+                }
+                &--logos {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    gap: 0.5rem;
+
+                    & > a {
+                        background: rgb(12, 42, 77);
+                        display: grid;
+                        place-items: center;
+                        height: 2.2rem;
+                        width: 2.2rem;
+                        text-align: center;
+                        text-decoration: none;
+                        border-radius: 50%;
+                        position: relative;
+                        transition: 0.2s ease-in-out;
+                        cursor: pointer;
+                        &:hover {
+                            transform: translateY(-2px);
+                            background: rgb(9, 33, 61);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
