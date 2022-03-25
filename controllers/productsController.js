@@ -2,13 +2,25 @@ const Product = require("../model/Product");
 const verification = require("../middlewares/isAdminValidators");
 const AppError = require("../utils/appError");
 const mongoose = require("mongoose");
+const ApiFeatures = require("../utils/apiFeatures");
 module.exports = {
   //---------get all products----------
   async getProducts(req, res, next) {
     try {
-      await Product.find({}).then(function (data) {
-        res.status(200).send(data);
+      const resultPerPage = req.query.perPage || 5;
+      const apiFeature = new ApiFeatures(Product.find(), req.query)
+        .search()
+        .filter()
+        .pagination(resultPerPage);
+
+      const products = await apiFeature.query;
+      res.status(200).json({
+        success: true,
+        products,
       });
+      // await apiFeature.query.then(function (data) {
+      //   res.status(200).send(data);
+      // });
     } catch (error) {
       return next(new AppError(error, 400));
     }
