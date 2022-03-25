@@ -1,6 +1,6 @@
 import React from "react";
 // icons
-import logo from "../../assets/icons/riadmart.svg";
+import logo from "../../assets/icons/NinjaMart.svg";
 import AppleStore from "../IconComponents/AppleStore";
 import Facebook from "../IconComponents/Facebook";
 import Google from "../IconComponents/Google";
@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer>
       <section className="footer-container">
-        <div className="footer">
+        <div className="footer container">
           <div className="footer--box">
             <article className="footer--box--elements">
               <div className="footer--box--elements--one">
