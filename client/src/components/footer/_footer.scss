@@ -1,0 +1,125 @@
+$blue: #0f3460;
+$red: #e94560;
+$background-white: #f6f9fc;
+$background-white-hover: #e2ecf5;
+
+footer {
+  background: $blue;
+  color: rgb(174, 180, 190);
+}
+
+.footer--container {
+  max-width: 1200px;
+  padding: 5rem;
+  margin: 0 auto;
+}
+.footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+  width: 90vw;
+  margin: 0 auto;
+
+  &--box {
+    display: grid;
+    grid-template-columns: 1.1fr auto auto 0.9fr;
+    @media screen and (max-width: 960px) {
+      grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+    }
+    @media screen and (max-width: 800px) {
+      grid-template-columns: 1fr;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+    &--elements {
+      margin: 1rem;
+      padding: 0.25rem;
+      h1 {
+        color: #f6f9fc;
+      }
+
+      &--one {
+        & > * {
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+        & > P {
+          font-size: 0.9rem;
+          line-height: 1.5em;
+          margin-bottom: 1.2rem;
+        }
+        &--logo {
+          margin-left: -1rem;
+          margin-bottom: 1rem;
+        }
+        &--appstore {
+          display: flex;
+        }
+        &--appstore--holder {
+          box-shadow: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          border-radius: 0.4rem;
+          background-color: rgb(12, 42, 77);
+          color: white;
+          padding: 0.6rem 1rem;
+          margin-right: 1rem;
+
+          &--texts {
+            margin-left: 0.5rem;
+            & > p {
+              font-weight: 600;
+              font-size: 0.6rem;
+            }
+            & > h4 {
+              font-weight: 800;
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+      &--two,
+      &--three {
+        ul {
+          margin-top: 1.75rem;
+          list-style: none;
+          text-decoration: none;
+          li {
+            line-height: 1.5rem;
+            padding-top: 0.4rem;
+          }
+        }
+      }
+      &--four {
+        &--texts {
+          margin-bottom: 1rem;
+          p {
+            margin-top: 1.75rem;
+          }
+        }
+        &--logos {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          gap: 0.5rem;
+
+          & > a {
+            background: rgb(12, 42, 77);
+            display: grid;
+            place-items: center;
+            height: 2.5rem;
+            width: 2.5rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50%;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}
