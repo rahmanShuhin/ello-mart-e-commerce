@@ -1,5 +1,8 @@
 .sidebar--cart {
     @include cartPosition(380px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     animation: slideIn 0.4s ease-in-out;
     z-index: 9999;
     &--wrapper {
@@ -14,36 +17,107 @@
                 color: rgb(80, 80, 80);
             }
         }
-        .cart--item {
-            .add--to--cart {
+        .cart--item--wrapper {
+            overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            height: calc(100vh - 135px);
+            .cart--item {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
                 justify-content: flex-start;
+                align-items: center;
+                padding: 0.7rem 1rem;
+                border-bottom: 1px solid rgb(243, 245, 249);
+                .add--to--cart {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
 
-                .cart--icon--wrapper {
+                    .cart--icon--wrapper {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 30px;
+                        width: 30px;
+                        font-size: 26px;
+                        font-weight: 700;
+                        color: $red;
+                        border-radius: 50%;
+                        box-shadow: 0 0 2px rgba(233, 69, 96, 0.816);
+                        transition: 0.2s ease-in-out;
+                        cursor: pointer;
+                        &:hover {
+                            color: #fff;
+                            background-color: $red;
+                        }
+                    }
+                    .counter-text {
+                        padding: 5px 0;
+                        font-size: 14px;
+                        margin: 0px 10px;
+                    }
+                }
+                .cart--item--inside {
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                    &--img {
+                        width: 100px;
+                    }
+                    &--info {
+                        flex: 1;
+                        & > h5 {
+                            color: rgb(43, 52, 69);
+                            font-size: 1rem;
+                            font-weight: 600;
+                        }
+                        & > p {
+                            font-size: 0.7rem;
+                            color: rgb(126, 126, 126);
+                            margin: 0.5rem 0;
+                        }
+                        .price {
+                            font-size: 0.9rem;
+                            color: $red;
+                            font-weight: 600;
+                        }
+                    }
+                }
+                .cross-icon {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     height: 30px;
                     width: 30px;
-                    font-size: 26px;
-                    font-weight: 700;
-                    color: $red;
                     border-radius: 50%;
-                    box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
-                    transition: 0.2s ease-in-out;
                     cursor: pointer;
+                    transition: 0.1s ease-in-out;
                     &:hover {
-                        color: #fff;
-                        background-color: $red;
+                        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
                     }
                 }
-                .counter-text {
-                    padding: 5px 0;
-                    font-size: 14px;
-                    margin: 0px 10px;
-                }
+            }
+        }
+        .cart--item--wrapper::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    .sidebar--cart--checkout {
+        margin: 20px;
+        & > button {
+            background-color: $red;
+            border: 2px solid $red;
+            font-weight: 600;
+            width: 100%;
+            padding: 0.8rem 0;
+            border-radius: 8px;
+            color: #fff;
+            transition: 0.2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: #fff;
+                color: $red;
             }
         }
     }
