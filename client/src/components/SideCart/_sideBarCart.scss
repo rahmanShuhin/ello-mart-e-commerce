@@ -127,13 +127,27 @@
     transition: 0.6s ease-in-out;
     transform: translateX(100%);
     z-index: 9999;
+    .sidebar--cart--checkout {
+        margin: 20px;
+        & > button {
+            background-color: $red;
+            border: 2px solid $red;
+            font-weight: 600;
+            width: 100%;
+            padding: 0.8rem 0;
+            border-radius: 8px;
+            color: #fff;
+            transition: 0.2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+                background-color: #fff;
+                color: $red;
+            }
+        }
+    }
 }
 .sidebar--cart--backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
+    @include cartPosition(100vw);
     background: rgba(0, 0, 0, 0.53);
     z-index: 9991;
 }
