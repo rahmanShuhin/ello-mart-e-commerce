@@ -1,7 +1,7 @@
 //icons
 import { useRef, useState } from "react";
-import logo from "../../assets/icons/NinjaMartMain.svg";
 import { categories } from "../../assets/data/navdata";
+import logo from "../../assets/icons/NinjaMartMain.svg";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
@@ -12,13 +12,11 @@ import UserIcon from "../IconComponents/UserIcon";
 import "./_navbar.scss";
 
 export default function Navbar() {
-
   const [showAllCategories, setShowAllCategories] = useState(false);
   const categoryRef = useRef(null);
-  useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
+  useOnClickOutside(categoryRef, () => setShowAllCategories(false));
   return (
     <>
-    
       <header className="header">
         <div className="container">
           <div className="header--wrapper">
@@ -67,11 +65,20 @@ export default function Navbar() {
                 {" "}
                 <div onClick={() => setShowAllCategories(!showAllCategories)}>
                   <h4>All categories</h4>
-                  <span className={showAllCategories ? "dropdown--icon rotate" : "dropdown--icon"}>
+                  <span
+                    className={
+                      showAllCategories
+                        ? "dropdown--icon rotate"
+                        : "dropdown--icon"
+                    }
+                  >
                     <DownIcon />
                   </span>
                 </div>{" "}
-                <ul ref={categoryRef} className={showAllCategories && "dropdown-links"}>
+                <ul
+                  ref={categoryRef}
+                  className={showAllCategories && "dropdown-links"}
+                >
                   {showAllCategories &&
                     categories.map((category) => (
                       <li key={category.index}>{category.text}</li>
