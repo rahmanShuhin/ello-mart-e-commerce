@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { fakeData } from "../../data/fakeData";
 import StarIcon from "../IconComponents/star";
 
 const Product = () => {
@@ -67,11 +68,12 @@ const Product = () => {
             </p>
             <div>
               {fakeData.colors.map((col, index) => (
-                <p
-                  className={index === color && "active"}
-                  style={{ backgroundColor: col }}
-                  onClick={() => setColor(index)}
-                ></p>
+                <span className={index === color && "active"}>
+                  <span
+                    style={{ backgroundColor: col }}
+                    onClick={() => setColor(index)}
+                  />
+                </span>
               ))}
             </div>
           </div>
@@ -112,22 +114,3 @@ const Product = () => {
 };
 
 export default Product;
-
-const fakeData = {
-  id: 1,
-  title: "Mi Note 11 Pro",
-  description: "this is very nice show",
-  price: 320,
-  rating: "5",
-  images: [
-    "https://bonik-react.vercel.app/assets/images/products/hiclipart.com%20(16).png",
-    "https://bonik-react.vercel.app/assets/images/products/headphone.png",
-    "https://bonik-react.vercel.app/assets/images/products/hiclipart.com%20(18).png",
-  ],
-  category: "show",
-  sizes: ["XS", "S", "M", "L", "XL"],
-  colors: ["black", "red", "blue", "orange"],
-  stock: "23",
-  totalReviews: "4",
-  reviews: "2",
-};
