@@ -1,5 +1,5 @@
 import React from 'react'
-import { PRODUCT_DATA } from '../../data/productData'
+import { PRODUCT_DATA } from '../../assets/data/productData'
 import Card from '../Card/Card'
 import './_cardContainer.scss'
 

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { fakeData } from "../../assets/data/fakeData";
 import StarIcon from "../IconComponents/star";
+import { ImageMagnifier } from "../ImageMagnifier/ImageMagnifier";
 
 const Product = () => {
   const [activeImg, setActiveImg] = useState(0);
@@ -14,7 +16,8 @@ const Product = () => {
       <div className="product__top container">
         <div className="product__top__left">
           <div className="product__top__left__imgActive">
-            <img src={fakeData.images[activeImg]} alt="" />
+            {/* ----image magnifier--------*/}
+            <ImageMagnifier width={300} src={fakeData.images[activeImg]}/>
           </div>
           <div className="product__top__left__imgGallery">
             {fakeData.images.map((img, index) => (
@@ -67,11 +70,12 @@ const Product = () => {
             </p>
             <div>
               {fakeData.colors.map((col, index) => (
-                <p
-                  className={index === color && "active"}
-                  style={{ backgroundColor: col }}
-                  onClick={() => setColor(index)}
-                ></p>
+                <span className={index === color && "active"}>
+                  <span
+                    style={{ backgroundColor: col }}
+                    onClick={() => setColor(index)}
+                  />
+                </span>
               ))}
             </div>
           </div>
@@ -112,22 +116,3 @@ const Product = () => {
 };
 
 export default Product;
-
-const fakeData = {
-  id: 1,
-  title: "Mi Note 11 Pro",
-  description: "this is very nice show",
-  price: 320,
-  rating: "5",
-  images: [
-    "https://bonik-react.vercel.app/assets/images/products/hiclipart.com%20(16).png",
-    "https://bonik-react.vercel.app/assets/images/products/headphone.png",
-    "https://bonik-react.vercel.app/assets/images/products/hiclipart.com%20(18).png",
-  ],
-  category: "show",
-  sizes: ["XS", "S", "M", "L", "XL"],
-  colors: ["black", "red", "blue", "orange"],
-  stock: "23",
-  totalReviews: "4",
-  reviews: "2",
-};
