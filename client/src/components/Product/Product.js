@@ -4,6 +4,9 @@ import StarIcon from "../IconComponents/star";
 const Product = () => {
   const [activeImg, setActiveImg] = useState(0);
   const [activeContent, setActiveContent] = useState("description");
+  const [size, setSize] = useState(0);
+  const [color, setColor] = useState(0);
+
   return (
     //  product details page
     <section className="product">
@@ -41,7 +44,47 @@ const Product = () => {
           </p>
           <p>${fakeData.price}</p>
           <p>Stock Available</p>
-          <button className="btn-primary">Add to Cart</button>
+          <div className="product__top__right__sizes">
+            <p>
+              <span>Size : </span>
+              {fakeData.sizes[size]}
+            </p>
+            <div>
+              {fakeData.sizes.map((siz, index) => (
+                <p
+                  className={index === size && "active"}
+                  onClick={() => setSize(index)}
+                >
+                  {siz}
+                </p>
+              ))}
+            </div>
+          </div>
+          <div className="product__top__right__colors">
+            <p>
+              <span>Color : </span>
+              {fakeData.colors[color]}
+            </p>
+            <div>
+              {fakeData.colors.map((col, index) => (
+                <p
+                  className={index === color && "active"}
+                  style={{ backgroundColor: col }}
+                  onClick={() => setColor(index)}
+                ></p>
+              ))}
+            </div>
+          </div>
+          <div className="product__top__right__cartButton">
+            <button className="btn-primary">Add to Cart</button>
+            <p>Quantity : </p>
+            <div className="add--to--cart">
+              <span className="cart--icon--wrapper">-</span>
+              <span className="counter-text">1</span>
+              <span className="cart--icon--wrapper">+</span>
+            </div>
+          </div>
+
           <p>
             <span>Sold By:</span> &nbsp;Mobile Store
           </p>
@@ -82,9 +125,9 @@ const fakeData = {
     "https://bonik-react.vercel.app/assets/images/products/hiclipart.com%20(18).png",
   ],
   category: "show",
+  sizes: ["XS", "S", "M", "L", "XL"],
+  colors: ["black", "red", "blue", "orange"],
   stock: "23",
   totalReviews: "4",
   reviews: "2",
-  sizes: "34",
-  colors: "red",
 };

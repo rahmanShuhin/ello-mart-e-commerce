@@ -44,18 +44,19 @@
       h1 {
         color: $black;
         font-weight: 700;
-        font-size: 30px;
+        @include toRem(font-size, 30);
         letter-spacing: 2px;
         margin-bottom: 20px;
       }
-      p {
+      > p {
         margin-bottom: 20px;
         span {
           color: $light-gray;
+          @include toRem(font-size, 14);
         }
         &:nth-of-type(3) {
           color: $red;
-          font-size: 25px;
+          @include toRem(font-size, 25);
           font-weight: 700;
 
           margin-bottom: 5px;
@@ -64,12 +65,99 @@
           }
           & + p {
             color: rgb(139, 138, 138);
-            font-size: 14px;
+            @include toRem(font-size, 14);
           }
         }
       }
-      button {
+      &__sizes {
+        > p {
+          span {
+            color: $light-gray;
+          }
+        }
+        > div {
+          display: flex;
+          gap: 10px;
+          margin: 20px 0px;
+          > p {
+            background-color: rgba(211, 211, 211, 0.381);
+            padding: 7px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &.active {
+              border: 2px solid $red;
+              background-color: white;
+            }
+          }
+        }
+      }
+      &__colors {
+        > p {
+          text-transform: capitalize;
+          span {
+            color: $light-gray;
+          }
+        }
+        > div {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: 10px 0px;
+          > p {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(211, 211, 211, 0.381);
+            border-radius: 50px;
+            cursor: pointer;
+
+            &.active {
+              width: 35px;
+              height: 35px;
+              border: 2px solid $red;
+            }
+          }
+        }
+      }
+      &__cartButton {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
         margin-bottom: 50px;
+        button {
+          margin-right: 20px;
+        }
+        p {
+          margin-right: 15px;
+          color: $light-gray;
+        }
+        .add--to--cart {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+
+          .cart--icon--wrapper {
+            display: grid;
+            padding: 1px 15px;
+            font-size: 26px;
+            font-weight: 700;
+            color: $red;
+            border-radius: 8px;
+            box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
+            transition: 0.2s ease-in-out;
+            cursor: pointer;
+            &:hover {
+              color: #fff;
+              background-color: $red;
+            }
+          }
+          .counter-text {
+            padding: 5px 0;
+            font-size: 14px;
+            margin: 0px 10px;
+          }
+        }
       }
     }
   }
@@ -80,8 +168,9 @@
       border-bottom: 1px solid lightgray;
       > p {
         color: $light-gray;
-        font-size: 18px;
+        @include toRem(font-size, 16);
         padding: 7px 8px;
+        font-weight: 600;
         margin-right: 20px;
         cursor: pointer;
         &.active {
