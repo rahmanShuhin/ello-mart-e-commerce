@@ -1,7 +1,8 @@
 //icons
 import { useRef, useState } from "react";
-import logo from "../../assets/icons/NinjaMartMain.svg";
+import { Link } from 'react-router-dom';
 import { categories } from "../../assets/data/navdata";
+import logo from "../../assets/icons/NinjaMartMain.svg";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
@@ -11,7 +12,7 @@ import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import "./_navbar.scss";
 
-export default function Navbar() {
+export default function Navbar({handleOpenCart}) {
 
   const [showAllCategories, setShowAllCategories] = useState(false);
   const categoryRef = useRef(null);
@@ -27,7 +28,7 @@ export default function Navbar() {
                 📞<span> +88012 3456 7894</span>{" "}
               </div>
               <div>
-                📧<span> aldflasfj@gmail.com</span>{" "}
+                📧<span> arifbhai-zindabad@gmail.com</span>{" "}
               </div>
             </article>
             <article className="header--wrapper--help">
@@ -44,7 +45,9 @@ export default function Navbar() {
         <section className="navbar--wrapper container">
           <article className="navbar--wrapper--header">
             <div className="navbar--wrapper--header--logo">
-              <img src={logo} alt="" />
+              <Link to='/'>
+                <img src={logo} alt="" />
+              </Link>
             </div>
             <div className="navbar--wrapper--header--category">
               <div>
@@ -89,7 +92,7 @@ export default function Navbar() {
                 </i>
               </a>
             </div>
-            <div class="navicon">
+            <div onClick={handleOpenCart} class="navicon">
               <a href="#">
                 <i>
                   {" "}
