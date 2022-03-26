@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { fakeData } from "../../data/fakeData";
+import { fakeData } from "../../assets/data/fakeData";
 import StarIcon from "../IconComponents/star";
+import { ImageMagnifier } from "../ImageMagnifier/ImageMagnifier";
 
 const Product = () => {
   const [activeImg, setActiveImg] = useState(0);
@@ -15,7 +16,8 @@ const Product = () => {
       <div className="product__top container">
         <div className="product__top__left">
           <div className="product__top__left__imgActive">
-            <img src={fakeData.images[activeImg]} alt="" />
+            {/* ----image magnifier--------*/}
+            <ImageMagnifier width={300} src={fakeData.images[activeImg]}/>
           </div>
           <div className="product__top__left__imgGallery">
             {fakeData.images.map((img, index) => (

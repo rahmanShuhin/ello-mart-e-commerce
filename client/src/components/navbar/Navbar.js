@@ -1,7 +1,7 @@
 //icons
 import { useRef, useState } from "react";
 import logo from "../../assets/icons/NinjaMartMain.svg";
-import { categories } from "../../data/navdata";
+import { categories } from "../../assets/data/navdata";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
