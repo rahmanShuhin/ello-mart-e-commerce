@@ -4,7 +4,8 @@ $red: #e94560;
     padding: 1rem 0;
     &--inner {
         max-width: 282px;
-        box-shadow: 0px 1px 5px #0400472a;
+        background-color: #fff;
+        box-shadow: 0px 1px 5px #04004715;
         border-radius: 8px;
         padding: 20px;
         transition: 0.2s ease-in-out;
@@ -41,6 +42,8 @@ $red: #e94560;
             justify-content: space-between;
             align-items: flex-end;
             .card--details {
+                flex: 1;
+                cursor: pointer;
                 .card--title {
                     white-space: nowrap;
                     overflow: hidden;

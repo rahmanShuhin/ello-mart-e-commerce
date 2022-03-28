@@ -1,17 +1,24 @@
-import React from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { ModalContext } from "../../context/ModalContext";
 import EyeIcon from "../IconComponents/eye";
 import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
 import "./_card.scss";
 
-const Card = ({ title, price, rating }) => {
+const Card = ({ title, price, rating,}) => {
+
+  const {handleOpenModal,setModalType} = useContext(ModalContext);
+  const navigate = useNavigate();
+  const goToProduct = () => navigate('/product')
+  
   return (
     <div className="card--wrapper">
       <div className="card--wrapper--inner">
         <div className="card--image--holder">
           <div className="discount--text">50% off</div>
           <div className="card--hover--view">
-            <div>
+            <div onClick={()=>{handleOpenModal();setModalType("productDetail")}}>
               <EyeIcon />
             </div>
             <div>
@@ -19,13 +26,14 @@ const Card = ({ title, price, rating }) => {
             </div>
           </div>
           <img
+            onClick={goToProduct}
             src={require("../../assets/images/flash-1.webp")}
             alt=""
             width="100%"
           />
         </div>
         <div className="card--details--wrapper">
-          <div className="card--details">
+          <div onClick={goToProduct} className="card--details">
             <h3 className="card--title">{title}</h3>
             <div className="card--rating">
               <StarIcon />
