@@ -22,7 +22,7 @@ const SideBarCart = ({openSideBarCart, setOpenSideBarCart}) => {
             <div className="cart--item--wrapper">
               {
                 CART_DATA.map((cart,i)=>(
-                  <div className="cart--item">
+                  <div key={i} className="cart--item">
                     <div className="add--to--cart">
                       <span className="cart--icon--wrapper">-</span>
                       <span className="counter-text">1</span>

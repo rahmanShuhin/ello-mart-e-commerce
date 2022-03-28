@@ -1,8 +1,9 @@
 //icons
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from 'react-router-dom';
 import { categories } from "../../assets/data/navdata";
 import logo from "../../assets/icons/NinjaMartMain.svg";
+import { ModalContext } from "../../context/ModalContext";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
@@ -12,11 +13,18 @@ import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import "./_navbar.scss";
 
-export default function Navbar({handleOpenCart}) {
+const Navbar = () => {
+
+  const {handleOpenModal,setModalType,handleOpenCart} = useContext(ModalContext) // destructing the data from Modal Context
 
   const [showAllCategories, setShowAllCategories] = useState(false);
   const categoryRef = useRef(null);
   useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
+
+  const handleFunction = () => {
+    setModalType('login');
+    handleOpenModal();
+  }
   return (
     <>
     
@@ -68,7 +76,7 @@ export default function Navbar({handleOpenCart}) {
               </div>
               <div className="navbar--wrapper--search--container--dropdown">
                 {" "}
-                <div onClick={() => setShowAllCategories(!showAllCategories)}>
+                <div onClick={() => setShowAllCategories(true)}>
                   <h4>All categories</h4>
                   <span className={showAllCategories ? "dropdown--icon rotate" : "dropdown--icon"}>
                     <DownIcon />
@@ -84,22 +92,12 @@ export default function Navbar({handleOpenCart}) {
             </div>
           </article>{" "}
           <article className="navbar--wrapper--icons">
-            <div className="navicon">
-              <a href="#">
-                <i>
-                  {" "}
-                  <UserIcon />
-                </i>
-              </a>
+            <div onClick={handleFunction} className="navicon"> 
+                <i><UserIcon /></i>
             </div>
-            <div onClick={handleOpenCart} class="navicon">
-              <a href="#">
-                <i>
-                  {" "}
-                  <BagIcon />
-                </i>
-                <span class="navicon--badge">3</span>
-              </a>
+            <div onClick={handleOpenCart} class="navicon">     
+                <i><BagIcon /></i>
+                <span class="navicon--badge">3</span>   
             </div>
           </article>
         </section>
@@ -107,3 +105,4 @@ export default function Navbar({handleOpenCart}) {
     </>
   );
 }
+export default Navbar
