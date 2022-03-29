@@ -8,6 +8,10 @@ const Product = () => {
   const [activeContent, setActiveContent] = useState("description");
   const [size, setSize] = useState(0);
   const [color, setColor] = useState(0);
+  const [count, setCount] = useState(1)
+
+  const plus = () => setCount(prev => prev + 1);
+  const minus = () => (count > 1) && setCount(prev => prev - 1);
 
   return (
     //  product details page
@@ -83,9 +87,9 @@ const Product = () => {
             <button className="btn-primary">Add to Cart</button>
             <p>Quantity : </p>
             <div className="add--to--cart">
-              <span className="cart--icon--wrapper">-</span>
-              <span className="counter-text">1</span>
-              <span className="cart--icon--wrapper">+</span>
+              <span onClick={minus} className="cart--icon--wrapper">-</span>
+              <span className="counter-text">{count}</span>
+              <span onClick={plus} className="cart--icon--wrapper">+</span>
             </div>
           </div>
 

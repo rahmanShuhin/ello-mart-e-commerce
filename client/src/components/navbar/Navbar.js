@@ -1,10 +1,12 @@
 //icons
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { categories } from "../../assets/data/navdata";
 import logo from "../../assets/icons/NinjaMartMain.svg";
-import { ModalContext } from "../../context/ModalContext";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { openModal } from "../../redux/Modal";
+import { openCart } from "../../redux/SidebarCart";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
 import DownFilledIcon from "../IconComponents/DownFilledIcon";
@@ -15,19 +17,15 @@ import "./_navbar.scss";
 
 const Navbar = () => {
 
-  const {handleOpenModal,setModalType,handleOpenCart} = useContext(ModalContext) // destructing the data from Modal Context
-
   const [showAllCategories, setShowAllCategories] = useState(false);
+
   const categoryRef = useRef(null);
   useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
 
-  const handleFunction = () => {
-    setModalType('login');
-    handleOpenModal();
-  }
+  const dispatch = useDispatch();
+
   return (
     <>
-    
       <header className="header">
         <div className="container">
           <div className="header--wrapper">
@@ -92,10 +90,10 @@ const Navbar = () => {
             </div>
           </article>{" "}
           <article className="navbar--wrapper--icons">
-            <div onClick={handleFunction} className="navicon"> 
+            <div onClick={()=>dispatch(openModal('login'))} className="navicon"> 
                 <i><UserIcon /></i>
             </div>
-            <div onClick={handleOpenCart} class="navicon">     
+            <div onClick={()=>dispatch(openCart(true))} class="navicon">     
                 <i><BagIcon /></i>
                 <span class="navicon--badge">3</span>   
             </div>

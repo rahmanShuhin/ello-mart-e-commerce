@@ -1,16 +1,23 @@
-import { useContext } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ModalContext } from "../../context/ModalContext";
+import { openModal } from "../../redux/Modal";
 import EyeIcon from "../IconComponents/eye";
 import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
 import "./_card.scss";
 
-const Card = ({ title, price, rating,}) => {
+const Card = ({ title, price, rating, image}) => {
 
-  const {handleOpenModal,setModalType} = useContext(ModalContext);
+  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const goToProduct = () => navigate('/product')
+
+  const plus = () => setCount(prev => prev + 1);
+  const minus = () => (count > 0) && setCount(prev => prev - 1);
+
+
   
   return (
     <div className="card--wrapper">
@@ -18,7 +25,7 @@ const Card = ({ title, price, rating,}) => {
         <div className="card--image--holder">
           <div className="discount--text">50% off</div>
           <div className="card--hover--view">
-            <div onClick={()=>{handleOpenModal();setModalType("productDetail")}}>
+            <div onClick={()=>{dispatch(openModal("productDetail"))}}>
               <EyeIcon />
             </div>
             <div>
@@ -27,7 +34,7 @@ const Card = ({ title, price, rating,}) => {
           </div>
           <img
             onClick={goToProduct}
-            src={require("../../assets/images/flash-1.webp")}
+            src={image}
             alt=""
             width="100%"
           />
@@ -51,9 +58,17 @@ const Card = ({ title, price, rating,}) => {
             </div>
           </div>
           <div className="add--to--cart">
-            <span className="cart--icon--wrapper">-</span>
-            <span className="counter-text">1</span>
-            <span className="cart--icon--wrapper">+</span>
+            {(count > 0) && 
+              <>
+                <span onClick={minus} className="cart--icon--wrapper">
+                  -
+                </span>
+                <span className="counter-text">{count}</span>
+              </>
+            }
+            <span onClick={plus} className="cart--icon--wrapper">
+              +
+            </span>
           </div>
         </div>
       </div>
