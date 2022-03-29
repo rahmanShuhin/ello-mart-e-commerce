@@ -1,10 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { closeModal } from '../../../redux/Modal';
 
-const LoginModal = ({setOpenModal}) => {
+const LoginModal = () => {
 
     const navigate = useNavigate();
     const handleGoToSignUp = () => navigate('/sign-up');
+    const dispatch = useDispatch();
     
   return (
     <>
@@ -22,7 +25,7 @@ const LoginModal = ({setOpenModal}) => {
                 <button type='submit' className='submit'>Login</button>
             </form>
             <div className="need--account--text">Don't have account? {" "}
-                <span onClick={()=>{handleGoToSignUp();setOpenModal(false)}} className="sign-up-text">Sign up</span>
+                <span onClick={()=>{handleGoToSignUp();dispatch(closeModal())}} className="sign-up-text">Sign up</span>
             </div>
         </div>
     </>

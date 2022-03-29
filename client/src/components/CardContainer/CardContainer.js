@@ -22,7 +22,7 @@ const CardContainer = ({setModalType}) => {
                         title={product.title}
                         price={product.price}
                         rating={product.rating}
-                        setModalType={setModalType}
+                        image={product.images}
                     />
                 ))
             }

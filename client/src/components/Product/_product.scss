@@ -151,6 +151,7 @@
                         border-radius: 8px;
                         box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
                         transition: 0.2s ease-in-out;
+                        user-select: none;
                         cursor: pointer;
                         &:hover {
                             color: #fff;
@@ -160,7 +161,9 @@
                     .counter-text {
                         padding: 5px 0;
                         font-size: 14px;
-                        margin: 0px 10px;
+                        margin: 0px 13px;
+                        font-weight: 600;
+                        user-select: none;
                     }
                 }
             }

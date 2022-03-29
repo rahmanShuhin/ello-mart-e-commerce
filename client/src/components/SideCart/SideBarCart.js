@@ -1,14 +1,19 @@
-import React from 'react';
+import { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { CART_DATA } from '../../assets/data/cartData';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
+import { openCart } from '../../redux/SidebarCart';
 import BagIcon from '../IconComponents/BagIcon';
 import CrossIcon from '../IconComponents/CrossIcon';
+import SideCartSingle from './SideCartSingle/SideCartSingle';
+ 
+  const SideBarCart = () => {
 
-const SideBarCart = ({openSideBarCart, setOpenSideBarCart}) => {
-
-  const cartRef = React.useRef(null)
-  useOnClickOutside(cartRef,()=>setOpenSideBarCart(false))
-
+  const cartRef = useRef(null);
+  const dispatch = useDispatch();
+  const openSideBarCart = useSelector(state => state.sideCart.value);
+    useOnClickOutside(cartRef,() => dispatch(openCart(false)))
+  
   return (
       <>
         <div 
@@ -22,26 +27,11 @@ const SideBarCart = ({openSideBarCart, setOpenSideBarCart}) => {
             <div className="cart--item--wrapper">
               {
                 CART_DATA.map((cart,i)=>(
-                  <div key={i} className="cart--item">
-                    <div className="add--to--cart">
-                      <span className="cart--icon--wrapper">-</span>
-                      <span className="counter-text">1</span>
-                      <span className="cart--icon--wrapper">+</span>
-                    </div>
-                    <div className="cart--item--inside">
-                      <div className="cart--item--inside--img">
-                        <img src={require('../../assets/images/flash-1.webp')} width="100%" alt="" />
-                      </div>
-                      <div className="cart--item--inside--info">
-                        <h5>volvo car</h5>
-                        <p>$250 x 1</p>
-                        <p className='price'>$210.00</p>
-                      </div>
-                    </div>
-                    <div className='cross-icon'>
-                      <CrossIcon/>
-                    </div>
-                  </div>
+                  <SideCartSingle
+                    title = {cart.title}
+                    price = {cart.price}
+                    image = {cart.images}
+                  />
                 ))
               }
             </div>  
