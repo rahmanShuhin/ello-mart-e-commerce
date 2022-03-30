@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import SupportCard from "./components/MinorComponents/SupportCard.js";
@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import "./styles/App.scss";
 
 function App() {
-
   //-------- To open right side cart ----------
   const [openSideBarCart, setOpenSideBarCart] = useState(false);
   const handleOpenCart = () => setOpenSideBarCart(true);
@@ -22,11 +21,11 @@ function App() {
           <Route path={"/"} element={<Home />} />
           <Route path={"/product"} element={<Product></Product>}></Route>
         </Routes>
-
         <SupportCard />
-
-        <SideBarCart openSideBarCart={openSideBarCart} setOpenSideBarCart={setOpenSideBarCart}/>
-
+        <SideBarCart
+          openSideBarCart={openSideBarCart}
+          setOpenSideBarCart={setOpenSideBarCart}
+        />
         <Footer />
       </BrowserRouter>
     </div>
