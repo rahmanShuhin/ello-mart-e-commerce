@@ -3,7 +3,7 @@ import { PRODUCT_DATA } from '../../assets/data/productData'
 import Card from '../Card/Card'
 import './_cardContainer.scss'
 
-const CardContainer = () => {
+const CardContainer = ({setModalType}) => {
   return (
     <section className="card--container">
         <div className="card--container--header">
@@ -22,6 +22,7 @@ const CardContainer = () => {
                         title={product.title}
                         price={product.price}
                         rating={product.rating}
+                        image={product.images}
                     />
                 ))
             }

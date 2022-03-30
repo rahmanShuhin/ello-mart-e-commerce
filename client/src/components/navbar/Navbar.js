@@ -1,12 +1,11 @@
-//icons
 import { useRef, useState } from "react";
-<<<<<<< HEAD
-=======
-import { Link } from 'react-router-dom';
->>>>>>> b836d7bbbc7a34881248de3341467120f37f6fef
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { categories } from "../../assets/data/navdata";
 import logo from "../../assets/icons/NinjaMartMain.svg";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { openModal } from "../../redux/Modal";
+import { openCart } from "../../redux/SidebarCart";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
 import DownFilledIcon from "../IconComponents/DownFilledIcon";
@@ -15,15 +14,14 @@ import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import "./_navbar.scss";
 
-<<<<<<< HEAD
-export default function Navbar() {
-=======
-export default function Navbar({handleOpenCart}) {
-
->>>>>>> b836d7bbbc7a34881248de3341467120f37f6fef
+const Navbar = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
+
   const categoryRef = useRef(null);
   useOnClickOutside(categoryRef, () => setShowAllCategories(false));
+
+  const dispatch = useDispatch();
+
   return (
     <>
       <header className="header">
@@ -51,7 +49,7 @@ export default function Navbar({handleOpenCart}) {
         <section className="navbar--wrapper container">
           <article className="navbar--wrapper--header">
             <div className="navbar--wrapper--header--logo">
-              <Link to='/'>
+              <Link to="/">
                 <img src={logo} alt="" />
               </Link>
             </div>
@@ -74,7 +72,7 @@ export default function Navbar({handleOpenCart}) {
               </div>
               <div className="navbar--wrapper--search--container--dropdown">
                 {" "}
-                <div onClick={() => setShowAllCategories(!showAllCategories)}>
+                <div onClick={() => setShowAllCategories(true)}>
                   <h4>All categories</h4>
                   <span
                     className={
@@ -99,26 +97,24 @@ export default function Navbar({handleOpenCart}) {
             </div>
           </article>{" "}
           <article className="navbar--wrapper--icons">
-            <div className="navicon">
-              <a href="#">
-                <i>
-                  {" "}
-                  <UserIcon />
-                </i>
-              </a>
+            <div
+              onClick={() => dispatch(openModal("login"))}
+              className="navicon"
+            >
+              <i>
+                <UserIcon />
+              </i>
             </div>
-            <div onClick={handleOpenCart} class="navicon">
-              <a href="#">
-                <i>
-                  {" "}
-                  <BagIcon />
-                </i>
-                <span class="navicon--badge">3</span>
-              </a>
+            <div onClick={() => dispatch(openCart(true))} class="navicon">
+              <i>
+                <BagIcon />
+              </i>
+              <span class="navicon--badge">3</span>
             </div>
           </article>
         </section>
       </nav>
     </>
   );
-}
+};
+export default Navbar;

@@ -21,7 +21,7 @@ export function ImageMagnifier({
       >
         <img
           src={src}
-          style={{ height: height, width: width ,cursor:'crosshair'}}
+          style={{ height: height, width: width ,cursor:'none'}}
           onMouseEnter={(e) => {
             // update image size and turn-on magnifier
             const elem = e.currentTarget;

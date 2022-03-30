@@ -3,8 +3,10 @@ $red: #e94560;
 .card--wrapper {
     padding: 1rem 0;
     &--inner {
+        position: relative;
         max-width: 282px;
-        box-shadow: 0px 1px 5px #0400472a;
+        background-color: #fff;
+        box-shadow: 0px 1px 5px #04004715;
         border-radius: 8px;
         padding: 20px;
         transition: 0.2s ease-in-out;
@@ -41,6 +43,8 @@ $red: #e94560;
             justify-content: space-between;
             align-items: flex-end;
             .card--details {
+                flex: 1;
+                cursor: pointer;
                 .card--title {
                     white-space: nowrap;
                     overflow: hidden;
@@ -70,6 +74,9 @@ $red: #e94560;
                 }
             }
             .add--to--cart {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -84,6 +91,7 @@ $red: #e94560;
                     border-radius: 8px;
                     box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
                     transition: 0.2s ease-in-out;
+                    user-select: none;
                     cursor: pointer;
                     &:hover {
                         color: #fff;
@@ -93,6 +101,8 @@ $red: #e94560;
                 .counter-text {
                     padding: 5px 0;
                     font-size: 14px;
+                    font-weight: 600;
+                    user-select: none;
                 }
             }
         }
