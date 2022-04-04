@@ -1,0 +1,19 @@
+$admin-light-bg: #efeef3;
+$admin-card-bg: #ffffff;
+$admin-text: #1c1c1c;
+
+.admin {
+  display: flex;
+  background-color: $admin-light-bg;
+  &.dark {
+    $admin-light-bg: #1f2a39;
+    $admin-card-bg: #1c1c1c;
+  }
+  > div {
+    flex: 0.12;
+    &:nth-of-type(2) {
+      flex: 0.88;
+      background-color: $admin-light-bg;
+    }
+  }
+}
