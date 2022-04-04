@@ -1055,7 +1055,7 @@ ul li {
   transition: max-height 0.3s ease-in-out;
   max-height: 50px;
   overflow-y: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .admin__sideNav__menu ul .hideIcon .MuiSvgIcon-root:nth-of-type(2), .admin__sideNav__menu ul .hideIcon .MuiSvgIcon-root:nth-of-type(3) {
@@ -1065,6 +1065,7 @@ ul li {
 .admin__sideNav__menu ul.active {
   background-color: #efeef3;
   border-radius: 10px;
+  border: 1px solid #e94560;
 }
 
 .admin__sideNav__menu ul .MuiSvgIcon-root:nth-of-type(2) {
@@ -1099,11 +1100,19 @@ ul li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  gap: 10px;
   font-size: 16px;
   color: #1c1c1c;
   font-weight: 500;
+}
+
+.admin__sideNav__menu ul > span > p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .admin__sideNav__menu__sub {
@@ -1115,9 +1124,8 @@ ul li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  margin-left: 25px;
+  color: #1c1c1c;
 }
 
 .admin__sideNav__menu__sub > li {
@@ -1167,19 +1175,31 @@ ul li {
   position: relative;
 }
 
+.admin__topNav__right__modal.shape::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  left: 80%;
+  bottom: -30px;
+  -webkit-transform: rotate(50deg) translate(-50%, 30px);
+          transform: rotate(50deg) translate(-50%, 30px);
+  z-index: 1;
+}
+
 .admin__topNav__right__modal > div:nth-of-type(1) {
   cursor: pointer;
 }
 
 .admin__topNav__right__modal > div:nth-of-type(2) {
   position: absolute;
-  background-color: red;
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
           box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: #ffffff;
   padding: 20px 0px;
   left: 90%;
-  top: 70px;
+  top: 74px;
   -webkit-transform: translateX(-90%);
           transform: translateX(-90%);
   min-width: 200px;
@@ -1196,6 +1216,7 @@ ul li {
   gap: 10px;
   padding: 5px 10px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .admin__topNav__right__modal > div:nth-of-type(2) > p:hover {

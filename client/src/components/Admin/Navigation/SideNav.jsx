@@ -35,7 +35,7 @@ export default function SideNav() {
             key={index1}
           >
             <span className={parents.subMenu.length === 1 && "hideIcon"}>
-              {parents.icon} {parents.menu}
+              {parents.icon} <p>{parents.menu}</p>
               <ExpandMoreIcon />
               <ExpandLessIcon />
             </span>

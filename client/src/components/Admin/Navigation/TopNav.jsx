@@ -19,7 +19,13 @@ export default function TopNav() {
           <p>John Quin</p>
           <small>Admin Profile</small>
         </span>
-        <div className="admin__topNav__right__modal">
+        <div
+          className={
+            show
+              ? "admin__topNav__right__modal shape"
+              : "admin__topNav__right__modal "
+          }
+        >
           <Avatar
             alt="Remy Sharp"
             src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
