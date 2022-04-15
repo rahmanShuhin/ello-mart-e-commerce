@@ -176,6 +176,9 @@ $background-white-hover: #e2ecf5;
             }
         }
     }
+    .mouse-pointer {
+        pointer-events: none;
+    }
     .rotate {
         transform: rotate(180deg);
     }
