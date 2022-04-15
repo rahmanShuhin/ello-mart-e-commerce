@@ -20,7 +20,7 @@ const Navbar = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
 
   const categoryRef = useRef(null);
-  useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
+  useOnClickOutside(categoryRef,()=> setShowAllCategories(!showAllCategories))
 
   const dispatch = useDispatch();
 
@@ -74,7 +74,7 @@ const Navbar = () => {
               </div>
               <div className="navbar--wrapper--search--container--dropdown">
                 {" "}
-                <div onClick={() => setShowAllCategories(true)}>
+                <div onClick={() => setShowAllCategories(showAllCategories)}>
                   <h4>All categories</h4>
                   <span className={showAllCategories ? "dropdown--icon rotate" : "dropdown--icon"}>
                     <DownIcon />
