@@ -1,0 +1,38 @@
+.alertBox {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    border-radius: 4px;
+    animation: slideDown 4s ease-in-out;
+    & > span {
+        color: $success;
+        font-weight: 600;
+    }
+}
+@keyframes slideDown {
+    0% {
+        top: -100%;
+    }
+    30% {
+        top: 30px;
+    }
+    70% {
+        top: 30px;
+    }
+    100% {
+        top: -100%;
+    }
+}
+.alertBox--success {
+    box-shadow: 0px 2px 16px rgba(0, 166, 26, 0.22);
+}
+.alertBox--error {
+    box-shadow: 0px 2px 16px rgba(166, 0, 0, 0.22);
+}
