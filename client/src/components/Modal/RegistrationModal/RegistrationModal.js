@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signupUser } from '../../../redux/Auth';
 import AlertBoxSuccess from '../../AlertBox/AlertBox';
+import ClosedEyeIcon from '../../IconComponents/closeEyeIcon';
+import EyeIcon from '../../IconComponents/eyeIcon';
 
 const Registration = () => {
 
@@ -12,6 +14,8 @@ const Registration = () => {
     const [errorMsg, setErrorMsg] = useState('');
     const [alertBoxType, setAlertBoxType] = useState('')
     const [alertBoxMsg, setAlertBoxMsg] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword2, setShowPassword2] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -21,7 +25,10 @@ const Registration = () => {
             dispatch(signupUser({name,email,password})).then((res)=>{
                 if(res.payload.status === 201){
                     setAlertBoxType('success')
-                    setAlertBoxMsg(res.payload.data.message);
+                    setAlertBoxMsg(res.payload.data.message)
+                    setName('')
+                    setEmail('')
+                    setPassword('')
                 }
             }).catch((err)=>{
                 console.log(err)
@@ -71,24 +78,32 @@ const Registration = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label><br/>
-                        <input 
-                            className='form-input' 
-                            type="password" 
-                            id="password" 
-                            onChange={(e)=>setPassword(e.target.value)}
-                            placeholder='************' 
-                        /><br/>
+                        <div className='form-input'>
+                            <input   
+                                type={showPassword ? "text" : "password"} 
+                                id="password" 
+                                onChange={(e)=>setPassword(e.target.value)}
+                                placeholder='********' 
+                            />
+                            <span onClick={()=>setShowPassword(!showPassword)} className="show-password-icon">
+                                {showPassword ? <ClosedEyeIcon/> : <EyeIcon/>}
+                            </span> 
+                        </div>                    
                         <span className='err-message'>{errorMsg}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="cpassword">Confirm Password</label><br/>
-                        <input 
-                            className='form-input' 
-                            type="password" 
-                            id="cpassword" 
-                            onChange={(e)=>setPassword2(e.target.value)}
-                            placeholder='************' 
-                        /><br/>
+                        <div className='form-input'>
+                            <input 
+                                type={showPassword2 ? "text" : "password"} 
+                                id="cpassword" 
+                                onChange={(e)=>setPassword2(e.target.value)}
+                                placeholder='********' 
+                            />
+                            <span onClick={()=>setShowPassword2(!showPassword2)} className="show-password-icon">
+                                {showPassword2 ? <ClosedEyeIcon/> : <EyeIcon/>}
+                            </span>
+                        </div>
                         <span className='err-message'>{errorMsg}</span>
                     </div>
                    
