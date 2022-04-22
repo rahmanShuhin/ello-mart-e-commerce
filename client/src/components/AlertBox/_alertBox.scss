@@ -9,8 +9,10 @@
     gap: 1rem;
     padding: 0.5rem 1rem;
     background: #fff;
+    border: 2px solid $success;
     border-radius: 4px;
-    animation: slideDown 4s ease-in-out;
+    animation: slideDown 6s ease-in-out;
+    z-index: 9999999;
     & > span {
         color: $success;
         font-weight: 600;
@@ -23,7 +25,7 @@
     10% {
         top: 30px;
     }
-    70% {
+    80% {
         top: 30px;
     }
     100% {

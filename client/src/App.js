@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AlertBoxSuccess from './components/AlertBox/AlertBox';
 import Footer from "./components/footer/Footer";
 import Modal from './components/Modal/Modal';
 import Registration from './components/Modal/RegistrationModal/RegistrationModal';
@@ -14,10 +15,12 @@ import "./styles/App.scss";
 function App() {
 
   const openModal = useSelector((state)=>state.modal.value)
+  const alertBoxType = useSelector(state => state.alert.type)
 
   return (
     
     <div className="App">
+      { alertBoxType === 'success' &&  <AlertBoxSuccess /> }       
       <BrowserRouter>
         <ScrollToTop/>
         <Navbar/>

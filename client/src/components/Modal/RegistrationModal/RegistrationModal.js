@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { alertMessage, alertType } from '../../../redux/alertBox';
 import { signupUser } from '../../../redux/Auth';
-import AlertBoxSuccess from '../../AlertBox/AlertBox';
 import ClosedEyeIcon from '../../IconComponents/closeEyeIcon';
 import EyeIcon from '../../IconComponents/eyeIcon';
 
@@ -12,50 +13,50 @@ const Registration = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState(''); 
     const [errorMsg, setErrorMsg] = useState('');
-    const [alertBoxType, setAlertBoxType] = useState('')
-    const [alertBoxMsg, setAlertBoxMsg] = useState('');
+    // const [alertBoxType, setAlertBoxType] = useState('')
+    // const [alertBoxMsg, setAlertBoxMsg] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
 
-    const dispatch = useDispatch();
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+   
     const handleRegistration = (e) => {
         e.preventDefault();
         if((password === password2) && (password.length > 5)){
             dispatch(signupUser({name,email,password})).then((res)=>{
                 if(res.payload.status === 201){
-                    setAlertBoxType('success')
-                    setAlertBoxMsg(res.payload.data.message)
+                    dispatch(alertType('success'))
+                    dispatch(alertMessage(res.payload.data.message))
+                    // setAlertBoxType('success')
+                    // setAlertBoxMsg()
+                    document.getElementById("reg-form").reset();
                     setName('')
                     setEmail('')
                     setPassword('')
+                    setPassword2('')
+                    setErrorMsg('')
+                    navigate('/')
                 }
             }).catch((err)=>{
                 console.log(err)
-                setAlertBoxType('error')
+                dispatch(alertType('error'))
                 // setAlertBoxMsg(err.payload.data.message);
             })
-
         }
         else{
             setErrorMsg('Your Password is not Matching!')
-        }    
+        }
+        dispatch(alertType(''));
     }
 
   return (
     <>
         
-        <div className="Registration--container">
-            {
-                alertBoxType === 'success' && 
-                <AlertBoxSuccess 
-                    alertBoxType={alertBoxType} 
-                    alertBoxMsg={alertBoxMsg} 
-                />  
-            } 
+        <div className="Registration--container"> 
             <div className="Registration--wrapper">
                 <h5>Create an account</h5>
-                <form className="Registration--form" onSubmit={handleRegistration}>
+                <form className="Registration--form" id="reg-form" onSubmit={handleRegistration}>
                 <div className="form-group">
                         <label htmlFor="name">Full Name</label><br/>
                         <input 
