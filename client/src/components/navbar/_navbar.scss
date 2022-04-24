@@ -162,6 +162,37 @@ $background-white-hover: #e2ecf5;
                 &:hover {
                     background: $background-white-hover;
                 }
+                //tooltip
+                &:hover::after {
+                    content: attr(data-tooltip);
+                    position: absolute;
+                    display: block;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: -30px;
+                    background: #ffffff;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.18);
+                    border-radius: 0.5em;
+                    font-size: 14px;
+                    color: #808080;
+                    padding: 2px 10px;
+                    white-space: nowrap;
+                    z-index: 98;
+                }
+
+                &:hover::before {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    border: solid;
+                    border-color: rgb(0, 0, 0) transparent;
+                    border-color: rgba(0, 0, 0, 0.2) transparent;
+                    border-width: 0 0.4em 0.4em 0.4em;
+                    bottom: -6px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 99;
+                }
             }
             .navicon--badge {
                 position: absolute;
