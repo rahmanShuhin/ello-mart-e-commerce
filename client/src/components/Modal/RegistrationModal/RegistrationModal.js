@@ -24,18 +24,20 @@ const Registration = () => {
         e.preventDefault();
         if((password === password2) && (password.length > 5)){
             dispatch(register({name,email,password})).then((res)=>{
-                if(res.payload.status === 201){
+                if(res.payload.status === 200){
                     dispatch(alertType('success'))
-                    dispatch(alertMessage(res.payload.data.message))
+                    dispatch(alertMessage(res.payload.data.status))
                     document.getElementById("reg-form").reset();
+                    localStorage.setItem('user',JSON.stringify(res.payload.data.user))
                     setName('')
                     setEmail('')
                     setPassword('')
                     setPassword2('')
                     setErrorMsg('')
                     navigate('/')
+                    console.log(res)
                 }
-                if(res.payload.status !== 201){
+                if(res.payload.status !== 200){
                     setEmailErrorMsg('Email is already in use!')
                     setErrorMsg('')
                 }

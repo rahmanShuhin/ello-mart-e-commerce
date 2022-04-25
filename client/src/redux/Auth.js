@@ -12,14 +12,9 @@ const initialState = {
 
 export const register = createAsyncThunk(
     'register',
-    async (data, thunkApi) => {
-      try{
+    async (data) => {
         const result = await axiosInstance.post('/api/user/register',data) 
-        return result
-      }
-      catch(error){
-        return thunkApi.rejectWithValue(error.toString())
-      }
+        return result  
     }
 )
 
