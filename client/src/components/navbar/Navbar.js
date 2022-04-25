@@ -28,27 +28,27 @@ const Navbar = () => {
       <header className="header">
         <div className="container">
           <div className="header--wrapper">
-            <article className="header--wrapper--contact">
+            <div className="header--wrapper--contact">
               <div>
                 📞<span> +88012 3456 7894</span>{" "}
               </div>
               <div>
                 📧<span> arifbhai-zindabad@gmail.com</span>{" "}
               </div>
-            </article>
-            <article className="header--wrapper--help">
+            </div>
+            <div className="header--wrapper--help">
               <div>FAQ</div>
               {/* <div>need help</div>
               <div>lang</div> */}
               <div>💸currency</div>
-            </article>
+            </div>
           </div>
         </div>
       </header>
 
       <nav className="navbar">
         <section className="navbar--wrapper container">
-          <article className="navbar--wrapper--header">
+          <div className="navbar--wrapper--header">
             <div className="navbar--wrapper--header--logo">
               <Link to='/'>
                 <img src={logo} alt="" />
@@ -62,8 +62,8 @@ const Navbar = () => {
                 <DownFilledIcon />
               </div>
             </div>
-          </article>
-          <article className="navbar--wrapper--search">
+          </div>
+          <div className="navbar--wrapper--search">
             <div className="navbar--wrapper--search--container ">
               <div className="navbar--wrapper--search--container--icon">
                 <SearchIcon />
@@ -73,13 +73,13 @@ const Navbar = () => {
               </div>
               <div className="navbar--wrapper--search--container--dropdown">
                 {" "}
-                <div className={showAllCategories && 'mouse-pointer'} onClick={() => setShowAllCategories(true)}>
+                <div className={showAllCategories ? 'mouse-pointer' : ""} onClick={() => setShowAllCategories(true)}>
                   <h4>All categories</h4>
                   <span className={showAllCategories ? "dropdown--icon rotate" : "dropdown--icon"}>
                     <DownIcon />
                   </span>
                 </div>{" "}
-                <ul ref={categoryRef} className={showAllCategories && "dropdown-links"}>
+                <ul ref={categoryRef} className={showAllCategories ? "dropdown-links" : " "}>
                   {showAllCategories &&
                     categories.map((category) => (
                       <li key={category.index}>{category.text}</li>
@@ -87,16 +87,16 @@ const Navbar = () => {
                 </ul>
               </div>
             </div>
-          </article>{" "}
-          <article className="navbar--wrapper--icons">
-            <div onClick={()=>dispatch(openModal('login'))} className="navicon"> 
+          </div>{" "}
+          <div className="navbar--wrapper--icons">
+            <div data-tooltip="login" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
                 <i><UserIcon /></i>
             </div>
-            <div onClick={()=>dispatch(openCart(true))} class="navicon">     
+            <div data-tooltip="cart" onClick={()=>dispatch(openCart(true))} className="navicon">     
                 <i><BagIcon /></i>
-                <span class="navicon--badge">3</span>   
+                <span className="navicon--badge">3</span>   
             </div>
-          </article>
+          </div>
         </section>
       </nav>
     </>

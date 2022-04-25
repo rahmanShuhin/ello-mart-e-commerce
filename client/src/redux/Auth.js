@@ -1,19 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { axiosInstance } from '../services/axiosInstance/axiosInstance'
 
+const user = JSON.parse(localStorage.getItem('user'))
+
 const initialState = {
-    loading : false,
+    user : user ?? null,
+    isLoading : false,
     error:'',
     token:'' 
 }
 
-export const signupUser = createAsyncThunk(
-    'signupuser',
+export const register = createAsyncThunk(
+    'register',
     async (data) => {
-       const result = await axiosInstance.post('/api/user/register',data)
-       return result;
+        const result = await axiosInstance.post('/api/user/register',data) 
+        return result  
     }
-
 )
 
 export const authSlice = createSlice({
@@ -21,22 +23,25 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers:(builder)=>{
-      builder.addCase(signupUser.fulfilled,(state,action)=>{
+      builder.addCase(register.fulfilled,(state,action)=>{
         state.loading = false;
         if(action.payload.error){
             state.error = action.payload.error;
+            state.loading = false;
         }
         else{
             state.error = ''
         }
-      });
-      builder.addCase(signupUser.pending,(state,action)=>{
+      })
+      .addCase(register.pending,(state,action)=>{
           state.loading = true;
-    })
+      })
+      .addCase(register.rejected,(state,action)=>{
+        state.loading = false;
+      })
   }
 })
 
-// Action creators are generated for each case reducer function
 // export const {} = authSlice.actions
 
 export default authSlice.reducer
