@@ -9,9 +9,9 @@ export default function DownIcon() {
       viewBox="0 0 22 22"
       fill="none"
       stroke="#7d879c"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       
     >
       <polyline points="6 9 12 15 18 9"></polyline>

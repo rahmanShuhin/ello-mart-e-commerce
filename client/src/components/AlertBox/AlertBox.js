@@ -5,8 +5,8 @@ import SuccessIcon from '../IconComponents/successIcon'
 
 const AlertBoxSuccess = () => {
 
-  const alertBoxType = useSelector(state => state.alert.type)
-  const alertBoxMsg = useSelector(state => state.alert.message)
+  const alertBoxType = useSelector(state => state.alert.type) || "";
+  const alertBoxMsg = useSelector(state => state.alert.message) || "successful";
 
   return (
     <div className={(alertBoxType === 'success') ? 'alertBox alertBox--success' : 'alertBox alertBox--error'}>

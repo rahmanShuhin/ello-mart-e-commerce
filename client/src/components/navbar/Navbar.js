@@ -73,13 +73,13 @@ const Navbar = () => {
               </div>
               <div className="navbar--wrapper--search--container--dropdown">
                 {" "}
-                <div className={showAllCategories && 'mouse-pointer'} onClick={() => setShowAllCategories(true)}>
+                <div className={showAllCategories ? 'mouse-pointer' : ""} onClick={() => setShowAllCategories(true)}>
                   <h4>All categories</h4>
                   <span className={showAllCategories ? "dropdown--icon rotate" : "dropdown--icon"}>
                     <DownIcon />
                   </span>
                 </div>{" "}
-                <ul ref={categoryRef} className={showAllCategories && "dropdown-links"}>
+                <ul ref={categoryRef} className={showAllCategories ? "dropdown-links" : " "}>
                   {showAllCategories &&
                     categories.map((category) => (
                       <li key={category.index}>{category.text}</li>
@@ -92,9 +92,9 @@ const Navbar = () => {
             <div data-tooltip="login" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
                 <i><UserIcon /></i>
             </div>
-            <div data-tooltip="cart" onClick={()=>dispatch(openCart(true))} class="navicon">     
+            <div data-tooltip="cart" onClick={()=>dispatch(openCart(true))} className="navicon">     
                 <i><BagIcon /></i>
-                <span class="navicon--badge">3</span>   
+                <span className="navicon--badge">3</span>   
             </div>
           </div>
         </section>

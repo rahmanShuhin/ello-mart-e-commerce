@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { alertMessage, alertType } from '../../../redux/alertBox';
-import { signupUser } from '../../../redux/Auth';
+import { register } from '../../../redux/Auth';
 import ClosedEyeIcon from '../../IconComponents/closeEyeIcon';
 import EyeIcon from '../../IconComponents/eyeIcon';
 
@@ -13,8 +13,7 @@ const Registration = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState(''); 
     const [errorMsg, setErrorMsg] = useState('');
-    // const [alertBoxType, setAlertBoxType] = useState('')
-    // const [alertBoxMsg, setAlertBoxMsg] = useState('');
+    const [emailErrorMsg, setEmailErrorMsg] = useState(''); 
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
 
@@ -24,12 +23,10 @@ const Registration = () => {
     const handleRegistration = (e) => {
         e.preventDefault();
         if((password === password2) && (password.length > 5)){
-            dispatch(signupUser({name,email,password})).then((res)=>{
+            dispatch(register({name,email,password})).then((res)=>{
                 if(res.payload.status === 201){
                     dispatch(alertType('success'))
                     dispatch(alertMessage(res.payload.data.message))
-                    // setAlertBoxType('success')
-                    // setAlertBoxMsg()
                     document.getElementById("reg-form").reset();
                     setName('')
                     setEmail('')
@@ -38,14 +35,17 @@ const Registration = () => {
                     setErrorMsg('')
                     navigate('/')
                 }
-            }).catch((err)=>{
-                console.log(err)
-                dispatch(alertType('error'))
-                // setAlertBoxMsg(err.payload.data.message);
+                if(res.payload.status !== 201){
+                    setEmailErrorMsg('Email is already in use!')
+                    setErrorMsg('')
+                }
             })
         }
+        else if(password.length < 6){
+            setErrorMsg('Minimum 6 characters required.')
+        }
         else{
-            setErrorMsg('Your Password is not Matching!')
+            setErrorMsg('Your Password is not Matching.')
         }
         dispatch(alertType(''));
     }
@@ -76,6 +76,7 @@ const Registration = () => {
                             onChange={(e)=>setEmail(e.target.value)}
                             placeholder='example@email.com' 
                         />
+                        <span className='err-message'>{emailErrorMsg}</span>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label><br/>

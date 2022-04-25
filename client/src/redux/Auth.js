@@ -7,13 +7,17 @@ const initialState = {
     token:'' 
 }
 
-export const signupUser = createAsyncThunk(
-    'signupuser',
-    async (data) => {
-       const result = await axiosInstance.post('/api/user/register',data)
-       return result;
+export const register = createAsyncThunk(
+    'register',
+    async (data, thunkApi) => {
+      try{
+        const result = await axiosInstance.post('/api/user/register',data) 
+        return result
+      }
+      catch(error){
+        return thunkApi.rejectWithValue(error.toString())
+      }
     }
-
 )
 
 export const authSlice = createSlice({
@@ -21,22 +25,25 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers:(builder)=>{
-      builder.addCase(signupUser.fulfilled,(state,action)=>{
+      builder.addCase(register.fulfilled,(state,action)=>{
         state.loading = false;
         if(action.payload.error){
             state.error = action.payload.error;
+            state.loading = false;
         }
         else{
             state.error = ''
         }
-      });
-      builder.addCase(signupUser.pending,(state,action)=>{
+      })
+      .addCase(register.pending,(state,action)=>{
           state.loading = true;
-    })
+      })
+      .addCase(register.rejected,(state,action)=>{
+        state.loading = false;
+      })
   }
 })
 
-// Action creators are generated for each case reducer function
 // export const {} = authSlice.actions
 
 export default authSlice.reducer
