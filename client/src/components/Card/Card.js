@@ -7,7 +7,7 @@ import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
 import "./_card.scss";
 
-const Card = ({ title, price, rating, image}) => {
+const Card = ({ title, price, rating, image, i}) => {
 
   const [count, setCount] = useState(0)
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Card = ({ title, price, rating, image}) => {
 
   
   return (
-    <div className="card--wrapper">
+    <div key={i} className="card--wrapper">
       <div className="card--wrapper--inner">
         <div className="card--image--holder">
           <div className="discount--text">50% off</div>
@@ -49,9 +49,9 @@ const Card = ({ title, price, rating, image}) => {
               <StarIcon />
               <StarIcon />
             </div>
-            <div class="card--price">
-              <span class="card--price--active">${price}</span>
-              <span class="card--price--inactive">
+            <div className="card--price">
+              <span className="card--price--active">${price}</span>
+              <span className="card--price--inactive">
                 {" "}
                 <del>250.00</del>{" "}
               </span>
