@@ -47,7 +47,7 @@ const Registration = () => {
             setErrorMsg('Minimum 6 characters required.')
         }
         else{
-            setErrorMsg('Your Password is not Matching.')
+            setErrorMsg('password is not matching.')
         }
         dispatch(alertType(''));
     }
