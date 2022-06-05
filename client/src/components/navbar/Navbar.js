@@ -1,7 +1,7 @@
 //icons
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { categories } from "../../assets/data/navdata";
 import logo from "../../assets/icons/NinjaMartMain.svg";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
@@ -15,12 +15,14 @@ import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import "./_navbar.scss";
 
+
 const Navbar = () => {
 
   const [showAllCategories, setShowAllCategories] = useState(false);
 
   const categoryRef = useRef(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user")) 
   
@@ -99,15 +101,15 @@ const Navbar = () => {
           <div className="navbar--wrapper--icons">
             {
               isLogged ?
-              <div data-tooltip="profile" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
+              <div data-tooltip="profile" onClick={()=> navigate('/profile')} className="navicon"> 
                 <i><UserIcon /></i>
               </div>
               :
-              <div data-tooltip="login" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
+              <div data-tooltip="login" onClick={()=> dispatch(openModal('login'))} className="navicon"> 
                 <i><UserIcon /></i>
               </div>
             }
-            <div data-tooltip="cart" onClick={()=>dispatch(openCart(true))} className="navicon">     
+            <div data-tooltip="cart" onClick={()=> dispatch(openCart(true))} className="navicon">     
                 <i><BagIcon /></i>
                 <span className="navicon--badge">3</span>   
             </div>
