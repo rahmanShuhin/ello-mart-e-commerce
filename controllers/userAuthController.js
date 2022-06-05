@@ -43,8 +43,12 @@ const createSendToken = async(user, statusCode, res) => {
 
     user.password = undefined; // hiding the password
 
+    user.isVerified = true;
+
+    user.emailToken = undefined;
+
     res.status(statusCode).json({
-        status: 'success',
+        status: 'successfully logged in!',
         user,
         token,
         statusCode: 200,

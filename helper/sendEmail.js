@@ -2,10 +2,12 @@ const nodemailer = require('nodemailer');
 
 //verification mail send
 let transporter = nodemailer.createTransport({
-    service : 'gmail',
+    host : 'https://skylinkcreative.com/',
+    port : 587,
+    secure : false,
     auth : {
-        user : '3ninjas2022@gmail.com',
-        pass : 'Threeninjas2022'
+        user : 'contact@skylinkcreative.com',
+        pass : 'lN(wnUtwz5Z~'
     },
     tls : {
         rejectUnauthorized : false,

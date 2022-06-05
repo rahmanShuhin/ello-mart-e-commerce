@@ -37,7 +37,7 @@ const Registration = () => {
                     navigate('/')
                     console.log(res)
                 }
-                if(res.payload.status !== 200){
+                else{
                     setEmailErrorMsg('Email is already in use!')
                     setErrorMsg('')
                 }

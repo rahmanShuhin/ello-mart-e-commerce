@@ -18,9 +18,17 @@ import "./_navbar.scss";
 const Navbar = () => {
 
   const [showAllCategories, setShowAllCategories] = useState(false);
+
   const categoryRef = useRef(null);
   const dispatch = useDispatch();
 
+  const user = JSON.parse(localStorage.getItem("user")) 
+  
+
+  let isLogged;
+
+  (user === null) ? isLogged = false : isLogged = user.isVerified || false;
+    
   useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
 
   return (
@@ -89,9 +97,16 @@ const Navbar = () => {
             </div>
           </div>{" "}
           <div className="navbar--wrapper--icons">
-            <div data-tooltip="login" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
+            {
+              isLogged ?
+              <div data-tooltip="profile" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
                 <i><UserIcon /></i>
-            </div>
+              </div>
+              :
+              <div data-tooltip="login" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
+                <i><UserIcon /></i>
+              </div>
+            }
             <div data-tooltip="cart" onClick={()=>dispatch(openCart(true))} className="navicon">     
                 <i><BagIcon /></i>
                 <span className="navicon--badge">3</span>   

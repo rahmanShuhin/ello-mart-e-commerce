@@ -5,7 +5,7 @@ const Auth = require('../controllers/userAuthController')
 const checkAuth = require('../middlewares/checkAuth')
 const {verifyEmail} = require('../controllers/userController')
 
-router.get('/user/verify-email',verifyEmail);
+router.get('/activate-user/verify-email/token',verifyEmail);
 
 
 router.post('/api/user/register', user.addUser);

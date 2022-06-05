@@ -36,7 +36,7 @@ const addUser = catchAsync(async (req, res, next) => {
     subject : 'ninja mart -verify your email',
     html : `<h2>Thanks ${user.name} for registering on our website</h2>
             <h4>please verify your email to continue...</h4>
-            <a target="_black" href="http://localhost:4000/user/verify-email?token=${user.emailToken}">click here to verify your email</a>`
+            <a target="_black" href="http://localhost:3000/user/verify-email?token=${user.emailToken}">click here to verify your email</a>`
   }
 
   //send verification mail
@@ -65,7 +65,7 @@ const createSendToken = async(user, statusCode, res) => {
   user.password = undefined; // hiding the password
 
   res.status(statusCode).json({
-      status: 'Registration successful',
+      status: 'Verify your email',
       user,
       token,
       statusCode: 200,
