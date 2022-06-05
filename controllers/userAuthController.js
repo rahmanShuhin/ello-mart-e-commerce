@@ -4,7 +4,7 @@ const AppError = require('../utils/appError');
 const catchAsync =  require('../utils/catchAsync');
 const getToken = require('../helper/token');
 
-const login = catchAsync( async(req, res) => {
+const login = catchAsync( async(req, res, next) => {
     const {email, password} = req.body;
 
     if(!email || !password){
@@ -48,7 +48,7 @@ const createSendToken = async(user, statusCode, res) => {
     user.emailToken = undefined;
 
     res.status(statusCode).json({
-        status: 'successfully logged in!',
+        status: 'login successful !',
         user,
         token,
         statusCode: 200,

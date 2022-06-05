@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { axiosInstance } from '../services/axiosInstance/axiosInstance'
 
+
 const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
@@ -21,8 +22,13 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk(
     'login',
     async (data) => {
-        const result = await axiosInstance.post('/api/user/login',data) 
-        return result  
+        try{
+            const result = await axiosInstance.post('/api/user/login',data) 
+            return result
+        }catch{
+            const message = "Email or password isn't matching";
+            return message
+        }  
     }
 )
 

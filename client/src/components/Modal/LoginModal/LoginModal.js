@@ -20,6 +20,7 @@ const LoginModal = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+        setErrorMsg('')
         if(password.length > 5){
             dispatch(login({email,password})).then((res)=>{
                 if(res.payload.status === 200){
@@ -35,15 +36,17 @@ const LoginModal = () => {
                 }
                 else{
                     // setEmailErrorMsg('Email is already in use!')
-                    setErrorMsg('Login failed! try again')
+                    setErrorMsg('Email or password does not match!')
                 }
+            }).catch((err)=>{
+                console.log(err)
             })
         }
         else if(password.length < 6){
             setErrorMsg('Minimum 6 characters required.')
         }
         else{
-            setErrorMsg('password is not matching.')
+            setErrorMsg('email or password is not matching.')
         }
         dispatch(alertType(''));
     }
@@ -77,8 +80,8 @@ const LoginModal = () => {
                             <span onClick={()=>setShowPassword(!showPassword)} className="show-password-icon">
                                 {showPassword ? <ClosedEyeIcon/> : <EyeIcon/>}
                             </span> 
-                        </div>                    
-                        <span className='err-message'>{errorMsg}</span>
+                        </div>   
+                        <span className='err-message'>{errorMsg}</span>                 
                     </div>
                 <button type='submit' className='submit'>Login</button>
             </form>
