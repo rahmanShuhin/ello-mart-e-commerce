@@ -6,6 +6,7 @@ import { login } from '../../../redux/Auth';
 import { closeModal } from '../../../redux/Modal';
 import ClosedEyeIcon from '../../IconComponents/closeEyeIcon';
 import EyeIcon from '../../IconComponents/eyeIcon';
+import LoadingSpinner from '../../LoadingSpiner/LoadingSpinner';
 
 const LoginModal = () => {
     
@@ -13,6 +14,7 @@ const LoginModal = () => {
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
    
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,6 +22,7 @@ const LoginModal = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+        setIsLoading(true)
         setErrorMsg('')
         if(password.length > 5){
             dispatch(login({email,password})).then((res)=>{
@@ -31,14 +34,16 @@ const LoginModal = () => {
                     setEmail('')
                     setPassword('')
                     setErrorMsg('')
+                    setIsLoading(false)
                     dispatch(closeModal())
-                    console.log(res)
+                    // console.log(res)
                 }
                 else{
-                    // setEmailErrorMsg('Email is already in use!')
                     setErrorMsg('Email or password does not match!')
+                    setIsLoading(false)
                 }
             }).catch((err)=>{
+                setIsLoading(false)
                 console.log(err)
             })
         }
@@ -83,7 +88,11 @@ const LoginModal = () => {
                         </div>   
                         <span className='err-message'>{errorMsg}</span>                 
                     </div>
-                <button type='submit' className='submit'>Login</button>
+                <button type='submit' className='submit'>
+                    {
+                        isLoading ? <LoadingSpinner/> : "Login"
+                    }
+                </button>
             </form>
             <div className="need--account--text">Don't have account? {" "}
                 <span onClick={()=>{goToSignUp();dispatch(closeModal())}} className="sign-up-text">Sign up</span>
