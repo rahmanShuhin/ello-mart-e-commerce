@@ -66,7 +66,7 @@ const Registration = () => {
                             type="text" 
                             id= "name" 
                             onChange={(e)=>setName(e.target.value)}
-                            placeholder='Arif Mia' 
+                            placeholder='your name' 
                         />
                     </div>
                     <div className="form-group">
