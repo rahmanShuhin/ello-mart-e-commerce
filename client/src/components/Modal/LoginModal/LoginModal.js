@@ -49,6 +49,7 @@ const LoginModal = () => {
         }
         else if(password.length < 6){
             setErrorMsg('Minimum 6 characters required.')
+            setIsLoading(false)
         }
         else{
             setErrorMsg('email or password is not matching.')
