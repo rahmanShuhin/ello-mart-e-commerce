@@ -26,7 +26,8 @@ const Registration = () => {
             dispatch(register({name,email,password})).then((res)=>{
                 if(res.payload.status === 200){
                     dispatch(alertType('success'))
-                    dispatch(alertMessage(res.payload.data.status))
+                    // dispatch(alertMessage(res.payload.data.status))
+                    dispatch(alertMessage("Registration successful!"))
                     document.getElementById("reg-form").reset();
                     localStorage.setItem('user',JSON.stringify(res.payload.data.user))
                     setName('')
