@@ -13,6 +13,7 @@ import DownFilledIcon from "../IconComponents/DownFilledIcon";
 import DownIcon from "../IconComponents/DownIcon";
 import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
+import WishListIcon from "../IconComponents/WishList";
 import "./_navbar.scss";
 
 
@@ -99,20 +100,26 @@ const Navbar = () => {
             </div>
           </div>{" "}
           <div className="navbar--wrapper--icons">
+            <div data-tooltip="cart" onClick={()=> dispatch(openCart(true))} className="navicon">     
+                <BagIcon />
+                <span className="navicon--badge">3</span>   
+            </div>
+            {
+              isLogged && 
+              <div data-tooltip="wishlist" onClick={()=> navigate('/')} className="navicon"> 
+                <WishListIcon/>
+              </div>
+            }
             {
               isLogged ?
               <div data-tooltip="profile" onClick={()=> navigate('/profile')} className="navicon"> 
-                <i><UserIcon /></i>
+                <UserIcon />
               </div>
               :
               <div data-tooltip="login" onClick={()=> dispatch(openModal('login'))} className="navicon"> 
-                <i><UserIcon /></i>
+                <UserIcon />
               </div>
             }
-            <div data-tooltip="cart" onClick={()=> dispatch(openCart(true))} className="navicon">     
-                <i><BagIcon /></i>
-                <span className="navicon--badge">3</span>   
-            </div>
           </div>
         </section>
       </nav>

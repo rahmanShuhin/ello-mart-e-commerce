@@ -1,6 +1,64 @@
 .profile--main {
+    padding: 0.7rem;
     min-height: 90vh;
-    padding-top: 3rem;
-    font-size: 2rem;
-    font-weight: bold;
+    .navigation--text {
+        font-size: 14px;
+        font-weight: 600;
+        color: #808080;
+        & > span {
+            color: $red;
+        }
+    }
+    .profile--header {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: $profile-text-color;
+        margin: 1.5rem 0;
+    }
+    .profile--wrapper {
+        display: flex;
+        gap: 40px;
+        &--left {
+            min-width: 200px;
+            & > ul {
+                & > li {
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    gap: 15px;
+                    margin: 1rem 0;
+                    padding: 0.6rem 1rem;
+                    border-radius: 4px;
+                    font-weight: 600;
+                    color: $profile-text-color;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: $profile-background-hover;
+                        color: $profile-text-color-hover;
+                        & > span {
+                            & > svg {
+                                path {
+                                    fill: $profile-text-color-hover;
+                                }
+                            }
+                        }
+                    }
+                    & > span {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-width: 30px;
+                        & > svg {
+                            path {
+                                fill: $profile-text-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &--right {
+            flex: 1;
+        }
+    }
 }

@@ -20,7 +20,6 @@ const login = catchAsync( async(req, res, next) => {
         return next( new AppError('Email or password does not match',400))
     }
     createSendToken(user,200,res);
-
 })
 
 const logOut = (req, res)=>{
