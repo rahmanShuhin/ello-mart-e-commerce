@@ -4,7 +4,7 @@ const AppError = require('../utils/appError');
 const catchAsync =  require('../utils/catchAsync');
 const getToken = require('../helper/token');
 
-const login = catchAsync( async(req, res) => {
+const login = catchAsync( async(req, res, next) => {
     const {email, password} = req.body;
 
     if(!email || !password){
@@ -20,7 +20,6 @@ const login = catchAsync( async(req, res) => {
         return next( new AppError('Email or password does not match',400))
     }
     createSendToken(user,200,res);
-
 })
 
 const logOut = (req, res)=>{
@@ -43,8 +42,12 @@ const createSendToken = async(user, statusCode, res) => {
 
     user.password = undefined; // hiding the password
 
+    user.isVerified = true;
+
+    user.emailToken = undefined;
+
     res.status(statusCode).json({
-        status: 'success',
+        status: 'login successful !',
         user,
         token,
         statusCode: 200,

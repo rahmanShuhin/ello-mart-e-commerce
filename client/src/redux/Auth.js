@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { axiosInstance } from '../services/axiosInstance/axiosInstance'
 
+
 const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
@@ -15,6 +16,27 @@ export const register = createAsyncThunk(
     async (data) => {
         const result = await axiosInstance.post('/api/user/register',data) 
         return result  
+    }
+)
+
+export const login = createAsyncThunk(
+    'login',
+    async (data) => {
+        try{
+            const result = await axiosInstance.post('/api/user/login',data) 
+            return result
+        }catch{
+            const message = "Email or password isn't matching";
+            return message
+        }  
+    }
+)
+
+export const logout = createAsyncThunk(
+    'logout',
+    async () => {
+            const result = await axiosInstance.post('/api/user/logout') 
+            return result;   
     }
 )
 
@@ -38,6 +60,22 @@ export const authSlice = createSlice({
       })
       .addCase(register.rejected,(state,action)=>{
         state.loading = false;
+      })
+      .addCase(login.fulfilled,(state,action)=>{
+        state.loading = false;
+        if(action.payload.error){
+            state.error = action.payload.error;
+            state.loading = false;
+        }
+        else{
+            state.error = ''
+        }
+      })
+      .addCase(login.pending,(state,action)=>{
+      state.loading = true;
+      })
+      .addCase(login.rejected,(state,action)=>{
+      state.loading = false;
       })
   }
 })

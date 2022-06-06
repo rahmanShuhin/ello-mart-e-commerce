@@ -26,7 +26,8 @@ const Registration = () => {
             dispatch(register({name,email,password})).then((res)=>{
                 if(res.payload.status === 200){
                     dispatch(alertType('success'))
-                    dispatch(alertMessage(res.payload.data.status))
+                    // dispatch(alertMessage(res.payload.data.status))
+                    dispatch(alertMessage("Registration successful!"))
                     document.getElementById("reg-form").reset();
                     localStorage.setItem('user',JSON.stringify(res.payload.data.user))
                     setName('')
@@ -37,7 +38,7 @@ const Registration = () => {
                     navigate('/')
                     console.log(res)
                 }
-                if(res.payload.status !== 200){
+                else{
                     setEmailErrorMsg('Email is already in use!')
                     setErrorMsg('')
                 }
@@ -66,7 +67,7 @@ const Registration = () => {
                             type="text" 
                             id= "name" 
                             onChange={(e)=>setName(e.target.value)}
-                            placeholder='Arif Mia' 
+                            placeholder='your name' 
                         />
                     </div>
                     <div className="form-group">

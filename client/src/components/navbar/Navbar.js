@@ -1,7 +1,7 @@
 //icons
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { categories } from "../../assets/data/navdata";
 import logo from "../../assets/icons/NinjaMartMain.svg";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
@@ -13,14 +13,25 @@ import DownFilledIcon from "../IconComponents/DownFilledIcon";
 import DownIcon from "../IconComponents/DownIcon";
 import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
+import WishListIcon from "../IconComponents/WishList";
 import "./_navbar.scss";
+
 
 const Navbar = () => {
 
   const [showAllCategories, setShowAllCategories] = useState(false);
+
   const categoryRef = useRef(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const user = JSON.parse(localStorage.getItem("user")) 
+  
+
+  let isLogged;
+
+  (user === null) ? isLogged = false : isLogged = user.isVerified || false;
+    
   useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
 
   return (
@@ -89,13 +100,26 @@ const Navbar = () => {
             </div>
           </div>{" "}
           <div className="navbar--wrapper--icons">
-            <div data-tooltip="login" onClick={()=>dispatch(openModal('login'))} className="navicon"> 
-                <i><UserIcon /></i>
-            </div>
-            <div data-tooltip="cart" onClick={()=>dispatch(openCart(true))} className="navicon">     
-                <i><BagIcon /></i>
+            <div data-tooltip="cart" onClick={()=> dispatch(openCart(true))} className="navicon">     
+                <BagIcon />
                 <span className="navicon--badge">3</span>   
             </div>
+            {
+              isLogged && 
+              <div data-tooltip="wishlist" onClick={()=> navigate('/')} className="navicon"> 
+                <WishListIcon/>
+              </div>
+            }
+            {
+              isLogged ?
+              <div data-tooltip="profile" onClick={()=> navigate('/profile')} className="navicon"> 
+                <UserIcon />
+              </div>
+              :
+              <div data-tooltip="login" onClick={()=> dispatch(openModal('login'))} className="navicon"> 
+                <UserIcon />
+              </div>
+            }
           </div>
         </section>
       </nav>

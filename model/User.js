@@ -11,13 +11,16 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   isVerified: {
     type: Boolean,
     default: false,
   },
-  password: {
+  emailToken:{
     type: String,
-    required: true,
   },
   image: {
     type: String,
@@ -33,6 +36,15 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  birthDate: {
+    type: Date,
+  },
+  mobile: {
+    type : Number,
+  },
+  gender: {
+    type : String 
+  }
 });
 
 const User = mongoose.model("User", userSchema);
