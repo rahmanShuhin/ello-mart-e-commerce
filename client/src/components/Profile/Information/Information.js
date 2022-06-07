@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { alertMessage, alertType } from '../../../redux/alertBox';
@@ -18,12 +19,14 @@ const Information = () => {
         setName(user.name);
         setEmail(user.email);
         setMobile(user.mobile);
-        setBirthday(user.birthday);
+        setBirthday(moment(user.birthday).format("MMMM Do YYYY")); //changing date format
         setGender(user.gender); 
+        
 
-    }, [])
+    }, [user.birthday, user.email, user.gender, user.mobile, user.name])
 
     const handleEdit = () => setIsEditable(!isEditable);
+
 
     const dispatch = useDispatch();
     
@@ -40,7 +43,10 @@ const Information = () => {
         )
     dispatch(alertType(''));
     }
-    
+    const mobileInput = {
+
+    }
+        
   return (
     <>
         <div className='profile--information'>
@@ -72,29 +78,32 @@ const Information = () => {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="mobile">Mobile</label><br/>
-                            <input   
-                                className={isEditable ? 'form-input editable' : 'form-input'}
-                                type="number" 
-                                id="mobile" 
-                                disabled={isEditable ? false : true}
-                                value={mobile}
-                                onChange={(e)=>setMobile(e.target.value)}
-                                placeholder='01*********' 
-                            />                  
+                            <label htmlFor="mobile">Mobile (+880)</label><br/>
+                            <div style={mobileInput}>
+                                <input   
+                                    className={isEditable ? 'form-input editable' : 'form-input'}
+                                    type="number" 
+                                    id="mobile" 
+                                    disabled={isEditable ? false : true}
+                                    value={mobile}
+                                    onChange={(e)=>setMobile(e.target.value)}
+                                    placeholder='01*********'                          
+                                />
+                            </div> 
                         </div>
                     </div>
                     <div>
                         <div className="form-group">
                             <label htmlFor="birthday">Birthday</label><br/>          
-                            <input  
-                                className={isEditable ? 'form-input editable' : 'form-input'} 
-                                type="date" 
-                                id="birthday" 
-                                disabled={isEditable ? false : true}
-                                value={birthday}
-                                onChange={(e)=>setBirthday(e.target.value)} 
-                            />
+                                <input  
+                                    className={isEditable ? 'form-input editable' : 'form-input'} 
+                                    type={isEditable ? "date" : "text"} 
+                                    id="birthday" 
+                                    disabled={isEditable ? false : true}
+                                    value={birthday}
+                                    min="1958-01-01" max="2012-12-31"
+                                    onChange={(e)=>setBirthday(e.target.value)} 
+                                /> 
                         </div>
                         <div className="form-group">
                             <label htmlFor="gender">Gender</label><br/>
