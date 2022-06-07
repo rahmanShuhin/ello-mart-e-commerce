@@ -12,7 +12,7 @@ router.post('/api/user/register', user.addUser);
 router.post('/api/user/login',Auth.login);
 router.post('/api/user/logout',Auth.logOut);
 
-router.patch('./api/user/update',user.updateUser);
+router.patch('/api/user/update',user.updateUser);
 
 
 

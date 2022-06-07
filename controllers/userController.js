@@ -102,7 +102,7 @@ const updateUser = catchAsync(async(req, res, next) => {
 
   const user = await User.findOneAndUpdate(
     {
-      email
+      email,
     },
     {
         name,
@@ -112,14 +112,20 @@ const updateUser = catchAsync(async(req, res, next) => {
     },
     {
       new : true
+    },(err, data)=>{
+      if(err){
+        console.log(err)
+      }
+      else{
+        console.log(data)
+      }
     }
-  )
-  console.log(user);
+  ).clone()
 
-  res.status(200).json({
+  res.status(202).json({
     status: 'information updated successfully!',
     user,
-    statusCode: 200,
+    statusCode: 202,
 });
 })
 

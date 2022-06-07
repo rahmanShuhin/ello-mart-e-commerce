@@ -31,9 +31,10 @@ const Information = () => {
         e.preventDefault();
         dispatch(updateUser(name,email,mobile,birthday,gender)).then(
             (res) => {
-                // console.log(res)
-                dispatch(alertType('error'));
-                dispatch(alertMessage("something went wrong !"));
+                dispatch(alertType('success'));
+                dispatch(alertMessage(res.payload.data.status));
+                setIsEditable(false);
+                console.log(res);
             }
         )
     dispatch(alertType(''));
@@ -100,6 +101,7 @@ const Information = () => {
                                     name="gender" 
                                     disabled={isEditable ? false : true}
                                     value={gender}
+                                    onChange={(e)=>setGender(e.target.value)}
                             >
                                 <option hidden={true}>select</option>
                                 <option value="male">Male</option>
