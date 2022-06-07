@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AlertBoxSuccess from './components/AlertBox/AlertBox';
+import AlertBox from './components/AlertBox/AlertBox';
 import Footer from "./components/footer/Footer";
 import Modal from './components/Modal/Modal';
 import Registration from './components/Modal/RegistrationModal/RegistrationModal';
@@ -21,7 +21,8 @@ function App() {
   return (
     
     <div className="App">
-      { alertBoxType === 'success' &&  <AlertBoxSuccess /> }       
+      { alertBoxType === 'success' &&  <AlertBox /> } 
+      { alertBoxType === 'error' &&  <AlertBox /> }      
       <BrowserRouter>
         <ScrollToTop/>
         <Navbar/>

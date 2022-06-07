@@ -9,12 +9,11 @@
     gap: 1rem;
     padding: 0.5rem 1rem;
     background: #fff;
-    border: 1px solid $success;
+
     border-radius: 4px;
     animation: slideDown 5s ease-in-out;
     z-index: 9999999;
     & > span {
-        color: $success;
         font-weight: 600;
     }
 }
@@ -34,7 +33,16 @@
 }
 .alertBox--success {
     box-shadow: 0px 2px 16px rgba(0, 166, 26, 0.22);
+    border: 1px solid $success;
+    & > span {
+        color: $success;
+        font-weight: 600;
+    }
 }
 .alertBox--error {
     box-shadow: 0px 2px 16px rgba(166, 0, 0, 0.22);
+    border: 1px solid $error;
+    & > span {
+        color: $error;
+    }
 }

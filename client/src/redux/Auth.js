@@ -40,6 +40,16 @@ export const logout = createAsyncThunk(
     }
 )
 
+//update user
+export const updateUser = createAsyncThunk(
+    'updateUser',
+    async (data) => {
+            const result = await axiosInstance.patch('/api/user/update',data) 
+            return result;   
+    }
+)
+
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -61,6 +71,9 @@ export const authSlice = createSlice({
       .addCase(register.rejected,(state,action)=>{
         state.loading = false;
       })
+      builder.addCase(login.pending,(state,action)=>{
+        state.loading = true;
+        })
       .addCase(login.fulfilled,(state,action)=>{
         state.loading = false;
         if(action.payload.error){
@@ -70,9 +83,6 @@ export const authSlice = createSlice({
         else{
             state.error = ''
         }
-      })
-      .addCase(login.pending,(state,action)=>{
-      state.loading = true;
       })
       .addCase(login.rejected,(state,action)=>{
       state.loading = false;

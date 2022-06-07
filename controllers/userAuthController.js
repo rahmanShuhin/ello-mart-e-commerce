@@ -25,7 +25,7 @@ const login = catchAsync( async(req, res, next) => {
 const logOut = (req, res)=>{
     res.status(202).clearCookie('token').send({
         status: 202,
-        message: 'successfully logged out'
+        message: 'successfully logged out!'
     })
 }
 

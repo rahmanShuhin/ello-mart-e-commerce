@@ -25,6 +25,9 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const goToHomepage = () => navigate('/');
+  const goToProfile = () => navigate('/profile');
+
   const user = JSON.parse(localStorage.getItem("user")) 
   
 
@@ -106,13 +109,13 @@ const Navbar = () => {
             </div>
             {
               isLogged && 
-              <div data-tooltip="wishlist" onClick={()=> navigate('/')} className="navicon"> 
+              <div data-tooltip="wishlist" onClick={goToHomepage} className="navicon"> 
                 <WishListIcon/>
               </div>
             }
             {
               isLogged ?
-              <div data-tooltip="profile" onClick={()=> navigate('/profile')} className="navicon"> 
+              <div data-tooltip="profile" onClick={goToProfile} className="navicon"> 
                 <UserIcon />
               </div>
               :

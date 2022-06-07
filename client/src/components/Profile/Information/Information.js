@@ -1,6 +1,44 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { alertMessage, alertType } from '../../../redux/alertBox';
+import { updateUser } from '../../../redux/Auth';
 
 const Information = () => {
+
+    const [name,setName] = useState('');
+    const [email,setEmail] = useState('');
+    const [mobile,setMobile] = useState('');
+    const [birthday,setBirthday] = useState('');
+    const [gender,setGender] = useState('');
+    const [isEditable, setIsEditable] = useState(false);
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    useEffect(() => {
+        setName(user.name);
+        setEmail(user.email);
+        setMobile(user.mobile);
+        setBirthday(user.birthday);
+        setGender(user.gender);
+
+    }, [user.birthday, user.email, user.gender, user.mobile, user.name])
+
+    const handleEdit = () => setIsEditable(!isEditable);
+
+    const dispatch = useDispatch();
+    
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        dispatch(updateUser(name,email,mobile,birthday,gender)).then(
+            (res) => {
+                // console.log(res)
+                dispatch(alertType('error'));
+                dispatch(alertMessage("something went wrong !"));
+            }
+        )
+    dispatch(alertType(''));
+    }
+    
   return (
     <>
         <div className='profile--information'>
@@ -13,10 +51,12 @@ const Information = () => {
                         <div className="form-group">
                             <label htmlFor="name">Full name</label><br/>
                             <input 
-                                className='form-input' 
+                                className={isEditable ? 'form-input editable' : 'form-input'} 
                                 type="text" 
-                                id="name" 
-                                // onChange={(e)=>setEmail(e.target.value)} 
+                                id="name"
+                                value={name} 
+                                disabled={isEditable ? false : true}
+                                onChange={(e)=>setName(e.target.value)} 
                             />
                         </div>
                         <div className="form-group">
@@ -25,36 +65,42 @@ const Information = () => {
                                 className='form-input' 
                                 type="email" 
                                 id="email" 
-                                // onChange={(e)=>setEmail(e.target.value)} 
+                                value={email}
+                                disabled={true}
                             />
                         </div>
                         <div className="form-group">
                             <label htmlFor="mobile">Mobile</label><br/>
-                            <div className='form-input'>
-                                <input   
-                                    type="number" 
-                                    id="mobile" 
-                                    // onChange={(e)=>setPassword(e.target.value)}
-                                    placeholder='Add mobile number' 
-                                />
-                            </div>                    
+                            <input   
+                                className={isEditable ? 'form-input editable' : 'form-input'}
+                                type="number" 
+                                id="mobile" 
+                                disabled={isEditable ? false : true}
+                                value={mobile}
+                                onChange={(e)=>setMobile(e.target.value)}
+                                placeholder='01*********' 
+                            />                  
                         </div>
                     </div>
                     <div>
                         <div className="form-group">
-                            <label htmlFor="birthday">Birthday</label><br/>
-                            <div className='form-input'>
-                                <input   
-                                    type="date" 
-                                    id="birthday" 
-                                    // onChange={(e)=>setPassword(e.target.value)}
-                                    placeholder='Add birthday' 
-                                />
-                            </div>                    
+                            <label htmlFor="birthday">Birthday</label><br/>          
+                            <input  
+                                className={isEditable ? 'form-input editable' : 'form-input'} 
+                                type="date" 
+                                id="birthday" 
+                                disabled={isEditable ? false : true}
+                                value={birthday}
+                                onChange={(e)=>setBirthday(e.target.value)} 
+                            />
                         </div>
                         <div className="form-group">
                             <label htmlFor="gender">Gender</label><br/>
-                            <select className='form-input' name="gander" id="gander">
+                            <select className={isEditable ? 'form-input editable' : 'form-input'} 
+                                    name="gender" 
+                                    disabled={isEditable ? false : true}
+                                    value={gender}
+                            >
                                 <option hidden={true}>select</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -62,9 +108,14 @@ const Information = () => {
                         </div>
                     </div>
                 </form>
-                <button type='submit' className='submit'>
-                    Edit
-                </button>
+                {isEditable && 
+                    <button onClick={handleUpdate} type="submit" className='submit'>
+                     Save
+                    </button>
+                }
+                <button onClick={handleEdit} className='submit'>
+                    {isEditable ? "Cancel" : "Edit"}
+                </button>   
             </div>
             
         </div>

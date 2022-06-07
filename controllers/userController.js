@@ -94,9 +94,39 @@ const verifyEmail = async(req, res) => {
 }
 
 
+//update user
+
+const updateUser = catchAsync(async(req, res, next) => {
+  
+  const {name, email, mobile, birthday, gender} = req.body;
+
+  const user = await User.findOneAndUpdate(
+    {
+      email
+    },
+    {
+        name,
+        mobile,
+        birthday,
+        gender
+    },
+    {
+      new : true
+    }
+  )
+  console.log(user);
+
+  res.status(200).json({
+    status: 'information updated successfully!',
+    user,
+    statusCode: 200,
+});
+})
+
 
 
 module.exports={
     addUser,
-    verifyEmail
+    verifyEmail,
+    updateUser,
 }

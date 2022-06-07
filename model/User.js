@@ -36,7 +36,7 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  birthDate: {
+  birthday: {
     type: Date,
   },
   mobile: {
