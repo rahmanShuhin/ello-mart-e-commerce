@@ -44,8 +44,9 @@ export const logout = createAsyncThunk(
 export const updateUser = createAsyncThunk(
     'updateUser',
     async (data) => {
-            const result = await axiosInstance.patch('/api/user/update',data) 
-            return result;   
+        
+        const result = await axiosInstance.patch('/api/user/update',data) 
+        return result;        
     }
 )
 

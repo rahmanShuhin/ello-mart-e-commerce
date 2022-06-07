@@ -19,9 +19,9 @@ const Information = () => {
         setEmail(user.email);
         setMobile(user.mobile);
         setBirthday(user.birthday);
-        setGender(user.gender);
+        setGender(user.gender); 
 
-    }, [user.birthday, user.email, user.gender, user.mobile, user.name])
+    }, [])
 
     const handleEdit = () => setIsEditable(!isEditable);
 
@@ -29,12 +29,13 @@ const Information = () => {
     
     const handleUpdate = (e) => {
         e.preventDefault();
-        dispatch(updateUser(name,email,mobile,birthday,gender)).then(
+        dispatch(updateUser({name,email,mobile,birthday,gender})).then(
             (res) => {
                 dispatch(alertType('success'));
                 dispatch(alertMessage(res.payload.data.status));
+                localStorage.setItem('user',JSON.stringify(res.payload.data.user))
                 setIsEditable(false);
-                console.log(res);
+                // console.log(res);
             }
         )
     dispatch(alertType(''));

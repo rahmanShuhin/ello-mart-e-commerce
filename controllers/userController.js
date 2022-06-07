@@ -112,16 +112,9 @@ const updateUser = catchAsync(async(req, res, next) => {
     },
     {
       new : true
-    },(err, data)=>{
-      if(err){
-        console.log(err)
-      }
-      else{
-        console.log(data)
-      }
     }
   ).clone()
-
+    
   res.status(202).json({
     status: 'information updated successfully!',
     user,
