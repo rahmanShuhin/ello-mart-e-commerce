@@ -87,7 +87,7 @@ const Information = () => {
                                     disabled={isEditable ? false : true}
                                     value={mobile}
                                     onChange={(e)=>setMobile(e.target.value)}
-                                    placeholder='01*********'                          
+                                    placeholder='Add mobile number'                          
                                 />
                             </div> 
                         </div>
