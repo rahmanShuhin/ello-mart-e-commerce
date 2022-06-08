@@ -1,5 +1,5 @@
 .alertBox {
-    position: absolute;
+    position: fixed;
     top: -100%;
     left: 50%;
     transform: translateX(-50%);
@@ -12,7 +12,7 @@
 
     border-radius: 4px;
     animation: slideDown 5s ease-in-out;
-    z-index: 9999999;
+    z-index: 999999;
     & > span {
         font-weight: 600;
     }

@@ -120,14 +120,16 @@ const Information = () => {
                         </div>
                     </div>
                 </form>
-                {isEditable && 
-                    <button onClick={handleUpdate} type="submit" className='submit'>
-                     Save
+                <div className="btn-wrapper">
+                    {isEditable && 
+                        <button onClick={handleUpdate} type="submit" className='submit'>
+                        SAVE
+                        </button>
+                    }
+                    <button onClick={handleEdit} className='submit'>
+                        {isEditable ? "CANCEL" : "EDIT"}
                     </button>
-                }
-                <button onClick={handleEdit} className='submit'>
-                    {isEditable ? "Cancel" : "Edit"}
-                </button>   
+                </div> 
             </div>
             
         </div>

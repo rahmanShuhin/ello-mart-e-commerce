@@ -11,6 +11,8 @@ const initialState = {
     token:'' 
 }
 
+
+//register
 export const register = createAsyncThunk(
     'register',
     async (data) => {
@@ -19,6 +21,8 @@ export const register = createAsyncThunk(
     }
 )
 
+
+//login
 export const login = createAsyncThunk(
     'login',
     async (data) => {
@@ -32,6 +36,8 @@ export const login = createAsyncThunk(
     }
 )
 
+
+//logout
 export const logout = createAsyncThunk(
     'logout',
     async () => {
@@ -39,6 +45,7 @@ export const logout = createAsyncThunk(
             return result;   
     }
 )
+
 
 //update user
 export const updateUser = createAsyncThunk(
@@ -49,6 +56,17 @@ export const updateUser = createAsyncThunk(
         return result;        
     }
 )
+
+//Add address
+export const addAddress = createAsyncThunk(
+    'addAddress',
+    async (data) => {
+        
+        const result = await axiosInstance.patch('/api/user/address',data) 
+        return result;        
+    }
+)
+
 
 
 export const authSlice = createSlice({
