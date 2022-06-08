@@ -43,8 +43,15 @@
                             font-size: 14px;
                             color: $red;
                             cursor: pointer;
+                            border-radius: 4px;
                             border: none;
                             background: transparent;
+                            padding: 5px 10px;
+                            transition: 0.2s;
+                            &:hover {
+                                background: #fff;
+                                box-shadow: 0 2px 5px lightgray;
+                            }
                         }
                     }
                     transition: 0.2s ease-in-out;
@@ -55,9 +62,7 @@
             }
         }
         .address--form {
-            // display: flex;
             margin: 1.5rem 0;
-            // gap: 4rem;
             .form-group {
                 margin: 1rem 0;
                 label {
@@ -90,6 +95,16 @@
                     min-height: 60px;
                 }
             }
+        }
+        .err--message {
+            display: block;
+            max-width: 350px;
+            font-size: 12px;
+            color: $error;
+            background-color: rgba(255, 0, 0, 0.096);
+            border: 1px solid $error;
+            border-radius: 4px;
+            padding: 0.3rem 1rem;
         }
         .submit {
             color: #fff;

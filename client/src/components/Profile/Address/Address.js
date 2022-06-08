@@ -9,40 +9,25 @@ import { addAddress } from '../../../redux/Auth';
 const Address = () => {
 
     const [division, setDivision] = useState('');
-    const [city, setCity] = useState('')
-    const [district, setDistrict] = useState('')
-    const [address, setAddress] = useState('')
-    const [regionId, setDivisionId] = useState('')
-    const [cityId, setCityId] = useState('')
+    const [city, setCity] = useState('');
+    const [district, setDistrict] = useState('');
+    const [address, setAddress] = useState('');
+    const [regionId, setDivisionId] = useState('');
+    const [cityId, setCityId] = useState('');
+    const [errMessage, setErrMessage] = useState(false)
 
     const dispatch = useDispatch();
 
     const user = JSON.parse(localStorage.getItem('user'));
 
-    
-    const addAddressHandler = (e) => {
-        e.preventDefault();
-        dispatch(addAddress({_id : user._id,division,city,district,address})).then(
-            (res)=>{
-                console.log(res);
-                localStorage.setItem('user',JSON.stringify(res.payload.data.user));
-                dispatch(alertType('success'));
-                dispatch(alertMessage(res.payload.data.message));
-                setDivision(' ');
-                setCity(' ');
-                setDistrict(' ');
-                setAddress(' ');
-            }
-        )
-        dispatch(alertType(''));
-    }
 
-    //getting division id from DIVITIONS array 
-    const handleDivisionId = (e) => {
+     //getting division id from DIVITIONS array 
+     const handleDivisionId = (e) => {
 
         setDivision(e.target.value)
         const divisionIndex = DIVITIONS.find(division => division.name === e.target.value)
         setDivisionId(divisionIndex.id)
+        setErrMessage(false);
     }
 
      //getting city id from DISTRICTS array 
@@ -51,8 +36,33 @@ const Address = () => {
         setCity(e.target.value)
         const cityIndex = DISTRICTS.find( districts => districts.name === e.target.value)
         setCityId(cityIndex.id)
+        setErrMessage(false);
     }
 
+    //
+    
+    const addAddressHandler = (e) => {
+        e.preventDefault();
+        if(division !== '' && district !== '' && city !== '' && address !== ''){
+            dispatch(addAddress({_id : user._id,division,city,district,address})).then(
+            (res)=>{
+                console.log(res);
+                localStorage.setItem('user',JSON.stringify(res.payload.data.user));
+                dispatch(alertType('success'));
+                dispatch(alertMessage(res.payload.data.message));
+                document.getElementById('address-form').reset();
+                document.getElementById('address').reset();
+                setDivision('');
+                setCity('');
+                setDistrict('');
+                setAddress('');
+            }) 
+        }
+        else{
+            setErrMessage(true);
+        }
+        dispatch(alertType(''));
+    }
     
 
   return (
@@ -98,6 +108,9 @@ const Address = () => {
                         </tbody>
                     </table>
                 </div>
+                {
+                  errMessage && <span className='err--message'>Error! Input field can't be empty!</span>
+                }
                 <form className="address--form" id="address-form">
                     <div className="form-group">
                       <label htmlFor="division">Division</label><br/>
@@ -108,7 +121,7 @@ const Address = () => {
                             value={division}
                             onChange={handleDivisionId}
                         >
-                        <option disabled hidden={true}>select division</option>
+                        <option hidden={true}>select division</option>
                         {
                             DIVITIONS.map((division)=>(
                                 <option key={division.id} value={division.name}>{division.name}</option>
@@ -144,7 +157,7 @@ const Address = () => {
                             name="district" 
                             id="district"
                             value={district}
-                            onChange={(e)=>setDistrict(e.target.value)}
+                            onChange={(e)=>{setDistrict(e.target.value);setErrMessage(false)}}
                         >
                             <option hidden={true}>select district</option>
                             {
@@ -166,10 +179,11 @@ const Address = () => {
                                 id="address" 
                                 placeholder='For Example: House# 123, Street# 123, ABC Road'
                                 value={address}
-                                onChange={(e)=>setAddress(e.target.value)}
+                                onChange={(e) => {setAddress(e.target.value);setErrMessage(false)}}
                             />                   
                     </div>
                 </form>
+                
                 <button onClick={addAddressHandler} type='submit' className='submit'>
                     + ADD NEW ADDRESS
                 </button>
