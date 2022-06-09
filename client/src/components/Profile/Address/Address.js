@@ -86,12 +86,12 @@ const Address = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{user.name}</td>
-                                <td>{user.address.address}</td>
+                                <td>{user?.name}</td>
+                                <td>{user?.address?.address}</td>
                                 <td>
-                                    {user.address.district}{' - '}
-                                    {user.address.city}{' - '}
-                                    {user.address.division} 
+                                    {user?.address?.district}{' - '}
+                                    {user?.address?.city}{' - '}
+                                    {user?.address?.division} 
                                 </td>
                                 <td>0{user.mobile}</td>
                                 <td>
