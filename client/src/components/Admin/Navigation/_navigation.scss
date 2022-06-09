@@ -35,7 +35,10 @@
       &.active {
         background-color: $admin-light-bg;
         border-radius: 10px;
-        border: 1px solid $red;
+
+        span {
+          color: $red !important;
+        }
       }
       .MuiSvgIcon-root {
         &:nth-of-type(2) {

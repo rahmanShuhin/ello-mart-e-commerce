@@ -27,7 +27,7 @@ function App() {
           <Route path={"/sign-up"} element={<Registration />} />
           <Route path={"/admin"} element={<Admin />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
 
         <SideBarCart />
 

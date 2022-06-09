@@ -1,0 +1,104 @@
+.admin__dashboard {
+  // for global div
+  > div {
+    padding: 30px 50px;
+  }
+  // individual class
+  &__top {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 2vw;
+    &__left {
+      h1 {
+        color: $admin-dark;
+        letter-spacing: 2px;
+      }
+      p {
+        color: $admin-text;
+        &:nth-of-type(1) {
+          font-size: 40px;
+          letter-spacing: 2px;
+        }
+        &:nth-of-type(2) {
+          margin: 20px 0px;
+          line-height: 160%;
+        }
+      }
+    }
+    &__right {
+      &__stat {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        > div {
+          flex: 1;
+          background-color: $admin-card-bg;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          justify-content: center;
+          padding: 40px 30px;
+          .MuiSvgIcon-root {
+            font-size: 70px;
+            padding: 15px;
+            border-radius: 50%;
+          }
+          &:nth-of-type(1) {
+            .MuiSvgIcon-root {
+              color: #0e805f;
+              background-color: #a7f3d0a2;
+            }
+          }
+          &:nth-of-type(2) {
+            .MuiSvgIcon-root {
+              color: #fe8585;
+              background-color: #facaca;
+            }
+          }
+          &:nth-of-type(3) {
+            .MuiSvgIcon-root {
+              color: #ffba16;
+              background-color: #ffe8b2;
+            }
+          }
+          > div {
+            flex: 1;
+            color: $admin-text;
+
+            p {
+              font-size: 18px;
+              font-weight: 600;
+              color: $admin-dark;
+              margin-bottom: 5px;
+            }
+            small {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__bottom {
+    display: flex;
+    gap: 20px;
+    > div {
+      flex: 1;
+      padding: 20px 10px;
+      background-color: white;
+      > div {
+        margin-bottom: 30px;
+        > p {
+          font-size: 18px;
+          color: $admin-text;
+          letter-spacing: 1px;
+          font-weight: 500;
+        }
+        &:nth-of-type(2) {
+          display: grid;
+          place-items: center;
+        }
+      }
+    }
+  }
+}

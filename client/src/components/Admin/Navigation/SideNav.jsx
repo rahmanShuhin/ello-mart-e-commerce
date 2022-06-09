@@ -4,8 +4,7 @@ import { sideBarData } from "../adminStorage";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-export default function SideNav() {
-  const [active, setActive] = useState("Dashboard");
+export default function SideNav({ active, setActive }) {
   const [cls, setCls] = useState("active");
   const myRefs = useRef([]);
 
