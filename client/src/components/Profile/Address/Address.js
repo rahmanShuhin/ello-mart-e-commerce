@@ -5,6 +5,7 @@ import DISTRICTS from '../../../assets/data/district';
 import DIVITIONS from '../../../assets/data/divisions';
 import { alertMessage, alertType } from '../../../redux/alertBox';
 import { addAddress } from '../../../redux/Auth';
+import EditIcon from "../../IconComponents/EditIcon";
 
 const Address = () => {
 
@@ -14,7 +15,8 @@ const Address = () => {
     const [address, setAddress] = useState('');
     const [regionId, setDivisionId] = useState('');
     const [cityId, setCityId] = useState('');
-    const [errMessage, setErrMessage] = useState(false)
+    const [errMessage, setErrMessage] = useState(false);
+    const [openForm, setOpenForm] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -39,7 +41,9 @@ const Address = () => {
         setErrMessage(false);
     }
 
-    //
+    const handleOpenForm = () => {
+        setOpenForm(true)
+    };
     
     const addAddressHandler = (e) => {
         e.preventDefault();
@@ -51,11 +55,11 @@ const Address = () => {
                 dispatch(alertType('success'));
                 dispatch(alertMessage(res.payload.data.message));
                 document.getElementById('address-form').reset();
-                document.getElementById('address').reset();
                 setDivision('');
                 setCity('');
                 setDistrict('');
                 setAddress('');
+                setOpenForm(false)
             }) 
         }
         else{
@@ -72,121 +76,138 @@ const Address = () => {
                 Address book
             </h5>
             <div className='profile--address--wrapper'>
-                <div className="address--info">
-                    <table className="address--table">
-                        <thead>
-                            <tr>
-                                <th>Full name</th>
-                                <th>Address</th>
-                                <th>division</th>
-                                <th>Phone</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{user?.name}</td>
-                                <td>{user?.address?.address}</td>
-                                <td>
-                                    {user?.address?.district}{' - '}
-                                    {user?.address?.city}{' - '}
-                                    {user?.address?.division} 
-                                </td>
-                                <td>0{user.mobile}</td>
-                                <td>
-                                    <button className="default-address">
-                                        default shipping<br/> address
-                                    </button>
-                                </td>
-                                <td>
-                                    <button className='edit--address'>
-                                        EDIT
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
                 {
-                  errMessage && <span className='err--message'>Error! Input field can't be empty!</span>
+                    (user.hasOwnProperty('address')) && 
+                    
+                    <div className="address--info">
+                        <table className="address--table">
+                            <thead>
+                                <tr>
+                                    <th>Full name</th>
+                                    <th>Address</th>
+                                    <th>Division</th>
+                                    <th>Phone</th>
+                                    <th></th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{user?.name}</td>
+                                    <td>{user?.address?.address}</td>
+                                    <td>
+                                        {user?.address?.district}{' - '}
+                                        {user?.address?.city}{' - '}
+                                        {user?.address?.division} 
+                                    </td>
+                                    <td>{(user?.mobile) ? (`0${user?.mobile}`) : 'no number'}</td>
+                                    <td>
+                                        <button className="default-address">
+                                            default shipping <br/>and billing address
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <span onClick={handleOpenForm}  className='edit--address'>
+                                            <EditIcon/>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 }
-                <form className="address--form" id="address-form">
-                    <div className="form-group">
-                      <label htmlFor="division">Division</label><br/>
-                        <select 
-                            className='form-input' 
-                            name="division" 
-                            id="division"
-                            value={division}
-                            onChange={handleDivisionId}
-                        >
-                        <option hidden={true}>select division</option>
-                        {
-                            DIVITIONS.map((division)=>(
-                                <option key={division.id} value={division.name}>{division.name}</option>
-                            ))
-                        }
-                        </select>
+                {(!user.hasOwnProperty('address')) &&
+                    <div className='address--message'>
+                        <span>Save your shipping and billing address here.</span>
+                        <button 
+                            onClick={handleOpenForm} 
+                            className='submit'
+                        > 
+                        + ADD NEW ADDRESS 
+                        </button> 
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="city">City</label><br/>
-                        <select 
-                            className='form-input' 
-                            name="city" 
-                            id="city"
-                            value={city}
-                            onChange={(e) => handleCityId(e)}
-                        >
-                            <option hidden={true}>select city</option>
+                }
+                {
+                    openForm &&
+                    <form className="address--form" id="address-form">
+                        <div className="form-group">
+                        <label htmlFor="division">Division</label><br/>
+                            <select 
+                                className='form-input' 
+                                name="division" 
+                                id="division"
+                                value={division}
+                                onChange={handleDivisionId}
+                            >
+                            <option hidden={true}>select division</option>
                             {
-                                DISTRICTS.map((district)=>
-                                (
-                                    (district.division_id === regionId) 
-                                    ?
-                                     <option key={district.id} value={district.name}>{district.name}</option>    
-                                    : null
-                                )) 
-                            } 
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="district">District</label><br/>
-                        <select 
-                            className='form-input' 
-                            name="district" 
-                            id="district"
-                            value={district}
-                            onChange={(e)=>{setDistrict(e.target.value);setErrMessage(false)}}
-                        >
-                            <option hidden={true}>select district</option>
-                            {
-                                CITY.map((city)=>(
-                                    (city.district_id === cityId)
-                                    ?
-                                    <option key={city.id} value={city.name}>{city.name}</option>
-                                    :
-                                    null
+                                DIVITIONS.map((division)=>(
+                                    <option key={division.id} value={division.name}>{division.name}</option>
                                 ))
                             }
-                        </select>                    
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="address">Address</label><br/>
-                            <textarea 
-                                className='form-input text-area' 
-                                name="address" 
-                                id="address" 
-                                placeholder='For Example: House# 123, Street# 123, ABC Road'
-                                value={address}
-                                onChange={(e) => {setAddress(e.target.value);setErrMessage(false)}}
-                            />                   
-                    </div>
-                </form>
-                
-                <button onClick={addAddressHandler} type='submit' className='submit'>
-                    + ADD NEW ADDRESS
-                </button>
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="city">City</label><br/>
+                            <select 
+                                className='form-input' 
+                                name="city" 
+                                id="city"
+                                value={city}
+                                onChange={(e) => handleCityId(e)}
+                            >
+                                <option hidden={true}>select city</option>
+                                {
+                                    DISTRICTS.map((district)=>
+                                    (
+                                        (district.division_id === regionId) 
+                                        ?
+                                        <option key={district.id} value={district.name}>{district.name}</option>    
+                                        : null
+                                    )) 
+                                } 
+                            </select>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="district">District</label><br/>
+                            <select 
+                                className='form-input' 
+                                name="district" 
+                                id="district"
+                                value={district}
+                                onChange={(e)=>{setDistrict(e.target.value);setErrMessage(false)}}
+                            >
+                                <option hidden={true}>select district</option>
+                                {
+                                    CITY.map((city)=>(
+                                        (city.district_id === cityId)
+                                        ?
+                                        <option key={city.id} value={city.name}>{city.name}</option>
+                                        :
+                                        null
+                                    ))
+                                }
+                            </select>                    
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="address">Address</label><br/>
+                                <textarea 
+                                    className='form-input text-area' 
+                                    name="address" 
+                                    id="address" 
+                                    placeholder='For Example: House# 123, Street# 123, ABC Road'
+                                    value={address}
+                                    onChange={(e) => {setAddress(e.target.value);setErrMessage(false)}}
+                                />                   
+                        </div>
+                        {
+                            errMessage && <span className='err--message'>Error! Input field can't be empty!</span>
+                        }
+                        <button onClick={addAddressHandler} type='submit' className='submit'>
+                            {user.hasOwnProperty('address') ? "UPDATE ADDRESS"  : "+ ADD NEW ADDRESS"}
+                        </button>
+                    </form>
+                }
             </div>
             
         </div>
