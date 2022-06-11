@@ -11,6 +11,8 @@ const initialState = {
     token:'' 
 }
 
+
+//register
 export const register = createAsyncThunk(
     'register',
     async (data) => {
@@ -19,6 +21,8 @@ export const register = createAsyncThunk(
     }
 )
 
+
+//login
 export const login = createAsyncThunk(
     'login',
     async (data) => {
@@ -32,6 +36,8 @@ export const login = createAsyncThunk(
     }
 )
 
+
+//logout
 export const logout = createAsyncThunk(
     'logout',
     async () => {
@@ -39,6 +45,29 @@ export const logout = createAsyncThunk(
             return result;   
     }
 )
+
+
+//update user
+export const updateUser = createAsyncThunk(
+    'updateUser',
+    async (data) => {
+        
+        const result = await axiosInstance.patch('/api/user/update',data) 
+        return result;        
+    }
+)
+
+//Add address
+export const addAddress = createAsyncThunk(
+    'addAddress',
+    async (data) => {
+        
+        const result = await axiosInstance.patch('/api/user/address',data) 
+        return result;        
+    }
+)
+
+
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -61,6 +90,9 @@ export const authSlice = createSlice({
       .addCase(register.rejected,(state,action)=>{
         state.loading = false;
       })
+      builder.addCase(login.pending,(state,action)=>{
+        state.loading = true;
+        })
       .addCase(login.fulfilled,(state,action)=>{
         state.loading = false;
         if(action.payload.error){
@@ -70,9 +102,6 @@ export const authSlice = createSlice({
         else{
             state.error = ''
         }
-      })
-      .addCase(login.pending,(state,action)=>{
-      state.loading = true;
       })
       .addCase(login.rejected,(state,action)=>{
       state.loading = false;

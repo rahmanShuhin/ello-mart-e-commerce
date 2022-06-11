@@ -32,11 +32,13 @@ const userSchema = new Schema({
   role: {
     type: String,
   },
-  time: {
-    type: Date,
-    default: Date.now,
+  address: {
+    division: String,
+    district: String,
+    city: String,
+    address: String,
   },
-  birthDate: {
+  birthday: {
     type: Date,
   },
   mobile: {
@@ -44,7 +46,11 @@ const userSchema = new Schema({
   },
   gender: {
     type : String 
-  }
+  },
+  time: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const User = mongoose.model("User", userSchema);

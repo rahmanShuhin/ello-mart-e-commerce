@@ -23,7 +23,7 @@
             & > ul {
                 & > li {
                     display: flex;
-                    justify-content: start;
+                    justify-content: flex-start;
                     align-items: center;
                     gap: 15px;
                     margin: 1rem 0;
@@ -33,6 +33,17 @@
                     color: $profile-text-color;
                     border: 1px solid transparent;
                     cursor: pointer;
+                    &:last-child {
+                        color: $red;
+                        background-color: rgba(255, 0, 0, 0.04);
+                        & > span {
+                            & > svg {
+                                path {
+                                    fill: $red;
+                                }
+                            }
+                        }
+                    }
                     &:hover {
                         background-color: $profile-background-hover;
                         color: $profile-text-color-hover;
