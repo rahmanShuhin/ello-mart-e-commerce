@@ -105,9 +105,15 @@
             padding: 0.3rem 1rem;
             margin: 10px 0;
         }
-        .submit {
+        .btn-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            gap: 20px;
+        }
+        .submit-btn {
             color: #fff;
-            padding: 0.7rem 3rem;
+            padding: 0.7rem 2rem;
             background-color: $red;
             border: none;
             border-radius: 8px;
@@ -122,6 +128,12 @@
                 color: $red;
             }
         }
+        .cancel-btn {
+            color: $red;
+            background-color: #fff;
+            border: 1px solid $red;
+        }
+
         .address--message {
             padding: 2rem 0;
             display: flex;

@@ -100,7 +100,7 @@ const Address = () => {
                                         {user?.address?.city}{' - '}
                                         {user?.address?.division} 
                                     </td>
-                                    <td>{(user?.mobile) ? (`0${user?.mobile}`) : 'no number'}</td>
+                                    <td>{(user?.mobile) ? (`0${user?.mobile}`) : 'not added'}</td>
                                     <td>
                                         <button className="default-address">
                                             default shipping <br/>and billing address
@@ -116,12 +116,12 @@ const Address = () => {
                         </table>
                     </div>
                 }
-                {(!user.hasOwnProperty('address')) &&
+                {(!user.hasOwnProperty('address')) && !openForm &&
                     <div className='address--message'>
                         <span>Save your shipping and billing address here.</span>
                         <button 
                             onClick={handleOpenForm} 
-                            className='submit'
+                            className='submit-btn'
                         > 
                         + ADD NEW ADDRESS 
                         </button> 
@@ -203,9 +203,18 @@ const Address = () => {
                         {
                             errMessage && <span className='err--message'>Error! Input field can't be empty!</span>
                         }
-                        <button onClick={addAddressHandler} type='submit' className='submit'>
-                            {user.hasOwnProperty('address') ? "UPDATE ADDRESS"  : "+ ADD NEW ADDRESS"}
-                        </button>
+                        <div className="btn-wrapper">
+                            <button onClick={addAddressHandler} type='submit' className='submit-btn'>
+                                {user.hasOwnProperty('address') ? "UPDATE ADDRESS"  : "+ ADD NEW ADDRESS"}
+                            </button>
+                            {
+                                openForm &&
+                                <button onClick={()=>{setOpenForm(false)}} className='submit-btn cancel-btn'>
+                                    cancel
+                                </button>
+                            }
+                        </div>
+                        
                     </form>
                 }
             </div>
