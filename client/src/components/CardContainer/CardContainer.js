@@ -17,12 +17,13 @@ const CardContainer = ({setModalType}) => {
         <div className="card--container--wrapper"> 
             {
                 PRODUCT_DATA && PRODUCT_DATA.length > 0 && 
-                PRODUCT_DATA.map((product)=>(
+                PRODUCT_DATA.map((product,i)=>(
                     <Card 
                         title={product.title}
                         price={product.price}
                         rating={product.rating}
                         image={product.images}
+                        key={i}
                     />
                 ))
             }

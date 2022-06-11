@@ -1,0 +1,149 @@
+.profile--address {
+    &--header {
+        font-size: 1.5rem;
+        color: #777777;
+        border-bottom: 1px solid #c8c8c8;
+        padding-bottom: 0.5rem;
+    }
+    &--wrapper {
+        .address--info {
+            padding-top: 2rem;
+            .address--table {
+                width: 100%;
+                border-collapse: collapse;
+                thead {
+                    background: #fafafa;
+                    tr {
+                        border-bottom: 1px solid #dcdcdc;
+                        th {
+                            font-size: 14px;
+                            font-weight: 400;
+                            color: #757575;
+                            padding: 0.5rem;
+                            text-align: left;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        border-bottom: 1px solid #f2f2f2;
+                        td {
+                            padding: 1rem 0 1rem 0.5rem;
+                            font-size: 13px;
+                        }
+                        .default-address {
+                            font-size: 12px;
+                            color: #5e5e5e;
+                            background-color: rgba(0, 196, 0, 0.154);
+                            border: none;
+                            padding: 5px 10px;
+                            border-radius: 6px;
+                        }
+                        .edit--address {
+                            height: 30px;
+                            width: 30px;
+                            display: inline-block;
+                            border-radius: 50%;
+                            cursor: pointer;
+                            transition: 0.2s;
+                            &:hover {
+                                background: #fff;
+                                box-shadow: 0 2px 5px lightgray;
+                            }
+                        }
+                    }
+                    transition: 0.2s ease-in-out;
+                    &:hover {
+                        background: #fefefe;
+                    }
+                }
+            }
+        }
+        .address--form {
+            margin: 1.5rem 0;
+            .form-group {
+                margin: 1rem 0;
+                label {
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $profile-text-color;
+                }
+                .form-input {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 10px;
+                    height: 35px;
+                    width: 100%;
+                    max-width: 350px;
+                    padding: 5px 10px;
+                    margin-top: 8px;
+                    border-radius: 8px;
+                    border: 1px solid rgb(211, 211, 211);
+                    &:hover {
+                        border: 1px solid rgb(175, 175, 175);
+                        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+                    }
+                    &:focus {
+                        outline: none;
+                        border: 1px solid $red;
+                    }
+                }
+                .text-area {
+                    min-height: 60px;
+                }
+            }
+        }
+        .err--message {
+            display: block;
+            max-width: 350px;
+            font-size: 12px;
+            color: $error;
+            background-color: rgba(255, 0, 0, 0.096);
+            border: 1px solid $error;
+            border-radius: 4px;
+            padding: 0.3rem 1rem;
+            margin: 10px 0;
+        }
+        .btn-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            gap: 20px;
+        }
+        .submit-btn {
+            color: #fff;
+            padding: 0.7rem 2rem;
+            background-color: $red;
+            border: none;
+            border-radius: 8px;
+            transition: 0.3s;
+            border: 1px solid $red;
+            cursor: pointer;
+            &:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 8px 15px #00000025;
+                border: 1px solid $red;
+                background-color: #fff;
+                color: $red;
+            }
+        }
+        .cancel-btn {
+            color: $red;
+            background-color: #fff;
+            border: 1px solid $red;
+        }
+
+        .address--message {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            & > span {
+                display: block;
+                color: #757575;
+            }
+        }
+    }
+}

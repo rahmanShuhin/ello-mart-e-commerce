@@ -9,7 +9,7 @@ export default function GooglePlay() {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <g clip-path="url(#clip0-37)">
+      <g clipPath="url(#clip0-37)">
         <path
           d="M17.9236 8.23227C15.1356 6.67287 10.6607 4.16885 3.71978 0.282486C3.25183 -0.0265614 2.71342 -0.0670615 2.24823 0.090392L14.1569 11.999L17.9236 8.23227Z"
           fill="#32BBFF"

@@ -11,13 +11,16 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   isVerified: {
     type: Boolean,
     default: false,
   },
-  password: {
+  emailToken:{
     type: String,
-    required: true,
   },
   image: {
     type: String,
@@ -28,6 +31,21 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
+  },
+  address: {
+    division: String,
+    district: String,
+    city: String,
+    address: String,
+  },
+  birthday: {
+    type: Date,
+  },
+  mobile: {
+    type : Number,
+  },
+  gender: {
+    type : String 
   },
   time: {
     type: Date,
