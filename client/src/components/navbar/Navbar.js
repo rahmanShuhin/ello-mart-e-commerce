@@ -13,6 +13,7 @@ import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
 import DownFilledIcon from "../IconComponents/DownFilledIcon";
 import DownIcon from "../IconComponents/DownIcon";
+import LogoutIcon from "../IconComponents/LogoutIcon";
 import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import WishListIcon from "../IconComponents/WishList";
@@ -145,8 +146,22 @@ const Navbar = () => {
                 {
                   showProfile && 
                   <ul ref={profileRef} className='profile--dropdown'>
-                    <li onClick={goToProfile}>Profile</li>
-                    <li title="logout" onClick={handleLogout}>Logout</li>
+                    <li 
+                      title="profile"
+                      className="profile--dropdown--link" 
+                      onClick={goToProfile}
+                    >
+                      <UserIcon/>
+                      Profile
+                    </li>
+                    <li
+                      title="logout" 
+                      className="profile--dropdown--link"  
+                      onClick={handleLogout}
+                    >
+                      <LogoutIcon/>
+                      Logout
+                    </li>
                   </ul>
                 }
               </div>

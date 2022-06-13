@@ -222,6 +222,12 @@ $background-white-hover: #e2ecf5;
                         color: $red;
                     }
                 }
+                &--link {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 20px;
+                }
             }
         }
     }

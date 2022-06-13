@@ -40,9 +40,13 @@ const Address = () => {
         setErrMessage(false);
     }
 
-    const handleOpenForm = () => {
-        setOpenForm(true)
-    };
+    const handleOpenForm = () => setOpenForm(true);
+
+    const cancelForm = () => {
+        resetForm();
+        setOpenForm(false);
+        setErrMessage(false);
+    }
 
     const resetForm = () => {
         setDivision('')
@@ -214,7 +218,7 @@ const Address = () => {
                             </button>
                             {
                                 openForm &&
-                                <button onClick={()=>{setOpenForm(false);resetForm()}} className='submit-btn cancel-btn'>
+                                <button onClick={cancelForm} className='submit-btn cancel-btn'>
                                     cancel
                                 </button>
                             }
