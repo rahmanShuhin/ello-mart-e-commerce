@@ -6,7 +6,7 @@ import SuccessIcon from '../IconComponents/successIcon'
 const AlertBox = () => {
 
   const alertBoxType = useSelector(state => state.alert.type) || "";
-  const alertBoxMsg = useSelector(state => state.alert.message) || "successful";
+  const alertBoxMsg = useSelector(state => state.alert.message) || "";
 
   return (
     <>

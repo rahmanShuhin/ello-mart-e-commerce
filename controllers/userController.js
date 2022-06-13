@@ -5,6 +5,7 @@ const catchAsync =  require('../utils/catchAsync');
 const getToken = require('../helper/token');
 const crypto = require('crypto');
 const { transporter } = require('../helper/sendEmail');
+const moment = require('moment');
 
 
 // register new user
@@ -102,10 +103,16 @@ const verifyEmail = async(req, res) => {
 const updateUser = catchAsync(async(req, res, next) => {
   
   const {name, email, mobile, birthday, gender} = req.body;
+  
+  let newBirthday = birthday;
+
+  moment(newBirthday).format("DD-MM-YYYY");
+
+  (newBirthday === 'Invalid date') ? newBirthday = null : newBirthday
 
   const user = await User.findOneAndUpdate(
     
-    { email },{name, mobile, birthday, gender},{ new : true }).clone()
+    { email },{name, mobile, birthday : newBirthday, gender},{ new : true }).clone()
     
     user.password = undefined;
     user.emailToken = undefined;

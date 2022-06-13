@@ -22,7 +22,6 @@ const Address = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
-
      //getting division id from DIVITIONS array 
      const handleDivisionId = (e) => {
 
@@ -44,6 +43,15 @@ const Address = () => {
     const handleOpenForm = () => {
         setOpenForm(true)
     };
+
+    const resetForm = () => {
+        setDivision('')
+        setCity('')
+        setDistrict('')
+        setAddress('')
+        setDivisionId('')
+        setCityId('')
+    }
     
     const addAddressHandler = (e) => {
         e.preventDefault();
@@ -55,11 +63,8 @@ const Address = () => {
                 dispatch(alertType('success'));
                 dispatch(alertMessage(res.payload.data.message));
                 document.getElementById('address-form').reset();
-                setDivision('');
-                setCity('');
-                setDistrict('');
-                setAddress('');
-                setOpenForm(false)
+                resetForm();
+                setOpenForm(false);
             }) 
         }
         else{
@@ -209,7 +214,7 @@ const Address = () => {
                             </button>
                             {
                                 openForm &&
-                                <button onClick={()=>{setOpenForm(false)}} className='submit-btn cancel-btn'>
+                                <button onClick={()=>{setOpenForm(false);resetForm()}} className='submit-btn cancel-btn'>
                                     cancel
                                 </button>
                             }
