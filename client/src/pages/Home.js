@@ -1,11 +1,12 @@
-import React from "react";
-import CardContainer from "../components/CardContainer/CardContainer";
-import SupportCard from "../components/MinorComponents/SupportCard";
+import TopBanner from '../components/Home/Banner/TopBanner';
+import CardContainer from "../components/Home/CardContainer/CardContainer";
+import SupportCard from "../components/Home/MinorComponents/SupportCard";
 
-const Home = ({setModalType}) => {
+const Home = () => {
   return (
     <div className="container">
-      <CardContainer setModalType={setModalType}/>
+      <TopBanner/>
+      <CardContainer/>
       <SupportCard />
     </div>
   );

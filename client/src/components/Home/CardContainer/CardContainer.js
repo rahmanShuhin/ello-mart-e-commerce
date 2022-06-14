@@ -1,9 +1,8 @@
-import React from 'react'
-import { PRODUCT_DATA } from '../../assets/data/productData'
-import Card from '../Card/Card'
-import './_cardContainer.scss'
+import { PRODUCT_DATA } from '../../../assets/data/productData';
+import Card from '../../Card/Card';
+import './_cardContainer.scss';
 
-const CardContainer = ({setModalType}) => {
+const CardContainer = () => {
   return (
     <section className="card--container">
         <div className="card--container--header">
