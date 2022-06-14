@@ -146,20 +146,24 @@ const Navbar = () => {
                 {
                   showProfile && 
                   <ul ref={profileRef} className='profile--dropdown'>
-                    <li 
-                      title="profile"
+                    <li
                       className="profile--dropdown--link" 
                       onClick={goToProfile}
                     >
-                      <UserIcon/>
+                      <span>
+                        <UserIcon/>
+                      </span>
+                      
                       Profile
                     </li>
-                    <li
-                      title="logout" 
+                    <li 
                       className="profile--dropdown--link"  
                       onClick={handleLogout}
                     >
-                      <LogoutIcon/>
+                      <span>
+                        <LogoutIcon/>
+                      </span>
+          
                       Logout
                     </li>
                   </ul>

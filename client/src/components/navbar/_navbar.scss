@@ -198,9 +198,8 @@ $background-white-hover: #e2ecf5;
                 z-index: 99;
                 background-color: #fff;
                 padding: 10px 0;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.18);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
                 border-radius: 0.5em;
-                color: #808080;
                 &::before {
                     content: "";
                     position: absolute;
@@ -214,19 +213,28 @@ $background-white-hover: #e2ecf5;
                     transform: translateX(-50%);
                     z-index: 99;
                 }
-                & > li {
-                    padding: 5px 15px;
-                    cursor: pointer;
-                    &:hover {
-                        // border-bottom: 1px solid #cccccc;
-                        color: $red;
-                    }
-                }
                 &--link {
                     display: flex;
-                    justify-content: space-between;
                     align-items: center;
-                    gap: 20px;
+                    gap: 8px;
+                    color: #515151;
+                    padding: 5px 15px 8px 8px;
+                    cursor: pointer;
+                    &:hover {
+                        color: $red;
+                        & > span {
+                            & > svg {
+                                path {
+                                    fill: $red;
+                                }
+                            }
+                        }
+                    }
+                    & > span {
+                        min-width: 31px;
+                        display: grid;
+                        place-items: center;
+                    }
                 }
             }
         }

@@ -105,9 +105,9 @@ const Address = () => {
                                     <td>{user?.name}</td>
                                     <td>{user?.address?.address}</td>
                                     <td>
-                                        {user?.address?.district}{' - '}
+                                        {user?.address?.division}{' - '}
                                         {user?.address?.city}{' - '}
-                                        {user?.address?.division} 
+                                        {user?.address?.district}
                                     </td>
                                     <td>{(user?.mobile) ? (`0${user?.mobile}`) : 'not added'}</td>
                                     <td>
