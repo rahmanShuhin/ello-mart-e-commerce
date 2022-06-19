@@ -37,7 +37,7 @@
     display: flex;
     gap: 10px;
     position: absolute;
-    bottom: 12px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     @media (max-width: 1280px) {
@@ -53,21 +53,21 @@
       cursor: pointer;
     }
     .dot {
-      height: 15px;
-      width: 15px;
+      height: 13px;
+      width: 13px;
       border-radius: 50%;
-      background: rgb(255, 255, 255);
+      background: #ffffff5e;
       @media (max-width: 426px) {
         height: 8px;
         width: 8px;
       }
     }
     .dot-active {
-      height: 15px;
-      width: 15px;
-      border: 2px solid #ffffff;
+      height: 13px;
+      width: 13px;
+      border: 1px solid #c7c7c7;
       border-radius: 50%;
-      background: rgb(44, 44, 44);
+      background: #2c2c2c2a;
       @media (max-width: 426px) {
         border: 1px solid #ffffff;
         height: 8px;
