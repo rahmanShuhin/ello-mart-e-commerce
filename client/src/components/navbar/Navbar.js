@@ -23,8 +23,11 @@ import "./_navbar.scss";
 const Navbar = () => {
 
   const [showAllCategories, setShowAllCategories] = useState(false);
+  const [showMenuCategories, setShowMenuCategories] = useState(true);
   const [showProfile, setShowProfile] = useState(false);
- 
+
+
+  const menuCategoryRef = useRef(null);
   const categoryRef = useRef(null);
   const profileRef = useRef(null);
   const dispatch = useDispatch();
@@ -39,7 +42,8 @@ const Navbar = () => {
   let isLogged;
 
   (user === null) ? isLogged = false : isLogged = user.isVerified || false;
-    
+
+  useOnClickOutside(menuCategoryRef,()=> setShowMenuCategories(false));  
   useOnClickOutside(categoryRef,()=> setShowAllCategories(false));
   useOnClickOutside(profileRef,()=> setShowProfile(false));
  
@@ -88,13 +92,20 @@ const Navbar = () => {
                 <img src={logo} alt="" />
               </Link>
             </div>
-            <div className="navbar--wrapper--header--category">
-              <div>
+            <div className= 'navbar--wrapper--header--category'>
+              <div 
+                onClick={()=>setShowMenuCategories(!showMenuCategories)}
+                className={showMenuCategories ? 'mouse-pointer d-flex' : 'd-flex'}
+                >
                 <CategoryIcon />
-              </div>
-              <div>
                 <DownFilledIcon />
               </div>
+              <ul ref={menuCategoryRef} className={showMenuCategories ? "menu-dropdown" : ""}>
+                  {showMenuCategories &&
+                    categories.map((category) => (
+                      <li key={category.index}>{category.text}</li>
+                    ))}
+                </ul>
             </div>
           </div>
           <div className="navbar--wrapper--search">
