@@ -8,6 +8,7 @@ import Navbar from "./components/navbar/Navbar";
 import Product from "./components/Product/Product";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import SideBarCart from "./components/SideCart/SideBarCart";
+import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import "./styles/App.scss";
@@ -28,6 +29,7 @@ function App() {
           <Route path={"/product"} element={<Product />}></Route>
           <Route path={"/sign-up"} element={<Registration />}></Route>
           <Route path={"/profile"} element={<Profile />}></Route>
+          <Route path={"/checkout"} element={<Checkout />}></Route>
         </Routes>
         <Footer />
 
