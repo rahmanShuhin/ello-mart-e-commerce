@@ -1,48 +1,45 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AlertBox from './components/AlertBox/AlertBox';
+import AlertBox from "./components/AlertBox/AlertBox";
 import Footer from "./components/footer/Footer";
-import Modal from './components/Modal/Modal';
-import Registration from './components/Modal/RegistrationModal/RegistrationModal';
+import Modal from "./components/Modal/Modal";
+import Registration from "./components/Modal/RegistrationModal/RegistrationModal";
 import Navbar from "./components/navbar/Navbar";
 import Product from "./components/Product/Product";
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import SideBarCart from "./components/SideCart/SideBarCart";
+import Checkout from "./pages/Checkout";
 import Home from "./pages/Home";
-import Profile from './pages/Profile';
+import Profile from "./pages/Profile";
 import "./styles/App.scss";
 
-
 function App() {
-
-  const openModal = useSelector((state)=>state.modal.value)
-  const alertBoxType = useSelector(state => state.alert.type)
+  const openModal = useSelector((state) => state.modal.value);
+  const alertBoxType = useSelector((state) => state.alert.type);
 
   return (
-    
     <div className="App">
-      { alertBoxType === 'success' &&  <AlertBox /> } 
-      { alertBoxType === 'error' &&  <AlertBox /> }      
+      {alertBoxType === "success" && <AlertBox />}
+      {alertBoxType === "error" && <AlertBox />}
       <BrowserRouter>
-        <ScrollToTop/>
-        <Navbar/>
+        <ScrollToTop />
+        <Navbar />
         <Routes>
-          <Route path={"/"} element={<Home/>} />
-          <Route path={"/product"} element={<Product/>}></Route>
-          <Route path={"/sign-up"} element={<Registration/>}></Route>
-          <Route path={"/profile"} element={<Profile/>}></Route>
+          <Route path={"/"} element={<Home />} />
+          <Route path={"/product"} element={<Product />}></Route>
+          <Route path={"/sign-up"} element={<Registration />}></Route>
+          <Route path={"/profile"} element={<Profile />}></Route>
+          <Route path={"/checkout"} element={<Checkout />}></Route>
         </Routes>
         <Footer />
 
-        <SideBarCart/>
-       
-       {/*----   All modal will this component ----*/}
-        { openModal && <Modal/> }
-        
-        </BrowserRouter>
+        <SideBarCart />
+
+        {/*----   All modal will this component ----*/}
+        {openModal && <Modal />}
+      </BrowserRouter>
     </div>
-  
-  ); 
+  );
 }
 
 export default App;
