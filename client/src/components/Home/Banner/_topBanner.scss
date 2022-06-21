@@ -2,6 +2,8 @@
   position: relative;
   height: 344px;
   border-radius: 8px;
+  margin-left: 230px;
+  max-width: 100%;
   @media (max-width: 1026px) {
     height: 270px;
   }
@@ -56,7 +58,7 @@
       height: 13px;
       width: 13px;
       border-radius: 50%;
-      background: #ffffff5e;
+      background: #ffffffbb;
       @media (max-width: 426px) {
         height: 8px;
         width: 8px;
@@ -65,9 +67,9 @@
     .dot-active {
       height: 13px;
       width: 13px;
-      border: 1px solid #c7c7c7;
+      border: 2px solid #ffffff;
       border-radius: 50%;
-      background: #2c2c2c2a;
+      background: #2c2c2c6a;
       @media (max-width: 426px) {
         border: 1px solid #ffffff;
         height: 8px;

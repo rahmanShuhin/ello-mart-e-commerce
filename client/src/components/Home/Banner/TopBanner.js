@@ -1,5 +1,4 @@
 import { memo, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import BannerImg from '../../../assets/data/BannerImg';
 
 const TopBanner = () => {
@@ -24,9 +23,6 @@ const TopBanner = () => {
     
     return (
         <>
-            <Helmet>
-                <link rel="preload" href={BannerImg[0].img} as="image"/>
-            </Helmet>
             <div className="top-banner-section">
                 {
                     BannerImg.map((item,index)=>(

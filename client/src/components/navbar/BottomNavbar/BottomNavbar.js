@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { categories } from './../../../assets/data/navdata';
 import { useOnClickOutsideWithSecondRef } from './../../../hooks/useOnClickOutsideWithSecondRef';
 import CategoryIcon from './../../IconComponents/CategoryIcon';
@@ -11,12 +11,14 @@ const BottomNavbar = () => {
     const [activeCategory,setActiveCategory] = useState('');
     const [open,setOpen] = useState(false);
 
+    const navigate = useNavigate();
     const location = useLocation();
+    const categoryRef = useRef(null);
     const categoryDropdownRef = useRef(null);
-    const newRef = useRef(null)
 
-    useOnClickOutsideWithSecondRef(categoryDropdownRef,newRef,()=>setOpen(false));
+    useOnClickOutsideWithSecondRef(categoryDropdownRef,categoryRef,()=>setOpen(false));
 
+    //-------getting route path ------
     useEffect(()=>{
         setActiveCategory(location.pathname);
     },[location.pathname])
@@ -25,7 +27,7 @@ const BottomNavbar = () => {
     <div className="bottom-navbar">
         <div  className="bottom-navbar-wrapper container">
             <div
-                ref={newRef}
+                ref={categoryRef}
                 className={`${open ? 'active-category' : ''}
                 bottom-navbar-category`}
                 onClick={()=>setOpen(!open)}
@@ -64,7 +66,7 @@ const BottomNavbar = () => {
             } 
             <div className='bottom-navbar-links-wrapper'>
                 <ul>
-                    <li>Home</li>
+                    <li onClick={()=> navigate('/')}>Home</li>
                     <li>Trending</li>
                     <li>New arrivel</li>
                     <li>Limited edition</li>
