@@ -19,8 +19,9 @@ const ProductDetailsModal = () => {
                 <div className="Product--Details--left--imgGallery">
                     {fakeData.images.map((img, index) => (
                     <div
+                        key={img}
                         onClick={() => setActiveImg(index)}
-                        className={index === activeImg && "active"}
+                        className={index === activeImg ? "active" : ''}
                     >
                         <img src={img} alt="" />
                     </div>
@@ -52,7 +53,8 @@ const ProductDetailsModal = () => {
                     <div>
                     {fakeData.sizes.map((siz, index) => (
                         <p
-                        className={index === size && "active"}
+                        key={siz}
+                        className={index === size ? "active" : ''}
                         onClick={() => setSize(index)}
                         >
                         {siz}
@@ -67,8 +69,9 @@ const ProductDetailsModal = () => {
                     </p>
                     <div>
                     {fakeData.colors.map((col, index) => (
-                        <span className={index === color && "active"}>
+                        <span className={index === color ? "active" : ''}>
                         <span
+                            key={col}
                             style={{ backgroundColor: col }}
                             onClick={() => setColor(index)}
                         />

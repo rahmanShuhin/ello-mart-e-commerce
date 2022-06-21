@@ -2,15 +2,17 @@ import { useRef, useState } from 'react';
 import { categories } from "../../../../assets/data/navdata";
 import DownIcon from "../../../IconComponents/DownIcon";
 import SearchIcon from "../../../IconComponents/SearchIcon";
-import { useOnClickOutside } from './../../../../hooks/useOnClickOutside';
+import { useOnClickOutsideWithSecondRef } from './../../../../hooks/useOnClickOutsideWithSecondRef';
 
 const NavbarSearch = () => {
 
     const [showAllCategories, setShowAllCategories] = useState(false);
 
     const categoryRef = useRef(null);
+    const categoryTextRef = useRef(null)
 
-    useOnClickOutside(categoryRef,()=> setShowAllCategories(false));
+    useOnClickOutsideWithSecondRef(categoryRef,categoryTextRef,
+      ()=> setShowAllCategories(false));
 
   return (
         <div className="navbar--wrapper--search">
@@ -23,8 +25,9 @@ const NavbarSearch = () => {
               </div>
               <div className="navbar--wrapper--search--container--dropdown">
     
-                <div 
-                    className={showAllCategories ? 'mouse-pointer' : ""} onClick={() =>    setShowAllCategories(true)}
+                <div
+                    ref={categoryTextRef} 
+                    onClick={() => setShowAllCategories(!showAllCategories)}
                 >
                     <h4>All categories</h4>
                     <span className={showAllCategories ? "dropdown--icon rotate" : "dropdown--icon"}>

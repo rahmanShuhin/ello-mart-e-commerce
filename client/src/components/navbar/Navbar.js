@@ -2,7 +2,6 @@
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { alertMessage, alertType } from '../../redux/alertBox';
 import { logout } from '../../redux/Auth';
 import { openModal } from "../../redux/Modal";
@@ -11,6 +10,7 @@ import BagIcon from "../IconComponents/BagIcon";
 import LogoutIcon from "../IconComponents/LogoutIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import WishListIcon from "../IconComponents/WishList";
+import { useOnClickOutsideWithSecondRef } from './../../hooks/useOnClickOutsideWithSecondRef';
 import BottomNavbar from "./BottomNavbar/BottomNavbar";
 import Navbarlogo from "./MainNavbar/NavbarLogo/Navbarlogo";
 import NavbarSearch from "./MainNavbar/NavbarSearch/NavbarSearch";
@@ -24,22 +24,24 @@ const Navbar = () => {
   const [showProfile, setShowProfile] = useState(false);
 
   const profileRef = useRef(null);
+  const profileLogoRef = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const goToHomepage = () => navigate('/');
   const goToProfile = () => {navigate('/profile'); setShowProfile(false)};
 
-  const user = JSON.parse(localStorage.getItem("user")) 
-  
+  useOnClickOutsideWithSecondRef(profileRef,profileLogoRef,()=> setShowProfile(false));
 
+  const user = JSON.parse(localStorage.getItem("user")) 
+
+
+  //----- verifying user -------
   let isLogged;
 
   (user === null) ? isLogged = false : isLogged = user.isVerified || false;
   
 
-  useOnClickOutside(profileRef,()=> setShowProfile(false));
- 
   const handleLogout = () =>{
       dispatch(logout()).then((res)=>{
           if(res.payload.status === 202){
@@ -76,9 +78,10 @@ const Navbar = () => {
               isLogged ?
               <div style={{position:"relative"}}>
                 <div 
+                    ref={profileLogoRef}
                     title="profile" 
-                    onClick={()=>{setShowProfile(true)}} 
-                    className={showProfile ? "mouse-pointer navicon" : "navicon"}
+                    onClick={()=>{setShowProfile(!showProfile)}} 
+                    className="navicon"
                 > 
                   <UserIcon />
                 </div>
