@@ -1,77 +1,80 @@
 .top-banner-section {
-    position: relative;
+  position: relative;
+  height: 344px;
+  border-radius: 8px;
+  margin-left: 230px;
+  max-width: 100%;
+  @media (max-width: 1026px) {
+    height: 270px;
+  }
+  @media (max-width: 768px) {
+    height: 270px;
+  }
+  @media (max-width: 426px) {
+    height: 105px;
+  }
+  img {
     height: 344px;
     @media (max-width: 1026px) {
-        height: 270px;
-    }
-    @media (max-width: 768px) {
-        height: 270px;
+      height: 260px;
     }
     @media (max-width: 426px) {
-        height: 105px;
+      height: 100px;
     }
-    img {
-        height: 344px;
-        @media (max-width: 1026px) {
-            height: 260px;
-        }
-        @media (max-width: 426px) {
-            height: 100px;
-        }
+  }
+  content-visibility: auto;
+  .banner-container {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 0.6s ease-in-out;
+  }
+  .b-active {
+    opacity: 1;
+  }
+  .dots-container {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    @media (max-width: 1280px) {
+      bottom: 25px;
     }
-    content-visibility: auto;
-    .banner-container {
-        position: absolute;
-        width: 100%;
-        height: auto;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        transition: 0.6s ease-in-out;
+    @media (max-width: 768px) {
+      bottom: 52px;
     }
-    .b-active {
-        opacity: 1;
+    @media (max-width: 426px) {
+      bottom: 12px;
     }
-    .dots-container {
-        display: flex;
-        gap: 10px;
-        position: absolute;
-        bottom: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-        @media (max-width: 1280px) {
-            bottom: 25px;
-        }
-        @media (max-width: 768px) {
-            bottom: 52px;
-        }
-        @media (max-width: 426px) {
-            bottom: 12px;
-        }
-        &:hover {
-            cursor: pointer;
-        }
-        .dot {
-            height: 15px;
-            width: 15px;
-            border-radius: 50%;
-            background: rgb(255, 255, 255);
-            @media (max-width: 426px) {
-                height: 8px;
-                width: 8px;
-            }
-        }
-        .dot-active {
-            height: 15px;
-            width: 15px;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            background: rgb(44, 44, 44);
-            @media (max-width: 426px) {
-                border: 1px solid #ffffff;
-                height: 8px;
-                width: 8px;
-            }
-        }
+    &:hover {
+      cursor: pointer;
     }
+    .dot {
+      height: 13px;
+      width: 13px;
+      border-radius: 50%;
+      background: #ffffffbb;
+      @media (max-width: 426px) {
+        height: 8px;
+        width: 8px;
+      }
+    }
+    .dot-active {
+      height: 13px;
+      width: 13px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      background: #2c2c2c6a;
+      @media (max-width: 426px) {
+        border: 1px solid #ffffff;
+        height: 8px;
+        width: 8px;
+      }
+    }
+  }
 }

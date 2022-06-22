@@ -36,7 +36,7 @@ function App() {
 
         <SideBarCart/>
        
-       {/*----   All modal will this component ----*/}
+       {/*----   All modal will use this component ----*/}
         { openModal && <Modal/> }
         
         </BrowserRouter>

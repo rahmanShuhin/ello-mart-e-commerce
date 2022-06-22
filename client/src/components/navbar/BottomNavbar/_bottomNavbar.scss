@@ -1,0 +1,112 @@
+.bottom-navbar {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  .bottom-navbar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 10px;
+    .bottom-navbar-category {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 10px 6px 15px;
+      box-shadow: 0 1px 3px #80808047;
+      border-radius: 6px;
+      cursor: pointer;
+      & > span {
+        font-weight: 600;
+        font-size: 14px;
+        padding: 0 5px;
+        color: $dark-gray;
+      }
+      .down-icon {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3px;
+        transition: 0.1s;
+      }
+      .rotate {
+        transform: rotate(-90deg);
+      }
+    }
+    &-dropdown {
+      position: absolute;
+      top: 3.5rem;
+      left: 9px;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      height: 344px;
+      min-width: 230px;
+      border-radius: 8px;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0px 2px 12px #00000013;
+      z-index: 100;
+      & > li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0rem 0;
+        padding: 0.5rem 1.5rem;
+        color: #7d879c;
+        font-size: 14px;
+        &:hover {
+          background: $background-white;
+          color: $red;
+          cursor: pointer;
+          & > ul {
+            display: block;
+          }
+        }
+        & > ul {
+          display: none;
+          position: absolute;
+          top: 0;
+          right: -100%;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+          height: 344px;
+          min-width: 230px;
+          border-radius: 8px;
+          background-color: rgb(255, 255, 255);
+          box-shadow: 0px 5px 12px #00000023;
+          z-index: 996;
+          li {
+            margin: 0rem 0;
+            padding: 0.5rem 1.5rem;
+            color: #7d879c;
+            font-size: 14px;
+            &:hover {
+              background: $background-white;
+              color: $red;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    .bottom-navbar-links-wrapper {
+      & > ul {
+        display: flex;
+        gap: 50px;
+        & > li {
+          font-size: 14px;
+          padding: 5px 10px;
+          color: $light-gray;
+          border: 1px solid transparent;
+          transition: 0.2s ease-in-out;
+          cursor: pointer;
+          &:hover {
+            color: $red;
+            border-top: 1px solid $red;
+          }
+        }
+      }
+    }
+    .active-category {
+      box-shadow: 0 2px 3px rgba(8, 8, 8, 0.2);
+    }
+  }
+}

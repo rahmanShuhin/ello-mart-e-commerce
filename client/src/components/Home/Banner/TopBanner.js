@@ -1,22 +1,20 @@
-import { memo, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { useEffect, useState } from 'react';
 import BannerImg from '../../../assets/data/BannerImg';
 
 const TopBanner = () => {
     const [slideIndex , setSlideIndex] = useState(0);
 
     useEffect(() => {
-        let index = 0
         let timer = setInterval(() => {
-            setSlideIndex(index++)
-            if(index === BannerImg.length) {
-                index = 0;
+            setSlideIndex(prev => prev + 1)
+            if(slideIndex === BannerImg.length - 1) {
+                setSlideIndex(0)
             }
         }, 2000)
         return (() => {
             clearInterval(timer)
         })
-    }, [])
+    }, [slideIndex])
 
     const handleDot = (index) => {
         setSlideIndex(index);
@@ -24,14 +22,13 @@ const TopBanner = () => {
     
     return (
         <>
-            <Helmet>
-                <link rel="preload" href={BannerImg[0].img} as="image"/>
-            </Helmet>
             <div className="top-banner-section">
                 {
                     BannerImg.map((item,index)=>(
                         <div key={index} className={(slideIndex === index) ? "banner-container b-active" : "banner-container"}>
-                            <img src={item.img} alt="" width="100%" loading={item.loading} style={{objectFit:"cover"}}/>
+                            <a href={item.link}>
+                                <img src={item.img} alt="" width="100%" loading={item.loading} style={{objectFit:"cover"}}/>
+                            </a>
                         </div>
                     ))
                 }
@@ -47,4 +44,4 @@ const TopBanner = () => {
     )
 }
 
-export default memo(TopBanner);
+export default TopBanner;
