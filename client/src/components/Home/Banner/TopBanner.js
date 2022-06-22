@@ -7,7 +7,7 @@ const TopBanner = () => {
     useEffect(() => {
         let index = 0
         let timer = setInterval(() => {
-            setSlideIndex(index++)
+            setSlideIndex(prev => prev + 1)
             if(index === BannerImg.length) {
                 index = 0;
             }
@@ -27,7 +27,9 @@ const TopBanner = () => {
                 {
                     BannerImg.map((item,index)=>(
                         <div key={index} className={(slideIndex === index) ? "banner-container b-active" : "banner-container"}>
-                            <img src={item.img} alt="" width="100%" loading={item.loading} style={{objectFit:"cover"}}/>
+                            <a href={item.link}>
+                                <img src={item.img} alt="" width="100%" loading={item.loading} style={{objectFit:"cover"}}/>
+                            </a>
                         </div>
                     ))
                 }
