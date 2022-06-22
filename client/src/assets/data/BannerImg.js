@@ -21,19 +21,19 @@ const BannerImg = [
     },
     {
         id : 4,
-        img : require('../images/banner-1.jpg'),
+        img : require('../images/banner-4.jpg'),
         link:'/product',
         loading: 'lazy'
     },
     {
         id : 5,
-        img : require('../images/banner-2.jpg'),
+        img : require('../images/banner-5.jpg'),
         link:'/product',
         loading: 'lazy'
     },
     {
         id : 6,
-        img : require('../images/banner-3.jpg'),
+        img : require('../images/banner-6.jpg'),
         link:'/product',
         loading: 'lazy'
     }

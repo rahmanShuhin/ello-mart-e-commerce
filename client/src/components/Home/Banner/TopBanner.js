@@ -10,7 +10,7 @@ const TopBanner = () => {
             if(slideIndex === BannerImg.length - 1) {
                 setSlideIndex(0)
             }
-        }, 2000)
+        }, 2500)
         return (() => {
             clearInterval(timer)
         })
