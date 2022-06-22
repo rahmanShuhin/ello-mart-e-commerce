@@ -1,0 +1,21 @@
+.cartitem-container {
+  //   width: 50vw;
+  margin-right: right;
+  background-color: rgba(25, 0, 255, 0.046);
+}
+.cartitem {
+  display: flex;
+  width: 40vw;
+  &--coymponent {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 1rem;
+    &--info,
+    &--action {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

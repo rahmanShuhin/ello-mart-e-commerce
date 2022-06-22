@@ -1,1 +1,27 @@
+.checkout {
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  &--arm {
+    width: 2.5rem;
+    height: 0.25rem;
 
+    margin-top: auto;
+    margin-bottom: auto;
+    color: $red;
+    background-color: #ffe1e6;
+  }
+  &--content {
+    padding: 0.5rem 1rem;
+    background-color: #ffe1e6;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: $red;
+    border-radius: 18rem;
+
+    &:active {
+      background-color: $red;
+      color: white;
+    }
+  }
+}

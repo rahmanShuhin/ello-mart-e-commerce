@@ -1686,4 +1686,35 @@ input::-webkit-inner-spin-button {
 .text {
   color: #f1f1f1;
 }
+
+.checkout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkout--arm {
+  width: 2.5rem;
+  height: 0.25rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #e94560;
+  background-color: #ffe1e6;
+}
+
+.checkout--content {
+  padding: 0.5rem 1rem;
+  background-color: #ffe1e6;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: #e94560;
+  border-radius: 18rem;
+}
+
+.checkout--content:active {
+  background-color: #e94560;
+  color: white;
+}
 /*# sourceMappingURL=App.css.map */
