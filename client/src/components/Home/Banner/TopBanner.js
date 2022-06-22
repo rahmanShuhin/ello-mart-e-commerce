@@ -1,21 +1,20 @@
-import { memo, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import BannerImg from '../../../assets/data/BannerImg';
 
 const TopBanner = () => {
     const [slideIndex , setSlideIndex] = useState(0);
 
     useEffect(() => {
-        let index = 0
         let timer = setInterval(() => {
             setSlideIndex(prev => prev + 1)
-            if(index === BannerImg.length) {
-                index = 0;
+            if(slideIndex === BannerImg.length - 1) {
+                setSlideIndex(0)
             }
         }, 2000)
         return (() => {
             clearInterval(timer)
         })
-    }, [])
+    }, [slideIndex])
 
     const handleDot = (index) => {
         setSlideIndex(index);
@@ -45,4 +44,4 @@ const TopBanner = () => {
     )
 }
 
-export default memo(TopBanner);
+export default TopBanner;
