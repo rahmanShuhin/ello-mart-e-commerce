@@ -1,8 +1,8 @@
 import React from "react";
-import CreditIcon from "../IconComponents/CreditIcon";
-import HeadsetIcon from "../IconComponents/HeadsetIcon";
-import ShieldIcon from "../IconComponents/ShieldIcon";
-import TruckIcon from "../IconComponents/TruckIcon";
+import CreditIcon from "../../IconComponents/CreditIcon";
+import HeadsetIcon from "../../IconComponents/HeadsetIcon";
+import ShieldIcon from "../../IconComponents/ShieldIcon";
+import TruckIcon from "../../IconComponents/TruckIcon";
 import "./_supportCard.scss";
 export default function SupportCard() {
   return (

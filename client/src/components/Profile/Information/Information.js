@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { alertMessage, alertType } from '../../../redux/alertBox';
 import { updateUser } from '../../../redux/Auth';
@@ -12,6 +12,9 @@ const Information = () => {
     const [birthday,setBirthday] = useState('');
     const [gender,setGender] = useState('');
     const [isEditable, setIsEditable] = useState(false);
+    
+    const dispatch = useDispatch();
+    const birthdayRef = useRef();
 
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -19,33 +22,37 @@ const Information = () => {
         setName(user.name);
         setEmail(user.email);
         setMobile(user.mobile);
-        setBirthday(moment(user.birthday).format("MMMM Do YYYY")); //changing date format
-        setGender(user.gender); 
-        
-
+        setBirthday(moment(user.birthday).format("DD-MM-YYYY"));//changing date format  
+        setGender(user?.gender); 
     }, [user.birthday, user.email, user.gender, user.mobile, user.name])
 
-    const handleEdit = () => setIsEditable(!isEditable);
-
-
-    const dispatch = useDispatch();
+    const handleEdit = () => {
+        if(!user?.birthday){
+            birthdayRef.current.value = '';
+        }  
+        setBirthday(moment(user.birthday).format("DD-MM-YYYY"));
+        setIsEditable(!isEditable);
+        
+    };
+   
     
     const handleUpdate = (e) => {
         e.preventDefault();
         dispatch(updateUser({name,email,mobile,birthday,gender})).then(
             (res) => {
+                // if()
                 dispatch(alertType('success'));
                 dispatch(alertMessage(res.payload.data.status));
                 localStorage.setItem('user',JSON.stringify(res.payload.data.user))
                 setIsEditable(false);
-                // console.log(res);
+                console.log(res);
             }
-        )
+        ).catch(err => console.log(err))
     dispatch(alertType(''));
     }
-    const mobileInput = {
+    // const handleMobileInput = {
 
-    }
+    // }
         
   return (
     <>
@@ -79,11 +86,13 @@ const Information = () => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="mobile">Mobile (+880)</label><br/>
-                            <div style={mobileInput}>
+                            <div>
                                 <input   
                                     className={isEditable ? 'form-input editable' : 'form-input'}
                                     type="number" 
-                                    id="mobile" 
+                                    id="mobile"
+                                    min="10"
+                                    max="10" 
                                     disabled={isEditable ? false : true}
                                     value={mobile}
                                     onChange={(e)=>setMobile(e.target.value)}
@@ -94,16 +103,29 @@ const Information = () => {
                     </div>
                     <div>
                         <div className="form-group">
-                            <label htmlFor="birthday">Birthday</label><br/>          
+                            <label htmlFor="birthday">Birthday</label><br/> 
+                            {
+                                (isEditable) ?
                                 <input  
-                                    className={isEditable ? 'form-input editable' : 'form-input'} 
-                                    type={isEditable ? "date" : "text"} 
-                                    id="birthday" 
-                                    disabled={isEditable ? false : true}
+                                    className='form-input editable' 
+                                    type="date" 
+                                    id="birthday"
+                                    ref={birthdayRef} 
                                     value={birthday}
-                                    min="1958-01-01" max="2012-12-31"
+                                    min="1958-01-01" max="2012-12-31" 
                                     onChange={(e)=>setBirthday(e.target.value)} 
-                                /> 
+                                /> :
+                                <input  
+                                    className='form-input' 
+                                    type="text"
+                                    ref={birthdayRef}
+                                    value={user.birthday && birthday} 
+                                    disabled={true}
+                                    placeholder='Add Birthday'
+                                />
+
+                            }         
+                                 
                         </div>
                         <div className="form-group">
                             <label htmlFor="gender">Gender</label><br/>

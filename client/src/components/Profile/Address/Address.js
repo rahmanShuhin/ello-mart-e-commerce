@@ -22,7 +22,6 @@ const Address = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
-
      //getting division id from DIVITIONS array 
      const handleDivisionId = (e) => {
 
@@ -41,9 +40,22 @@ const Address = () => {
         setErrMessage(false);
     }
 
-    const handleOpenForm = () => {
-        setOpenForm(true)
-    };
+    const handleOpenForm = () => setOpenForm(true);
+
+    const cancelForm = () => {
+        resetForm();
+        setOpenForm(false);
+        setErrMessage(false);
+    }
+
+    const resetForm = () => {
+        setDivision('')
+        setCity('')
+        setDistrict('')
+        setAddress('')
+        setDivisionId('')
+        setCityId('')
+    }
     
     const addAddressHandler = (e) => {
         e.preventDefault();
@@ -55,11 +67,8 @@ const Address = () => {
                 dispatch(alertType('success'));
                 dispatch(alertMessage(res.payload.data.message));
                 document.getElementById('address-form').reset();
-                setDivision('');
-                setCity('');
-                setDistrict('');
-                setAddress('');
-                setOpenForm(false)
+                resetForm();
+                setOpenForm(false);
             }) 
         }
         else{
@@ -96,9 +105,9 @@ const Address = () => {
                                     <td>{user?.name}</td>
                                     <td>{user?.address?.address}</td>
                                     <td>
-                                        {user?.address?.district}{' - '}
+                                        {user?.address?.division}{' - '}
                                         {user?.address?.city}{' - '}
-                                        {user?.address?.division} 
+                                        {user?.address?.district}
                                     </td>
                                     <td>{(user?.mobile) ? (`0${user?.mobile}`) : 'not added'}</td>
                                     <td>
@@ -209,7 +218,7 @@ const Address = () => {
                             </button>
                             {
                                 openForm &&
-                                <button onClick={()=>{setOpenForm(false)}} className='submit-btn cancel-btn'>
+                                <button onClick={cancelForm} className='submit-btn cancel-btn'>
                                     cancel
                                 </button>
                             }

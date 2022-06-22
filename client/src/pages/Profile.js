@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import LocationIcon from "../components/IconComponents/LocationIcon";
 import LogoutIcon from "../components/IconComponents/LogoutIcon";
@@ -8,30 +7,13 @@ import ProfileIcon from "../components/IconComponents/ProfileIcon";
 import Address from '../components/Profile/Address/Address';
 import Information from '../components/Profile/Information/Information';
 import Order from '../components/Profile/Order/Order';
-import { alertMessage, alertType } from '../redux/alertBox';
-import { logout } from '../redux/Auth';
 
 
 const Profile = () => {
 
     const [active, setActive] = useState('info');
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-   
-    const handleLogout = () =>{
-        dispatch(logout()).then((res)=>{
-            if(res.payload.status === 202){
-                dispatch(alertType('success'))
-                dispatch(alertMessage(res.payload.data.message))
-                localStorage.removeItem('user')
-                navigate('/')
-                // console.log(res)
-            }
-        })
-        dispatch(alertType(''))
-   }
-
 
   return (
       <section className='profile--main'>
@@ -65,11 +47,11 @@ const Profile = () => {
                             </span> 
                             My orders 
                         </li>
-                        <li onClick={handleLogout}>
-                            <span>
+                        <li onClick={()=> navigate('/')}>
+                            <span className='rotate'>
                                 <LogoutIcon/>
                             </span>
-                            Logout
+                            back to home
                         </li>
                     </ul>
                     

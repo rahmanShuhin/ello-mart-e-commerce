@@ -33,17 +33,6 @@
                     color: $profile-text-color;
                     border: 1px solid transparent;
                     cursor: pointer;
-                    &:last-child {
-                        color: $red;
-                        background-color: rgba(255, 0, 0, 0.04);
-                        & > span {
-                            & > svg {
-                                path {
-                                    fill: $red;
-                                }
-                            }
-                        }
-                    }
                     &:hover {
                         background-color: $profile-background-hover;
                         color: $profile-text-color-hover;
@@ -89,5 +78,8 @@
             margin-top: 1rem;
             padding: 1.5rem 3rem;
         }
+    }
+    .rotate {
+        transform: rotate(180deg);
     }
 }

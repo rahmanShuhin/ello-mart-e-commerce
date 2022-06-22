@@ -4,12 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { categories } from "../../assets/data/navdata";
 import logo from "../../assets/icons/NinjaMartMain.svg";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { alertMessage, alertType } from "../../redux/alertBox";
+import { logout } from "../../redux/Auth";
 import { openModal } from "../../redux/Modal";
 import { openCart } from "../../redux/SidebarCart";
 import BagIcon from "../IconComponents/BagIcon";
 import CategoryIcon from "../IconComponents/CategoryIcon";
 import DownFilledIcon from "../IconComponents/DownFilledIcon";
 import DownIcon from "../IconComponents/DownIcon";
+import LogoutIcon from "../IconComponents/LogoutIcon";
 import SearchIcon from "../IconComponents/SearchIcon";
 import UserIcon from "../IconComponents/UserIcon";
 import WishListIcon from "../IconComponents/WishList";
@@ -17,13 +20,18 @@ import "./_navbar.scss";
 
 const Navbar = () => {
   const [showAllCategories, setShowAllCategories] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   const categoryRef = useRef(null);
+  const profileRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const goToHomepage = () => navigate("/");
-  const goToProfile = () => navigate("/profile");
+  const goToProfile = () => {
+    navigate("/profile");
+    setShowProfile(false);
+  };
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -32,6 +40,21 @@ const Navbar = () => {
   user === null ? (isLogged = false) : (isLogged = user.isVerified || false);
 
   useOnClickOutside(categoryRef, () => setShowAllCategories(false));
+  useOnClickOutside(profileRef, () => setShowProfile(false));
+
+  const handleLogout = () => {
+    dispatch(logout()).then((res) => {
+      if (res.payload.status === 202) {
+        dispatch(alertType("success"));
+        dispatch(alertMessage(res.payload.data.message));
+        localStorage.removeItem("user");
+        navigate("/");
+        setShowProfile(false);
+        // console.log(res)
+      }
+    });
+    dispatch(alertType(""));
+  };
 
   return (
     <>
@@ -112,7 +135,7 @@ const Navbar = () => {
           </div>{" "}
           <div className="navbar--wrapper--icons">
             <div
-              data-tooltip="cart"
+              title="cart"
               onClick={() => dispatch(openCart(true))}
               className="navicon"
             >
@@ -120,21 +143,43 @@ const Navbar = () => {
               <span className="navicon--badge">3</span>
             </div>
             {isLogged && (
-              <div
-                data-tooltip="wishlist"
-                onClick={goToHomepage}
-                className="navicon"
-              >
+              <div title="wishlist" onClick={goToHomepage} className="navicon">
                 <WishListIcon />
               </div>
             )}
             {isLogged ? (
-              <div
-                data-tooltip="profile"
-                onClick={goToProfile}
-                className="navicon"
-              >
-                <UserIcon />
+              <div style={{ position: "relative" }}>
+                <div
+                  title="profile"
+                  onClick={() => {
+                    setShowProfile(true);
+                  }}
+                  className={showProfile ? "mouse-pointer navicon" : "navicon"}
+                >
+                  <UserIcon />
+                </div>
+                {showProfile && (
+                  <ul ref={profileRef} className="profile--dropdown">
+                    <li
+                      className="profile--dropdown--link"
+                      onClick={goToProfile}
+                    >
+                      <span>
+                        <UserIcon />
+                      </span>
+                      Profile
+                    </li>
+                    <li
+                      className="profile--dropdown--link"
+                      onClick={handleLogout}
+                    >
+                      <span>
+                        <LogoutIcon />
+                      </span>
+                      Logout
+                    </li>
+                  </ul>
+                )}
               </div>
             ) : (
               <div
