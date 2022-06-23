@@ -8,33 +8,21 @@ export const sideBarData = [
   {
     menu: "Dashboard",
     icon: <HomeIcon />,
-    subMenu: [
-      {
-        title: "Dashboard",
-        render: <Dashboard />,
-      },
-    ],
+    render: <Dashboard />,
   },
   {
     menu: "Products",
     icon: <LocalShippingIcon />,
-    subMenu: [
-      {
-        title: "Product List",
-        render: <ProductList />,
-      },
-      { title: "Product Add", render: <ProductAdd /> },
-    ],
+    render: <ProductList />,
+  },
+  {
+    menu: "Product Add",
+    icon: <LocalShippingIcon />,
+    render: <ProductAdd />,
   },
   {
     menu: "Orders",
     icon: <LocalShippingIcon />,
-    subMenu: [
-      {
-        title: "Order List",
-        render: <ProductList />,
-      },
-      { title: "Edit Order", render: <ProductAdd /> },
-    ],
+    render: <ProductList />,
   },
 ];

@@ -9,19 +9,10 @@ export default function SideNav({ active, setActive }) {
   const myRefs = useRef([]);
 
   const handleExpandButton = (event, i, menu) => {
-    console.log("parent");
-    if (myRefs.current[i].children[1].children[1]) {
-      myRefs.current[i].classList.toggle("toggle");
-    } else {
-      setActive(menu);
-    }
-  };
-
-  const handleSubmenu = (event, menu) => {
-    event.stopPropagation();
     setActive(menu);
     setCls("active toggle");
   };
+
   return (
     <div className="admin__sideNav">
       <img src={logo} alt="3Ninjas" />
@@ -33,26 +24,9 @@ export default function SideNav({ active, setActive }) {
             onClick={(event) => handleExpandButton(event, index1, parents.menu)}
             key={index1}
           >
-            <span className={parents.subMenu.length === 1 && "hideIcon"}>
+            <span>
               {parents.icon} <p>{parents.menu}</p>
-              <ExpandMoreIcon />
-              <ExpandLessIcon />
             </span>
-            <div
-              className={
-                parents.subMenu.length > 1 && "admin__sideNav__menu__sub"
-              }
-            >
-              {parents.subMenu.length > 1 &&
-                parents.subMenu.map((child, index2) => (
-                  <li
-                    key={index2}
-                    onClick={(event) => handleSubmenu(event, parents.menu)}
-                  >
-                    {child.title}
-                  </li>
-                ))}
-            </div>
           </ul>
         ))}
       </div>

@@ -1020,6 +1020,7 @@ ul li {
 .admin__sideNav {
   background-color: #ffffff;
   height: 100vh;
+  min-width: 200px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 30px 20px;
@@ -1069,6 +1070,7 @@ ul li {
 
 .admin__sideNav__menu ul.active span {
   color: #e94560 !important;
+  font-weight: 500;
 }
 
 .admin__sideNav__menu ul .MuiSvgIcon-root:nth-of-type(2) {
@@ -1109,35 +1111,13 @@ ul li {
   gap: 10px;
   font-size: 16px;
   color: #1c1c1c;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .admin__sideNav__menu ul > span > p {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-}
-
-.admin__sideNav__menu__sub {
-  padding: 10px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-left: 25px;
-  color: #1c1c1c;
-}
-
-.admin__sideNav__menu__sub > li {
-  font-size: 14px;
-  padding: 2px 10px;
-}
-
-.admin__sideNav__menu__sub > li:hover {
-  color: #e94560;
 }
 
 .admin__topNav {
