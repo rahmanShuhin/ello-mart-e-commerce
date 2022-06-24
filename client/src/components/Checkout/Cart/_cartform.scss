@@ -35,7 +35,7 @@
 
     &--note {
       background-color: #ffe1e6;
-      padding: 0.2zdzdzsrem;
+      padding: 0.2rem;
 
       p {
         margin: auto;
@@ -49,14 +49,37 @@
     margin-bottom: 1rem;
     textarea {
       overflow: auto;
+      @include formField;
+    }
+  }
+  &--voucher {
+    & > * {
+      margin-bottom: 1rem;
+      border-radius: 0.7rem;
+    }
+    &--input {
+      @include formField;
+      padding: 1rem;
+    }
+    &--button {
+      background-color: #fff;
+      text-decoration: none;
       outline: none;
-      padding: 0.5rem 0.8rem;
-      color: rgb(43, 52, 69);
-      border-radius: 0.4;
-      border: 1px solid rgb(218, 225, 231);
       width: 100%;
-      font-size: inherit;
-      font-family: inherit;
+      border: 1px solid $red;
+
+      p {
+        padding: 1rem;
+        font-weight: 600;
+        color: $red;
+      }
+      // for both voucher input and submit
+      &:hover {
+        background-color: $red;
+        p {
+          color: white;
+        }
+      }
     }
   }
 }
