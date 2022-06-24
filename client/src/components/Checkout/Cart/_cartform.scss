@@ -1,0 +1,62 @@
+.cartform--container {
+  width: 70vw;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 26px;
+  border-radius: 0.5rem;
+}
+.cartform {
+  &--divider {
+    height: 1px;
+    background-color: rgb(243, 245, 249);
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    &--text {
+      color: rgb(125, 135, 156);
+    }
+    &--total {
+      font-size: 1.1rem;
+      font-weight: 600;
+      //   line-height: 1;
+    }
+  }
+  &--comments {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    & > * {
+      font-weight: 600;
+      margin-right: 0.6rem;
+    }
+
+    &--note {
+      background-color: #ffe1e6;
+      padding: 0.2zdzdzsrem;
+
+      p {
+        margin: auto;
+        font-size: 0.8rem;
+        color: $red;
+      }
+    }
+  }
+  &--textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    textarea {
+      overflow: auto;
+      outline: none;
+      padding: 0.5rem 0.8rem;
+      color: rgb(43, 52, 69);
+      border-radius: 0.4;
+      border: 1px solid rgb(218, 225, 231);
+      width: 100%;
+      font-size: inherit;
+      font-family: inherit;
+    }
+  }
+}

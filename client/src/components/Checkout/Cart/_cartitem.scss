@@ -5,17 +5,78 @@
 }
 .cartitem {
   display: flex;
-  width: 40vw;
-  &--coymponent {
+  width: 50vw;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 26px;
+  border-radius: 0.65rem;
+  overflow: hidden;
+
+  &--image {
+    & > :only-child {
+      height: 100%;
+    }
+  }
+
+  &--component {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     flex: 1;
-    padding-left: 1rem;
+    padding: 1rem;
+
     &--info,
     &--action {
       display: flex;
       justify-content: space-between;
+    }
+    &--action {
+      &--quantity {
+        display: flex;
+        & > * {
+          margin: 0.3rem;
+        }
+      }
+    }
+  }
+  &--price {
+    display: flex;
+    gap: 0.5rem;
+    &--details {
+      color: rgb(125, 135, 156);
+      font-weight: light;
+    }
+    &--total {
+      color: $red;
+      font-weight: bold;
+    }
+  }
+}
+
+.cartitem--btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
+
+  &--subtract,
+  &--add {
+    color: $red;
+    border: 1px solid rgb(255, 225, 230);
+    margin: auto;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    position: relative;
+    & > * {
+      position: absolute;
+      font-size: 1.5rem;
+    }
+    &:hover {
+      background-color: rgb(233, 69, 96);
+
+      color: rgb(255, 255, 255);
     }
   }
 }

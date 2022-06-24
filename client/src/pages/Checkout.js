@@ -1,3 +1,4 @@
+import Cartform from "../components/Checkout/Cart/Cartform";
 import CartItem from "../components/Checkout/Cart/CartItem";
 export default function Checkout() {
   return (
@@ -11,9 +12,14 @@ export default function Checkout() {
         <div className="checkout--arm"></div>
         <div className="checkout--content">review</div>
       </section>
-      <section>
+      <section className="checkout--cartitems">
         <CartItem />
+        {/* <CartItem />
+        <CartItem /> */}
       </section>
+      <aside>
+        <Cartform />
+      </aside>
     </main>
   );
 }

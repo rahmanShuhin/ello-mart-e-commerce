@@ -9,13 +9,22 @@ export default function CartItem() {
           <div className="cartitem--component--info">
             <h4>Product Name</h4>
             <div className="cartitem--component--info--delete">
-              <button>delete</button>
+              <button className="cartitem--btn cartitem--btn--delete">X</button>
             </div>
           </div>
           <div className="cartitem--component--action">
-            <p>250x2</p>
+            <div className="cartitem--price">
+              <span className="cartitem--price--details">$250x1</span>
+              <span className="cartitem--price--total">$250</span>
+            </div>
             <div className="cartitem--component--action--quantity">
-              <button>@#@#</button>
+              <button className="cartitem--btn cartitem--btn--subtract">
+                <p>-</p>
+              </button>
+              <p>1</p>
+              <button className="cartitem--btn cartitem--btn--add">
+                <p>+</p>
+              </button>
             </div>
           </div>
         </div>
