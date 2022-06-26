@@ -16,7 +16,7 @@ export const sideBarData = [
     render: <ProductList />,
   },
   {
-    menu: "Product Add",
+    menu: "Product Create",
     icon: <LocalShippingIcon />,
     render: <ProductAdd />,
   },
