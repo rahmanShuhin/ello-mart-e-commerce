@@ -267,11 +267,11 @@ $background-white-hover: #e2ecf5;
       }
     }
   }
-  .mouse-pointer {
-    cursor: pointer;
-    pointer-events: none;
-  }
+
   .rotate {
     transform: rotate(180deg);
   }
+}
+.shadow {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }

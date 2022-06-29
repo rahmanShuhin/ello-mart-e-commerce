@@ -1,0 +1,34 @@
+export const COLOR_LIST = [
+    {
+        id:1,
+        color:'red'
+    },
+    {
+        id:2,
+        color:'yellow'
+    },
+    {
+        id:3,
+        color:'green'
+    },
+    {
+        id:4,
+        color:'pink'
+    },
+    {
+        id:5,
+        color:'blue'
+    },
+    {
+        id:6,
+        color:'black'
+    },
+    {
+        id:7,
+        color:'orange'
+    },
+    {
+        id:8,
+        color:'purple'
+    },
+]
