@@ -37,8 +37,8 @@ const ratingOptions = [
 
 const Search = () => {
 
-    const [minValue, set_minValue] = useState(1000);
-    const [maxValue, set_maxValue] = useState(4000);
+    const [minValue, set_minValue] = useState(0);
+    const [maxValue, set_maxValue] = useState(5000);
     const handleInput = (e) => {
         set_minValue(e.minValue);
         set_maxValue(e.maxValue);
