@@ -31,6 +31,7 @@ import SideCartSingle from './SideCartSingle/SideCartSingle';
                     title = {cart.title}
                     price = {cart.price}
                     image = {cart.images}
+                    key={i}
                   />
                 ))
               }

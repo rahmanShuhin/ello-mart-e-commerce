@@ -1,105 +1,127 @@
-//icons
-import { useRef, useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
-import { categories } from "../../assets/data/navdata";
-import logo from "../../assets/icons/NinjaMartMain.svg";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { useNavigate } from 'react-router-dom';
+import { alertMessage, alertType } from '../../redux/alertBox';
+import { logout } from '../../redux/Auth';
 import { openModal } from "../../redux/Modal";
 import { openCart } from "../../redux/SidebarCart";
 import BagIcon from "../IconComponents/BagIcon";
-import CategoryIcon from "../IconComponents/CategoryIcon";
-import DownFilledIcon from "../IconComponents/DownFilledIcon";
-import DownIcon from "../IconComponents/DownIcon";
-import SearchIcon from "../IconComponents/SearchIcon";
+import LogoutIcon from "../IconComponents/LogoutIcon";
 import UserIcon from "../IconComponents/UserIcon";
+import WishListIcon from "../IconComponents/WishList";
+import { useOnClickOutsideWithSecondRef } from './../../hooks/useOnClickOutsideWithSecondRef';
+import BottomNavbar from "./BottomNavbar/BottomNavbar";
+import Navbarlogo from "./MainNavbar/NavbarLogo/Navbarlogo";
+import NavbarSearch from "./MainNavbar/NavbarSearch/NavbarSearch";
+import TopMiniNavbar from "./TopMiniNavbar/TopMiniNavbar";
 import "./_navbar.scss";
+
 
 const Navbar = () => {
 
-  const [showAllCategories, setShowAllCategories] = useState(false);
 
-  const categoryRef = useRef(null);
-  useOnClickOutside(categoryRef,()=> setShowAllCategories(false))
+  const [showProfile, setShowProfile] = useState(false);
+  const [height, setHeight] = useState(false);
 
+  const profileRef = useRef(null);
+  const profileLogoRef = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const goToHomepage = () => navigate('/');
+  const goToProfile = () => {navigate('/profile'); setShowProfile(false)};
+
+  useOnClickOutsideWithSecondRef(profileRef,profileLogoRef,()=> setShowProfile(false));
+
+  const user = JSON.parse(localStorage.getItem("user")) 
+
+  useEffect(()=>{
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", (e) => {
+        let y = window.scrollY;
+        let w = window.innerWidth;
+        (y > 100 && w > 1023) ? setHeight(true) : setHeight(false);
+      });
+    }
+  },[])
+
+  //----- verifying user -------
+  let isLogged;
+
+  (user === null) ? isLogged = false : isLogged = user.isVerified || false;
+  
+
+  const handleLogout = () =>{
+      dispatch(logout()).then((res)=>{
+          if(res.payload.status === 202){
+              dispatch(alertType('success'))
+              dispatch(alertMessage(res.payload.data.message))
+              localStorage.removeItem('user')
+              navigate('/')
+              setShowProfile(false)
+              // console.log(res)
+          }
+      })
+      dispatch(alertType(''))
+ }
 
   return (
     <>
-      <header className="header">
-        <div className="container">
-          <div className="header--wrapper">
-            <article className="header--wrapper--contact">
-              <div>
-                📞<span> +88012 3456 7894</span>{" "}
+      <TopMiniNavbar/>
+      <nav className={`navbar ${height ? 'shadow' : ''}`}>
+        <section className='navbar--wrapper container'>
+          <Navbarlogo/>
+          <NavbarSearch/>
+          <div className="navbar--wrapper--icons">
+            <div title="cart" onClick={()=> dispatch(openCart(true))} className="navicon">     
+                <BagIcon />
+                <span className="navicon--badge">3</span>   
+            </div>
+            {
+              isLogged && 
+              <div title="wishlist" onClick={goToHomepage} className="navicon"> 
+                <WishListIcon/>
               </div>
-              <div>
-                📧<span> arifbhai-zindabad@gmail.com</span>{" "}
+            }
+            {
+              isLogged ?
+              <div style={{position:"relative"}}>
+                <div 
+                    ref={profileLogoRef}
+                    title="profile" 
+                    onClick={()=>{setShowProfile(!showProfile)}} 
+                    className="navicon"
+                > 
+                  <UserIcon />
+                </div>
+                {
+                  showProfile && 
+                  <ul ref={profileRef} className='profile--dropdown'>
+                    <li
+                      className="profile--dropdown--link" 
+                      onClick={goToProfile}
+                    >
+                      <span> <UserIcon/> </span> Profile
+                    </li>
+                    <li 
+                      className="profile--dropdown--link"  
+                      onClick={handleLogout}
+                    >
+                      <span><LogoutIcon/></span> Logout
+                    </li>
+                  </ul>
+                }
               </div>
-            </article>
-            <article className="header--wrapper--help">
-              <div>FAQ</div>
-              {/* <div>need help</div>
-              <div>lang</div> */}
-              <div>💸currency</div>
-            </article>
+              :
+              <div data-tooltip="login" onClick={()=> dispatch(openModal('login'))} className="navicon"> 
+                <UserIcon />
+              </div>
+            }
           </div>
-        </div>
-      </header>
-
-      <nav className="navbar">
-        <section className="navbar--wrapper container">
-          <article className="navbar--wrapper--header">
-            <div className="navbar--wrapper--header--logo">
-              <Link to='/'>
-                <img src={logo} alt="" />
-              </Link>
-            </div>
-            <div className="navbar--wrapper--header--category">
-              <div>
-                <CategoryIcon />
-              </div>
-              <div>
-                <DownFilledIcon />
-              </div>
-            </div>
-          </article>
-          <article className="navbar--wrapper--search">
-            <div className="navbar--wrapper--search--container ">
-              <div className="navbar--wrapper--search--container--icon">
-                <SearchIcon />
-              </div>
-              <div className="navbar--wrapper--search--container--searchbox">
-                <input type="search" placeholder="search and hit enter.." />
-              </div>
-              <div className="navbar--wrapper--search--container--dropdown">
-                {" "}
-                <div onClick={() => setShowAllCategories(true)}>
-                  <h4>All categories</h4>
-                  <span className={showAllCategories ? "dropdown--icon rotate" : "dropdown--icon"}>
-                    <DownIcon />
-                  </span>
-                </div>{" "}
-                <ul ref={categoryRef} className={showAllCategories && "dropdown-links"}>
-                  {showAllCategories &&
-                    categories.map((category) => (
-                      <li key={category.index}>{category.text}</li>
-                    ))}
-                </ul>
-              </div>
-            </div>
-          </article>{" "}
-          <article className="navbar--wrapper--icons">
-            <div onClick={()=>dispatch(openModal('login'))} className="navicon"> 
-                <i><UserIcon /></i>
-            </div>
-            <div onClick={()=>dispatch(openCart(true))} class="navicon">     
-                <i><BagIcon /></i>
-                <span class="navicon--badge">3</span>   
-            </div>
-          </article>
         </section>
       </nav>
+      <BottomNavbar/>
     </>
   );
 }

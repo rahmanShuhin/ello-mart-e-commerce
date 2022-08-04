@@ -24,6 +24,7 @@
         }
         .Registration--form {
             .form-group {
+                position: relative;
                 margin: 1rem 0;
                 & > label {
                     color: rgba(0, 0, 0, 0.6);
@@ -31,19 +32,51 @@
                     font-weight: 600;
                 }
                 .form-input {
-                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 10px;
                     height: 40px;
+                    width: 100%;
                     padding: 5px 10px;
                     margin-top: 8px;
                     border-radius: 8px;
                     border: 1px solid rgb(211, 211, 211);
                     &:hover {
                         border: 1px solid rgb(175, 175, 175);
+                        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
                     }
                     &:focus {
                         outline: none;
                         border: 1px solid $red;
                     }
+                    & > input {
+                        flex: 1;
+                        border: none;
+                        padding: 0.68rem 0;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    .show-password-icon {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 25px;
+                        width: 25px;
+                        border-radius: 50%;
+                        cursor: pointer;
+                        &:hover {
+                            background: rgb(241, 241, 241);
+                        }
+                    }
+                }
+                .err-message {
+                    color: #ff0000;
+                    // position: absolute;
+                    font-size: 12px;
+                    // top: 0;
+                    // right: 0;
                 }
             }
             .submit {
@@ -53,6 +86,7 @@
                 &:hover {
                     background-color: #fff;
                     color: $red;
+                    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
                 }
             }
         }

@@ -1,0 +1,74 @@
+.profile--information {
+    &--header {
+        font-size: 1.5rem;
+        color: #777777;
+        border-bottom: 1px solid #c8c8c8;
+        padding-bottom: 0.5rem;
+    }
+    &--wrapper {
+        .profile--form {
+            & > div {
+                display: flex;
+                margin: 1.5rem 0;
+                gap: 4rem;
+                .form-group {
+                    label {
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: $profile-text-color;
+                    }
+                    .form-input {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 10px;
+                        height: 35px;
+                        width: 100%;
+                        min-width: 190px;
+                        padding: 5px 10px;
+                        margin-top: 8px;
+                        border-radius: 8px;
+                        border: 1px solid transparent;
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    .editable {
+                        border: 1px solid rgb(211, 211, 211);
+                        &:hover {
+                            border: 1px solid rgb(175, 175, 175);
+                        }
+                        &:focus {
+                            outline: none;
+                            border: 1px solid $red;
+                        }
+                    }
+                }
+            }
+        }
+        .btn-wrapper {
+            display: flex;
+            gap: 25px;
+            .submit {
+                color: #fff;
+                padding: 0.5rem 2rem;
+                width: 135px;
+                background-color: $red;
+                border: none;
+                border-radius: 8px;
+                margin: 1rem 0;
+                font-size: 14px;
+                transition: 0.2s;
+                border: 1px solid $red;
+                cursor: pointer;
+                &:hover {
+                    transform: translateY(-1px);
+                    box-shadow: 0 5px 10px #00000035;
+                    background-color: transparent;
+                    color: $red;
+                    border: 1px solid $red;
+                }
+            }
+        }
+    }
+}

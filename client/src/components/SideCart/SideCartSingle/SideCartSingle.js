@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import CrossIcon from '../../IconComponents/CrossIcon';
 
-const SideCartSingle = ({title, price, image}) => {
+const SideCartSingle = ({title, price, image , i}) => {
 
     const [count, setCount] = useState(1)
 
@@ -9,7 +9,7 @@ const SideCartSingle = ({title, price, image}) => {
     const minus = () => (count > 1) && setCount(prev => prev - 1);
 
   return (
-    <div className="cart--item">
+    <div key={i} className="cart--item">
         <div className="add--to--cart">
             <span onClick={minus} className="cart--icon--wrapper">-</span>
             <span className="counter-text">{count}</span>

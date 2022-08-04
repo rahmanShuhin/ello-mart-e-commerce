@@ -85,7 +85,7 @@ export const CART_DATA = [
     },
     {
         id:7,
-        title: 'KASAMIA shoe',
+        title: 'Ronaldo shoe',
         description: 'this is very nice show',
         price: '574',
         rating: '5',
@@ -99,7 +99,7 @@ export const CART_DATA = [
     },
     {
         id:8,
-        title: 'Retake Shoe',
+        title: 'Messi Shoe',
         description: 'this is very nice show',
         price: '568',
         rating: '5',

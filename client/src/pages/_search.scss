@@ -1,0 +1,112 @@
+.search--section {
+  &--top--bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 1px 3px #03004717;
+    & > span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    & > div {
+      font-weight: 600;
+      & > span {
+        font-size: 14px;
+        color: #ababab;
+      }
+    }
+  }
+  &--wrapper {
+    display: flex;
+    gap: 20px;
+    &--left {
+      width: 25%;
+      margin-top: 1rem;
+      &--container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 1px 3px #03004717;
+
+        padding: 1.5rem;
+        .filter--input--group {
+          margin-bottom: 35px;
+          & > label {
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+        .filter--btn--group {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          .apply-btn {
+            @include basicBtn($red);
+            padding: 10px 24px;
+          }
+          .reset-btn {
+            @include basicBtnSecond(#fff);
+            padding: 10px 24px;
+          }
+        }
+      }
+    }
+    &--right {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 5px;
+      width: 75%;
+    }
+  }
+}
+
+//---------price range slider custom css------------
+.multi-range-slider {
+  box-shadow: 0px 1px 3px #cccccc;
+  border: none;
+  border-radius: 4px;
+  padding: 1.5rem 1rem;
+  .bar {
+    .bar-left,
+    .bar-right {
+      box-shadow: none;
+    }
+  }
+  .bar-inner {
+    background-color: $red;
+    box-shadow: none;
+    border: none;
+  }
+  .thumb {
+    &::before {
+      border: 1px solid #a0a0a0;
+      box-shadow: none;
+    }
+    .min-value,
+    .max-value {
+      width: auto;
+      background-color: $red;
+      border-radius: 8px;
+      padding: 0 10px;
+      box-shadow: none;
+      left: 0;
+      transform: translateX(-50%);
+    }
+  }
+}
+// --------- select input css ------------
+.css-1s2u09g-control {
+  border: none !important;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px #dcdcdc;
+
+  &:hover {
+    box-shadow: 0px 1px 3px #c5c5c5;
+    cursor: pointer;
+  }
+}

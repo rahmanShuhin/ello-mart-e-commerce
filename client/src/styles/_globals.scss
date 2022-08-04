@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -36,6 +37,15 @@ ul li {
   list-style: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.d-flex {
+  display: flex;
+}
+
 // common class use
 
 .container {
@@ -56,6 +66,24 @@ ul li {
   font-size: 14px;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b5b5b5;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8c8c8c;
 //primary table design for all
 
 .admin-table-global {
@@ -92,4 +120,5 @@ ul li {
   justify-content: flex-end;
   background-color: $admin-card-bg;
   border-bottom: 2px solid $red;
+}
 }

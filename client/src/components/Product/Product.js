@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { fakeData } from "../../assets/data/fakeData";
 import StarIcon from "../IconComponents/star";
 import { ImageMagnifier } from "../ImageMagnifier/ImageMagnifier";
@@ -26,8 +26,9 @@ const Product = () => {
           <div className="product__top__left__imgGallery">
             {fakeData.images.map((img, index) => (
               <div
+                key={img.toString()}
                 onClick={() => setActiveImg(index)}
-                className={index === activeImg && "active"}
+                className={index === activeImg ? "active" : ''}
               >
                 <img src={img} alt="" />
               </div>
@@ -51,38 +52,40 @@ const Product = () => {
           </p>
           <p>${fakeData.price}</p>
           <p>Stock Available</p>
-          <div className="product__top__right__sizes">
-            <p>
-              <span>Size : </span>
-              {fakeData.sizes[size]}
-            </p>
-            <div>
-              {fakeData.sizes.map((siz, index) => (
-                <p
-                  className={index === size && "active"}
-                  onClick={() => setSize(index)}
-                >
-                  {siz}
-                </p>
-              ))}
-            </div>
-          </div>
-          <div className="product__top__right__colors">
-            <p>
-              <span>Color : </span>
-              {fakeData.colors[color]}
-            </p>
-            <div>
-              {fakeData.colors.map((col, index) => (
-                <span className={index === color && "active"}>
-                  <span
-                    style={{ backgroundColor: col }}
-                    onClick={() => setColor(index)}
-                  />
-                </span>
-              ))}
-            </div>
-          </div>
+          <div className="Product--Details--right--sizes">
+                    <p>
+                    <span>Size : </span>
+                    {fakeData.sizes[size]}
+                    </p>
+                    <div>
+                    {fakeData.sizes.map((siz, index) => (
+                        <p
+                        key={siz}
+                        className={index === size ? "active" : ''}
+                        onClick={() => setSize(index)}
+                        >
+                        {siz}
+                        </p>
+                    ))}
+                    </div>
+                </div>
+                <div className="Product--Details--right--colors">
+                    <p>
+                    <span>Color : </span>
+                    {fakeData.colors[color]}
+                    </p>
+                    <div>
+                    {fakeData.colors.map((col, index) => (
+                        <span className={index === color ? "active" : ''}>
+                        <span
+                            key={col}
+                            style={{ backgroundColor: col }}
+                            onClick={() => setColor(index)}
+                        />
+                        </span>
+                    ))}
+                    </div>
+                </div>
           <div className="product__top__right__cartButton">
             <button className="btn-primary">Add to Cart</button>
             <p>Quantity : </p>
@@ -102,13 +105,13 @@ const Product = () => {
       <div className="product__bottom container">
         <div className="product__bottom__switch">
           <p
-            className={activeContent === "description" && "active"}
+            className={(activeContent === "description") ? "active" : null}
             onClick={() => setActiveContent("description")}
           >
             Description
           </p>
           <p
-            className={activeContent === "review" && "active"}
+            className={(activeContent === "review") ? "active" : null}
             onClick={() => setActiveContent("review")}
           >
             Review (3)
