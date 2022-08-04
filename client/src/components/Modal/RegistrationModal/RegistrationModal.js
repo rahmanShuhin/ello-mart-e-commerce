@@ -5,6 +5,7 @@ import { alertMessage, alertType } from '../../../redux/alertBox';
 import { register } from '../../../redux/Auth';
 import ClosedEyeIcon from '../../IconComponents/closeEyeIcon';
 import EyeIcon from '../../IconComponents/eyeIcon';
+import { signupUser } from '../../../redux/Auth';
 
 const Registration = () => {
 

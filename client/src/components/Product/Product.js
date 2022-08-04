@@ -21,7 +21,7 @@ const Product = () => {
         <div className="product__top__left">
           <div className="product__top__left__imgActive">
             {/* ----image magnifier--------*/}
-            <ImageMagnifier width={300} src={fakeData.images[activeImg]}/>
+            <ImageMagnifier width={300} src={fakeData.images[activeImg]} />
           </div>
           <div className="product__top__left__imgGallery">
             {fakeData.images.map((img, index) => (

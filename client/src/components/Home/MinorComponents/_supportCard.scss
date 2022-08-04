@@ -25,7 +25,9 @@
     border-radius: 50%;
     margin: 0 auto;
 
-    i > * {
+    i > svg {
+      fill: red !important;
+      color: red !important;
       width: 1.75rem;
       height: 1.75;
     }

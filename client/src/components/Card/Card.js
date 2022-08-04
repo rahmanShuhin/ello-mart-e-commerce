@@ -7,7 +7,7 @@ import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
 import "./_card.scss";
 
-const Card = ({ title, price, rating, image, i}) => {
+const Card = ({ title, price, rating, image}) => {
 
   const [count, setCount] = useState(0)
   const dispatch = useDispatch();

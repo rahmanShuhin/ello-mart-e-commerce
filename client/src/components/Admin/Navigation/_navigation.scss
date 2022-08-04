@@ -1,0 +1,148 @@
+.admin__sideNav {
+  background-color: $admin-card-bg;
+  height: 100vh;
+  min-width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 30px 20px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow-y: auto;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  > img {
+    width: 120px;
+    text-align: center;
+  }
+  &__menu {
+    width: 100%;
+    padding: 30px 0px;
+    ul {
+      cursor: pointer;
+      padding: 10px;
+      transition: max-height 0.3s ease-in-out;
+      // expand function here
+      max-height: 50px;
+      overflow-y: hidden;
+      margin-bottom: 10px;
+      .hideIcon {
+        .MuiSvgIcon-root {
+          &:nth-of-type(2),
+          &:nth-of-type(3) {
+            opacity: 0;
+          }
+        }
+      }
+      &.active {
+        background-color: $admin-light-bg;
+        border-radius: 10px;
+
+        span {
+          color: $red !important;
+          font-weight: 500;
+        }
+      }
+      .MuiSvgIcon-root {
+        &:nth-of-type(2) {
+          display: block;
+        }
+        &:nth-of-type(3) {
+          display: none;
+        }
+      }
+      &.toggle {
+        max-height: 200px;
+
+        .MuiSvgIcon-root {
+          &:nth-of-type(2) {
+            display: none;
+          }
+          &:nth-of-type(3) {
+            display: block;
+          }
+        }
+      }
+      &:hover {
+        border-radius: 10px;
+        background-color: $admin-light-bg;
+      }
+      > span {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        font-size: 16px;
+        color: $admin-text;
+        font-weight: 400;
+        > p {
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+.admin__topNav {
+  padding: 30px 50px;
+  display: flex;
+  justify-content: flex-end;
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    > .MuiSvgIcon-root {
+      color: $red;
+      font-size: 30px;
+      cursor: pointer;
+      &:nth-of-type(2) {
+        color: $admin-text;
+      }
+    }
+    > span {
+      > p {
+        font-weight: 700;
+      }
+    }
+    &__modal {
+      position: relative;
+      &.shape::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: $admin-card-bg;
+        left: 80%;
+        bottom: -30px;
+        transform: rotate(50deg) translate(-50%, 30px);
+        z-index: 1;
+      }
+      > div {
+        &:nth-of-type(1) {
+          cursor: pointer;
+        }
+        &:nth-of-type(2) {
+          position: absolute;
+          box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          background-color: $admin-card-bg;
+          padding: 20px 0px;
+          left: 90%;
+          top: 74px;
+          transform: translateX(-90%);
+          min-width: 200px;
+          > p {
+            margin: 5px 0px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 2;
+            &:hover {
+              background-color: $admin-light-bg;
+            }
+          }
+        }
+      }
+    }
+  }
+}
