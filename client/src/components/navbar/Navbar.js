@@ -1,5 +1,5 @@
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { alertMessage, alertType } from '../../redux/alertBox';
@@ -22,6 +22,7 @@ const Navbar = () => {
 
 
   const [showProfile, setShowProfile] = useState(false);
+  const [height, setHeight] = useState(false);
 
   const profileRef = useRef(null);
   const profileLogoRef = useState(null);
@@ -35,6 +36,15 @@ const Navbar = () => {
 
   const user = JSON.parse(localStorage.getItem("user")) 
 
+  useEffect(()=>{
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", (e) => {
+        let y = window.scrollY;
+        let w = window.innerWidth;
+        (y > 100 && w > 1023) ? setHeight(true) : setHeight(false);
+      });
+    }
+  },[])
 
   //----- verifying user -------
   let isLogged;
@@ -59,8 +69,8 @@ const Navbar = () => {
   return (
     <>
       <TopMiniNavbar/>
-      <nav className="navbar">
-        <section className="navbar--wrapper container">
+      <nav className={`navbar ${height ? 'shadow' : ''}`}>
+        <section className='navbar--wrapper container'>
           <Navbarlogo/>
           <NavbarSearch/>
           <div className="navbar--wrapper--icons">

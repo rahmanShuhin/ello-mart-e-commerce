@@ -24,7 +24,7 @@ const Registration = () => {
         e.preventDefault();
         if((password === password2) && (password.length > 5)){
             dispatch(register({name,email,password})).then((res)=>{
-                if(res.payload.status === 200){
+                if(res?.payload?.status === 200){
                     dispatch(alertType('success'))
                     // dispatch(alertMessage(res.payload.data.status))
                     dispatch(alertMessage("Registration successful!"))
@@ -42,6 +42,8 @@ const Registration = () => {
                     setEmailErrorMsg('Email is already in use!')
                     setErrorMsg('')
                 }
+            }).catch((err)=>{
+                console.log(err)
             })
         }
         else if(password.length < 6){

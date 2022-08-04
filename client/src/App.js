@@ -10,6 +10,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import SideBarCart from "./components/SideCart/SideBarCart";
 import Home from "./pages/Home";
 import Profile from './pages/Profile';
+import Search from './pages/Search';
 import "./styles/App.scss";
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path={"/product"} element={<Product/>}></Route>
           <Route path={"/sign-up"} element={<Registration/>}></Route>
           <Route path={"/profile"} element={<Profile/>}></Route>
+          <Route path={"/search"} element={<Search/>}></Route>
         </Routes>
         <Footer />
 
