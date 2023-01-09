@@ -20,7 +20,7 @@ const Card = ({ title, price, rating, image}) => {
 
   
   return (
-    <div key={i} className="card--wrapper">
+    <div className="card--wrapper">
       <div className="card--wrapper--inner">
         <div className="card--image--holder">
           <div className="discount--text">50% off</div>
