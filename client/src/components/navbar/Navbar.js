@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { alertMessage, alertType } from '../../redux/alertBox';
 import { logout } from '../../redux/Auth';
@@ -66,6 +66,8 @@ const Navbar = () => {
       dispatch(alertType(''))
  }
 
+ const cart = useSelector(state => state.cart)
+
   return (
     <>
       <TopMiniNavbar/>
@@ -76,7 +78,10 @@ const Navbar = () => {
           <div className="navbar--wrapper--icons">
             <div title="cart" onClick={()=> dispatch(openCart(true))} className="navicon">     
                 <BagIcon />
-                <span className="navicon--badge">3</span>   
+                {
+                  cart.cartItems.length > 0 && <span className="navicon--badge">{cart.cartItems.length}</span>   
+                }
+                
             </div>
             {
               isLogged && 

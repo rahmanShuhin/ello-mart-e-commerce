@@ -1,31 +1,31 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart, deleteFromCart, removeFromCart } from '../../../redux/cart';
 import CrossIcon from '../../IconComponents/CrossIcon';
 
-const SideCartSingle = ({title, price, image , i}) => {
+const SideCartSingle = (cart) => {
 
-    const [count, setCount] = useState(1)
+    const {title, price, images , i, cartTotalQuantity} = cart
 
-    const plus = () => setCount(prev => prev + 1);
-    const minus = () => (count > 1) && setCount(prev => prev - 1);
+    const dispatch = useDispatch()
 
   return (
     <div key={i} className="cart--item">
         <div className="add--to--cart">
-            <span onClick={minus} className="cart--icon--wrapper">-</span>
-            <span className="counter-text">{count}</span>
-            <span onClick={plus} className="cart--icon--wrapper">+</span>
+            <span onClick={()=> dispatch(removeFromCart(cart))} className="cart--icon--wrapper">-</span>
+            <span className="counter-text">{cartTotalQuantity}</span>
+            <span onClick={()=> dispatch(addToCart(cart))} className="cart--icon--wrapper">+</span>
         </div>
         <div className="cart--item--inside">
             <div className="cart--item--inside--img">
-            <img src={image} width="100%" alt="" />
+            <img src={images} width="100%" alt="" />
             </div>
             <div className="cart--item--inside--info">
             <h5>{title}</h5>
-            <p>${price} x {count}</p>
-            <p className='price'>${price*count}</p>
+            <p>${price} x {cartTotalQuantity}</p>
+            <p className='price'>${price*cartTotalQuantity}</p>
             </div>
         </div>
-        <div className='cross-icon'>
+        <div onClick={()=> dispatch(deleteFromCart(cart))} className='cross-icon'>
             <CrossIcon/>
         </div>
     </div>

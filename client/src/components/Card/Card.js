@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../redux/cart";
@@ -10,24 +9,15 @@ import "./_card.scss";
 
 const Card = (product) => {
 
-  const { id, title, price, rating, images} = product
+  const { id, title, price, rating, images, cartTotalQuantity} = product
  
-
-  const [count, setCount] = useState(0)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const goToProduct = () => navigate('/product')
+  console.log(product)
 
-  const plus = () => setCount(prev => prev + 1);
-  const minus = () => (count > 0) && setCount(prev => prev - 1);
-
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
-  }
-  const handleRemoveFromCart = (product) => {
-    dispatch(removeFromCart(product))
-  }
-  
+  // const plus = () => setCount(prev => prev + 1);
+  // const minus = () => (count > 0) && setCount(prev => prev - 1);
 
 
   
@@ -70,15 +60,15 @@ const Card = (product) => {
             </div>
           </div>
           <div  className="add--to--cart">
-            {(count > 0) && 
+            {(cartTotalQuantity > 0) && 
               <>
-                <span onClick={()=>{handleRemoveFromCart(product);minus();}} className="cart--icon--wrapper">
+                <span onClick={()=>dispatch(removeFromCart(product))} className="cart--icon--wrapper">
                   -
                 </span>
-                <span className="counter-text">{count}</span>
+                <span className="counter-text">{cartTotalQuantity}</span>
               </>
             }
-            <span onClick={()=>{handleAddToCart(product);plus();}} className="cart--icon--wrapper">
+            <span onClick={()=>dispatch(addToCart(product))} className="cart--icon--wrapper">
               +
             </span>
           </div>

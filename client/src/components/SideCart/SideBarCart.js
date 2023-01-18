@@ -1,10 +1,8 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CART_DATA } from '../../assets/data/cartData';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { openCart } from '../../redux/SidebarCart';
 import BagIcon from '../IconComponents/BagIcon';
-import CrossIcon from '../IconComponents/CrossIcon';
 import SideCartSingle from './SideCartSingle/SideCartSingle';
  
   const SideBarCart = () => {
@@ -14,6 +12,8 @@ import SideCartSingle from './SideCartSingle/SideCartSingle';
   const openSideBarCart = useSelector(state => state.sideCart.value);
     useOnClickOutside(cartRef,() => dispatch(openCart(false)))
   
+  const cart = useSelector(state => state.cart)
+ 
   return (
       <>
         <div 
@@ -22,18 +22,17 @@ import SideCartSingle from './SideCartSingle/SideCartSingle';
         >
           <div className="sidebar--cart--wrapper">
             <div className="cart--header">
-              <BagIcon/> <h3> 03 items</h3> 
+              <BagIcon/> <h3> {cart.cartItems.length} items</h3> 
             </div>
             <div className="cart--item--wrapper">
               {
-                CART_DATA.map((cart,i)=>(
-                  <SideCartSingle
-                    title = {cart.title}
-                    price = {cart.price}
-                    image = {cart.images}
-                    key={i}
-                  />
-                ))
+                cart.cartItems.length > 0 ?
+                cart.cartItems?.map((cart)=>(
+                  <SideCartSingle {...cart}/>
+                )) :
+                <div>
+                  <span>No Items !</span>
+                </div>
               }
             </div>  
           </div>
