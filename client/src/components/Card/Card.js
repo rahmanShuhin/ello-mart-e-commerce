@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addToCart, removeFromCart } from "../../redux/cart";
 import { openModal } from "../../redux/Modal";
 import EyeIcon from "../IconComponents/eye";
 import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
 import "./_card.scss";
 
-const Card = ({ title, price, rating, image}) => {
+const Card = (product) => {
+
+  const { id, title, price, rating, images} = product
+ 
 
   const [count, setCount] = useState(0)
   const dispatch = useDispatch();
@@ -17,10 +21,18 @@ const Card = ({ title, price, rating, image}) => {
   const plus = () => setCount(prev => prev + 1);
   const minus = () => (count > 0) && setCount(prev => prev - 1);
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeFromCart(product))
+  }
+  
+
 
   
   return (
-    <div className="card--wrapper">
+    <div key={id} className="card--wrapper">
       <div className="card--wrapper--inner">
         <div className="card--image--holder">
           <div className="discount--text">50% off</div>
@@ -34,7 +46,7 @@ const Card = ({ title, price, rating, image}) => {
           </div>
           <img
             onClick={goToProduct}
-            src={image}
+            src={images}
             alt=""
             width="100%"
           />
@@ -57,16 +69,16 @@ const Card = ({ title, price, rating, image}) => {
               </span>
             </div>
           </div>
-          <div className="add--to--cart">
+          <div  className="add--to--cart">
             {(count > 0) && 
               <>
-                <span onClick={minus} className="cart--icon--wrapper">
+                <span onClick={()=>{handleRemoveFromCart(product);minus();}} className="cart--icon--wrapper">
                   -
                 </span>
                 <span className="counter-text">{count}</span>
               </>
             }
-            <span onClick={plus} className="cart--icon--wrapper">
+            <span onClick={()=>{handleAddToCart(product);plus();}} className="cart--icon--wrapper">
               +
             </span>
           </div>

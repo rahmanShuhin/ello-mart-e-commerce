@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import alertSlice from './alertBox';
 import authSlice from './Auth';
+import cartSlice from './cart';
 import counterReducer from './Counter';
 import modalReducer from './Modal';
 import sideCartSlice from './SidebarCart';
@@ -12,5 +13,6 @@ export const store = configureStore({
     sideCart : sideCartSlice,
     auth : authSlice,
     alert : alertSlice,
+    cart : cartSlice,
   },
 })

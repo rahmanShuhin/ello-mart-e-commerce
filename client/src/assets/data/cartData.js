@@ -140,7 +140,7 @@ export const CART_DATA = [
         colors: 'red',
     },
     {
-        id:10,
+        id:11,
         title: 'MID term shoe',
         description: 'this is very nice show',
         price: '306',
@@ -154,7 +154,7 @@ export const CART_DATA = [
         colors: 'red',
     },
     {
-        id:10,
+        id:12,
         title: 'MID term shoe',
         description: 'this is very nice show',
         price: '665',
