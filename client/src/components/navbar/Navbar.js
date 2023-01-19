@@ -58,9 +58,10 @@ const Navbar = () => {
               dispatch(alertType('success'))
               dispatch(alertMessage(res.payload.data.message))
               localStorage.removeItem('user')
+              localStorage.removeItem('wishlist')
+              localStorage.removeItem('cart')
               navigate('/')
               setShowProfile(false)
-              // console.log(res)
           }
       })
       dispatch(alertType(''))
