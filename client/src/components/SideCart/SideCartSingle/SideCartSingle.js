@@ -5,7 +5,7 @@ import CrossIcon from '../../IconComponents/CrossIcon';
 const SideCartSingle = (cart) => {
 
     const {title, price, images , i, cartTotalQuantity} = cart
-
+    console.log(typeof(cartTotalQuantity))
     const dispatch = useDispatch()
 
   return (

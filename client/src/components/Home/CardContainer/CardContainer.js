@@ -12,8 +12,8 @@ const CardContainer = () => {
             <div className="card--container--wrapper">
                 {PRODUCT_DATA &&
                     PRODUCT_DATA.length > 0 &&
-                    PRODUCT_DATA.map((product) => (
-                        <Card {...product} />
+                    PRODUCT_DATA.map((product,i) => (
+                        <Card {...product} key={i}/>
                     ))}
             </div>
         </section>

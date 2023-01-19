@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../redux/cart";
@@ -8,11 +9,15 @@ import StarIcon from "../IconComponents/star";
 import "./_card.scss";
 
 const Card = (product) => {
-    const { id, title, price, rating, images, cartTotalQuantity } = product;
+    const { id, title, price, rating, images } = product;
 
+    const [count, setCount] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const goToProduct = () => navigate("/product");
+
+    const plus = () => setCount((prev) => prev + 1);
+    const minus = () => setCount((prev) => prev > 0 && prev - 1);
 
     return (
         <div key={id} className="card--wrapper">
@@ -58,23 +63,25 @@ const Card = (product) => {
                         </div>
                     </div>
                     <div className="add--to--cart">
-                        {cartTotalQuantity > 0 && (
+                        {count > 0 && (
                             <>
                                 <span
-                                    onClick={() =>
-                                        dispatch(removeFromCart(product))
-                                    }
+                                    onClick={() => {
+                                        dispatch(removeFromCart(product));
+                                        minus();
+                                    }}
                                     className="cart--icon--wrapper"
                                 >
                                     -
                                 </span>
-                                <span className="counter-text">
-                                    {cartTotalQuantity}
-                                </span>
+                                <span className="counter-text">{count}</span>
                             </>
                         )}
                         <span
-                            onClick={() => dispatch(addToCart(product))}
+                            onClick={() => {
+                                dispatch(addToCart(product));
+                                plus();
+                            }}
                             className="cart--icon--wrapper"
                         >
                             +
