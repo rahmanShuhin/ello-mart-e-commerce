@@ -100,6 +100,17 @@
                     }
                 }
             }
+            .no--items{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 85vh;
+                justify-content: center;
+                & > span{
+                    font-weight: 600;
+                    color: $red;
+                }
+            }
         }
         .cart--item--wrapper::-webkit-scrollbar {
             display: none;

@@ -85,7 +85,7 @@ export const PRODUCT_DATA = [
     },
     {
         id:7,
-        title: 'KASAMIA shoe',
+        title: 'bengal shoe',
         description: 'this is very nice shoe',
         price: '574',
         rating: '5',

@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import emptyCart from '../../assets/images/emptyCart.JPG';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { openCart } from '../../redux/SidebarCart';
 import BagIcon from '../IconComponents/BagIcon';
@@ -30,8 +31,9 @@ import SideCartSingle from './SideCartSingle/SideCartSingle';
                 cart.cartItems?.map((cart)=>(
                   <SideCartSingle {...cart}/>
                 )) :
-                <div>
-                  <span>No Items !</span>
+                <div className='no--items'>
+                  <img src={emptyCart} alt="empty-cart" width='50%'/>
+                  <span>No items in cart!</span>
                 </div>
               }
             </div>  
