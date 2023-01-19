@@ -68,6 +68,8 @@ const Navbar = () => {
 
  const cart = useSelector(state => state.cart)
 
+ const wishlist = useSelector(state => state.wishlist)
+
   return (
     <>
       <TopMiniNavbar/>
@@ -87,6 +89,9 @@ const Navbar = () => {
               isLogged && 
               <div title="wishlist" onClick={goToHomepage} className="navicon"> 
                 <WishListIcon/>
+                {
+                  wishlist.wishlistItems.length > 0 && <span className="navicon--badge">{wishlist.wishlistItems.length }</span>   
+                }
               </div>
             }
             {

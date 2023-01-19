@@ -11,7 +11,10 @@ const SideCartSingle = (cart) => {
   return (
     <div key={i} className="cart--item">
         <div className="add--to--cart">
-            <span onClick={()=> dispatch(removeFromCart(cart))} className="cart--icon--wrapper">-</span>
+            {
+                cartTotalQuantity >= 2 ? <span onClick={()=> dispatch(removeFromCart(cart))} className="cart--icon--wrapper">-</span> :
+                <span className="cart--icon--wrapper gray">-</span>
+            }
             <span className="counter-text">{cartTotalQuantity}</span>
             <span onClick={()=> dispatch(addToCart(cart))} className="cart--icon--wrapper">+</span>
         </div>

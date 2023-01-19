@@ -159,6 +159,9 @@
         }
     }
 }
+.gray{
+    background-color: rgba(128, 128, 128, 0.282);
+}
 .sidebar--cart--backdrop {
     @include cartPosition(100vw);
     background: rgba(0, 0, 0, 0.53);
