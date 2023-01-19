@@ -9,7 +9,7 @@ const TopMiniNavbar = () => {
                 📞<span> +8801679241513</span>
               </div>
               <div>
-                📧<span> ninja-mart-zindabad@gmail.com</span>
+                📧<span> ninja-mart@gmail.com</span>
               </div>
             </div>
             <div className="header--wrapper--help">
