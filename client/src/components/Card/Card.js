@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addToCart, removeFromCart } from "../../redux/cart";
+import { addToCart } from "../../redux/cart";
 import { openModal } from "../../redux/Modal";
+import { addToWishlist } from "../../redux/wishList";
 import EyeIcon from "../IconComponents/eye";
 import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
@@ -11,13 +11,13 @@ import "./_card.scss";
 const Card = (product) => {
     const { id, title, price, rating, images } = product;
 
-    const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const goToProduct = () => navigate("/product");
 
-    const plus = () => setCount((prev) => prev + 1);
-    const minus = () => setCount((prev) => prev > 0 && prev - 1);
+    // const plus = () => setCount((prev) => prev + 1);
+    // const minus = () => setCount((prev) => prev > 0 && prev - 1);
 
     return (
         <div key={id} className="card--wrapper">
@@ -26,13 +26,20 @@ const Card = (product) => {
                     <div className="discount--text">50% off</div>
                     <div className="card--hover--view">
                         <div
+                            title="Quick view"
                             onClick={() => {
                                 dispatch(openModal("productDetail"));
                             }}
                         >
                             <EyeIcon />
                         </div>
-                        <div>
+                        <div
+                            title="Wishlist"
+                            className="favourite"
+                            onClick={() => {
+                                dispatch(addToWishlist(product));
+                            }}
+                        >
                             <FavouriteIcon />
                         </div>
                     </div>
@@ -62,8 +69,8 @@ const Card = (product) => {
                             </span>
                         </div>
                     </div>
-                    <div className="add--to--cart">
-                        {count > 0 && (
+                    <div title="Add to cart" className="add--to--cart">
+                        {/* {count > 0 && (
                             <>
                                 <span
                                     onClick={() => {
@@ -76,11 +83,10 @@ const Card = (product) => {
                                 </span>
                                 <span className="counter-text">{count}</span>
                             </>
-                        )}
+                        )} */}
                         <span
                             onClick={() => {
                                 dispatch(addToCart(product));
-                                plus();
                             }}
                             className="cart--icon--wrapper"
                         >

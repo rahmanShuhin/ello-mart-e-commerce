@@ -5,6 +5,7 @@ import cartSlice from './cart';
 import counterReducer from './Counter';
 import modalReducer from './Modal';
 import sideCartSlice from './SidebarCart';
+import wishlistSlice from './wishList';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     auth : authSlice,
     alert : alertSlice,
     cart : cartSlice,
+    wishlist : wishlistSlice,
   },
 })

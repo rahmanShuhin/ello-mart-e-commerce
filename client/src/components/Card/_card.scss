@@ -36,6 +36,11 @@ $red: #e94560;
                 & > div {
                     margin-bottom: 8px;
                 }
+                .favourite:hover{
+                    svg{
+                        fill: #0f3460;
+                    }
+                }
             }
         }
         .card--details--wrapper {
