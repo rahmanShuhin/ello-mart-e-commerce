@@ -2,10 +2,10 @@
 import MultiRangeSlider from "multi-range-slider-react";
 import { useState } from 'react';
 import Select from 'react-select';
-import Card from '../components/Card/Card';
-import { COLOR_LIST } from './../assets/data/ColorList';
-import { categories } from './../assets/data/navdata';
-import { PRODUCT_DATA } from './../assets/data/productData';
+import { COLOR_LIST } from '../../assets/data/ColorList';
+import { categories } from '../../assets/data/navdata';
+import { PRODUCT_DATA } from '../../assets/data/productData';
+import Card from '../../components/Card/Card';
 
 
 const sortingOptions = [

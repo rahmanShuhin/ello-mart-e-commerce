@@ -15,7 +15,10 @@ const wishlistSlice = createSlice({
         addToWishlist: (state,action) => {
             const itemIndex = state.wishlistItems.findIndex( item => item.id === action.payload.id)
             if(itemIndex >= 0){
-                state.alreadyAdded = true
+                state.alreadyAdded = true;
+                if(state.alreadyAdded){
+                    state.wishlistItems.splice(itemIndex, 1);
+                }
             }else{
                 state.wishlistItems.unshift(action.payload);
             }
@@ -23,7 +26,7 @@ const wishlistSlice = createSlice({
         },
         deleteFromWishlist: (state, action) => {
             const itemIndex = state.wishlistItems.findIndex( item => item.id === action.payload.id);
-            state.cartItems.splice(itemIndex, 1);
+            state.wishlistItems.splice(itemIndex, 1);
 
             localStorage.setItem("wishlistItems", JSON.stringify(state.wishlistItems));
         }

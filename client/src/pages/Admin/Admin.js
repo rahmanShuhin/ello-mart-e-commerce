@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Dashboard from "../components/Admin/Dashboard/Dashboard";
-import SideNav from "../components/Admin/Navigation/SideNav";
-import TopNav from "../components/Admin/Navigation/TopNav";
-import ProductAdd from "../components/Admin/Product/ProductAdd";
-import { sideBarData } from "../components/Admin/adminStorage";
+import { sideBarData } from "../../components/Admin/adminStorage";
+import SideNav from "../../components/Admin/Navigation/SideNav";
+import TopNav from "../../components/Admin/Navigation/TopNav";
 
 export default function Admin() {
   const [active, setActive] = useState("Dashboard");

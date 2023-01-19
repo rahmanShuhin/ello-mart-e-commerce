@@ -8,11 +8,14 @@ import Navbar from "./components/navbar/Navbar";
 import Product from "./components/Product/Product";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import SideBarCart from "./components/SideCart/SideBarCart";
-import Admin from "./pages/Admin";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Search from "./pages/Search";
-import Wishlist from "./pages/Wishlist";
+import Admin from "./pages/Admin/Admin";
+import Cart from './pages/Checkout/Cart/Cart';
+import Details from './pages/Checkout/Details/Details';
+import Payment from './pages/Checkout/Payment/Payment';
+import Home from "./pages/Home/Home";
+import Profile from "./pages/Profile/Profile";
+import Search from "./pages/Search/Search";
+import Wishlist from "./pages/WishList/Wishlist";
 import "./styles/App.scss";
 
 function App() {
@@ -34,6 +37,10 @@ function App() {
                     <Route path={"/search"} element={<Search />} />
                     <Route path={"/admin"} element={<Admin />} />
                     <Route path={"/wishlist"} element={<Wishlist />} />
+                    <Route path={"/cart"} element={<Cart />} />
+                    <Route path={"/details"} element={<Details />} />
+                    <Route path={"/payment"} element={<Payment />} />
+
                 </Routes>
                 <Footer />
 

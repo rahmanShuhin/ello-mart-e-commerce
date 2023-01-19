@@ -29,7 +29,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const goToHomepage = () => navigate('/');
+  const goToWishList = () => navigate('/wishlist');
   const goToProfile = () => {navigate('/profile'); setShowProfile(false)};
 
   useOnClickOutsideWithSecondRef(profileRef,profileLogoRef,()=> setShowProfile(false));
@@ -88,7 +88,7 @@ const Navbar = () => {
             </div>
             {
               isLogged && 
-              <div title="wishlist" onClick={goToHomepage} className="navicon"> 
+              <div title="wishlist" onClick={goToWishList} className="navicon"> 
                 <WishListIcon/>
                 {
                   wishlist.wishlistItems.length > 0 && <span className="navicon--badge">{wishlist.wishlistItems.length }</span>   

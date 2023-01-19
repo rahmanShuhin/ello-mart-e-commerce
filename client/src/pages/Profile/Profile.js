@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LocationIcon from "../components/IconComponents/LocationIcon";
-import LogoutIcon from "../components/IconComponents/LogoutIcon";
-import OrderIcon from "../components/IconComponents/OrderIcon";
-import ProfileIcon from "../components/IconComponents/ProfileIcon";
-import Address from '../components/Profile/Address/Address';
-import Information from '../components/Profile/Information/Information';
-import Order from '../components/Profile/Order/Order';
+import LocationIcon from "../../components/IconComponents/LocationIcon";
+import LogoutIcon from "../../components/IconComponents/LogoutIcon";
+import OrderIcon from "../../components/IconComponents/OrderIcon";
+import ProfileIcon from "../../components/IconComponents/ProfileIcon";
+import Address from '../../components/Profile/Address/Address';
+import Information from '../../components/Profile/Information/Information';
+import Order from '../../components/Profile/Order/Order';
 
 
 const Profile = () => {

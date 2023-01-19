@@ -122,3 +122,25 @@ input::-webkit-inner-spin-button {
   border-bottom: 2px solid $red;
 }
 }
+
+.py-10{
+  padding: 10px 0;
+}
+
+.py-15{
+  padding: 15px 0;
+}
+
+.py-20{
+  padding: 20px 0;
+}
+
+.flex{
+  display: flex;
+}
+.justify-center{
+  justify-content: center;
+}
+.align-center{
+  align-items: center;
+}

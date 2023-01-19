@@ -110,7 +110,7 @@ export default function Footer() {
                     70 Washington Square South, New York, NY 10012, United
                     States
                   </p>
-                  <p>Email: uilib.help@gmail.com</p>
+                  <p>Email: ninja-mart@gmail.com</p>
                   <p>Phone: +1 1123 456 780</p>
                 </div>
                 <div className="footer--box--elements--four--logos">
