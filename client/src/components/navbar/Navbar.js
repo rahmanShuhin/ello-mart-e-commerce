@@ -15,7 +15,6 @@ import BottomNavbar from "./BottomNavbar/BottomNavbar";
 import Navbarlogo from "./MainNavbar/NavbarLogo/Navbarlogo";
 import NavbarSearch from "./MainNavbar/NavbarSearch/NavbarSearch";
 import TopMiniNavbar from "./TopMiniNavbar/TopMiniNavbar";
-import "./_navbar.scss";
 
 
 const Navbar = () => {

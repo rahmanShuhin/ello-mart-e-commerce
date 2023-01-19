@@ -6,7 +6,6 @@ import { addToWishlist } from "../../redux/wishList";
 import EyeIcon from "../IconComponents/eye";
 import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
-import "./_card.scss";
 
 const Card = (product) => {
     const { id, title, price, rating, images } = product;
