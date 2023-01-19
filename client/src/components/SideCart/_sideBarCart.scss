@@ -21,7 +21,7 @@
             overflow-y: scroll;
             -ms-overflow-style: none;
             scrollbar-width: none;
-            height: calc(100vh - 135px);
+            height: calc(100vh - 185px);
             .cart--item {
                 display: flex;
                 justify-content: flex-start;
@@ -100,15 +100,15 @@
                     }
                 }
             }
-            .no--items{
+            .no--items {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 min-height: 85vh;
                 justify-content: center;
-                & > span{
-                    font-weight: 600;
-                    color: $red;
+                & > span {
+                    font-size: 14px;
+                    color: #878787;
                 }
             }
         }
@@ -117,51 +117,41 @@
         }
     }
     .sidebar--cart--checkout {
-        margin: 20px;
-        & > button {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        .checkout--btn {
             background-color: $red;
             border: 2px solid $red;
             font-weight: 600;
             width: 100%;
-            padding: 0.8rem 0;
-            border-radius: 8px;
+            padding: 0.65rem 0;
+            border-radius: 6px;
             color: #fff;
             transition: 0.2s ease-in-out;
             cursor: pointer;
-            &:hover {
-                background-color: #fff;
-                color: $red;
-            }
         }
-    }
-}
-.sidebar--cart--out {
-    @include cartPosition(380px);
-    transition: 0.6s ease-in-out;
-    transform: translateX(100%);
-    z-index: 9999;
-    .sidebar--cart--checkout {
-        margin: 20px;
-        & > button {
-            background-color: $red;
-            border: 2px solid $red;
+        .view-cart--btn {
+            background-color: #fff;
+            border: 1px solid $red;
             font-weight: 600;
             width: 100%;
-            padding: 0.8rem 0;
-            border-radius: 8px;
-            color: #fff;
+            padding: 0.7rem 0;
+            border-radius: 6px;
+            color: $red;
             transition: 0.2s ease-in-out;
             cursor: pointer;
             &:hover {
-                background-color: #fff;
-                color: $red;
+                background-color: $red;
+                color: #fff;
             }
         }
     }
 }
-.gray{
+.gray {
     background-color: rgba(125, 135, 156, 0.293);
-    color: rgb(125, 135, 156)!important;
+    color: rgb(125, 135, 156) !important;
 }
 .sidebar--cart--backdrop {
     @include cartPosition(100vw);
