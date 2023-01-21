@@ -1,4 +1,14 @@
 .cart--section{
-    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 1.5rem 1.75rem;
     min-height: 65vh;
+    .cart-item--wrapper{
+        flex: 2;
+    }
+    .price-info--wrapper{
+        flex: 1;
+    }
 }
