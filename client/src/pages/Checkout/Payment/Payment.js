@@ -1,8 +1,12 @@
 import React from 'react'
+import CheckoutProgress from '../../../components/Checkout/CheckoutProgess/CheckoutProgress'
 
 const Payment = () => {
   return (
-    <div>Payment</div>
+    <div className='container'>
+      <CheckoutProgress active='payment'/>
+      Payment
+    </div>
   )
 }
 

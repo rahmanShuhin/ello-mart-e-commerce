@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 import emptyCart from "../../assets/images/emptyCart.JPG";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 import { openCart } from "../../redux/SidebarCart";
@@ -64,8 +64,25 @@ const SideBarCart = () => {
                     </div>
                 </div>
                 <div className="sidebar--cart--checkout">
-                    <button className="checkout--btn">Checkout Now {(cart.cartItems.length > 0) ? `( $${total} )` : ''}</button>
-                    <button onClick={()=> {navigate('/cart');dispatch(openCart(false))}} className="view-cart--btn">View Cart</button>
+                    <button
+                        onClick={() => {
+                            navigate("/details");
+                            dispatch(openCart(false));
+                        }}
+                        className="checkout--btn"
+                    >
+                        Checkout Now{" "}
+                        {cart.cartItems.length > 0 ? `( $${total} )` : ""}
+                    </button>
+                    <button
+                        onClick={() => {
+                            navigate("/cart");
+                            dispatch(openCart(false));
+                        }}
+                        className="view-cart--btn"
+                    >
+                        View Cart
+                    </button>
                 </div>
             </div>
             {openSideBarCart && <div className="sidebar--cart--backdrop" />}
