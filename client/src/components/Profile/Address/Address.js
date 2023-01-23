@@ -13,8 +13,8 @@ const Address = () => {
     const [city, setCity] = useState('');
     const [district, setDistrict] = useState('');
     const [address, setAddress] = useState('');
-    const [regionId, setDivisionId] = useState('');
-    const [cityId, setCityId] = useState('');
+    const [divisionId, setDivisionId] = useState('');
+    const [districtId, setDistrictId] = useState('');
     const [errMessage, setErrMessage] = useState(false);
     const [openForm, setOpenForm] = useState(false);
 
@@ -32,11 +32,11 @@ const Address = () => {
     }
 
      //getting city id from DISTRICTS array 
-    const handleCityId = (e) => {
+    const handleDistrictId = (e) => {
 
-        setCity(e.target.value)
-        const cityIndex = DISTRICTS.find( districts => districts.name === e.target.value)
-        setCityId(cityIndex.id)
+        setDistrict(e.target.value)
+        const DistrictIndex = DISTRICTS.find( districts => districts.name === e.target.value)
+        setDistrictId(DistrictIndex.id)
         setErrMessage(false);
     }
 
@@ -54,7 +54,7 @@ const Address = () => {
         setDistrict('')
         setAddress('')
         setDivisionId('')
-        setCityId('')
+        setDistrictId('')
     }
     
     const addAddressHandler = (e) => {
@@ -106,8 +106,9 @@ const Address = () => {
                                     <td>{user?.address?.address}</td>
                                     <td>
                                         {user?.address?.division}{' - '}
-                                        {user?.address?.city}{' - '}
-                                        {user?.address?.district}
+                                        {user?.address?.district}{' - '}
+                                        {user?.address?.city}
+                                        
                                     </td>
                                     <td>{(user?.mobile) ? (`0${user?.mobile}`) : 'not added'}</td>
                                     <td>
@@ -157,19 +158,19 @@ const Address = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="city">City</label><br/>
+                            <label htmlFor="district">District</label><br/>
                             <select 
                                 className='form-input' 
-                                name="city" 
-                                id="city"
-                                value={city}
-                                onChange={(e) => handleCityId(e)}
+                                name="district" 
+                                id="district"
+                                value={district}
+                                onChange={(e) => handleDistrictId(e)}
                             >
-                                <option hidden={true}>select city</option>
+                                <option hidden={true}>select district</option>
                                 {
                                     DISTRICTS.map((district)=>
                                     (
-                                        (district.division_id === regionId) 
+                                        (district.division_id === divisionId) 
                                         ?
                                         <option key={district.id} value={district.name}>{district.name}</option>    
                                         : null
@@ -178,18 +179,19 @@ const Address = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="district">District</label><br/>
+                            
+                            <label htmlFor="city">City</label><br/>
                             <select 
                                 className='form-input' 
-                                name="district" 
-                                id="district"
-                                value={district}
-                                onChange={(e)=>{setDistrict(e.target.value);setErrMessage(false)}}
+                                name="city" 
+                                id="city"
+                                value={city}
+                                onChange={(e)=>{setCity(e.target.value);setErrMessage(false)}}
                             >
-                                <option hidden={true}>select district</option>
+                                <option hidden={true}>select city</option>
                                 {
                                     CITY.map((city)=>(
-                                        (city.district_id === cityId)
+                                        (city.district_id === districtId)
                                         ?
                                         <option key={city.id} value={city.name}>{city.name}</option>
                                         :

@@ -38,7 +38,7 @@
         border-radius: 10px;
 
         span {
-          color: $red !important;
+          color: $themeColor !important;
           font-weight: 500;
         }
       }
@@ -91,7 +91,7 @@
     align-items: center;
     gap: 30px;
     > .MuiSvgIcon-root {
-      color: $red;
+      color: $themeColor;
       font-size: 30px;
       cursor: pointer;
       &:nth-of-type(2) {

@@ -1,104 +1,9 @@
-// import React, { useState } from "react";
-// import CheckoutProgress from "../../../components/Checkout/CheckoutProgess/CheckoutProgress";
-// import PriceInfo from "./../../../components/Checkout/PriceInfo/PriceInfo";
-
-// const Details = () => {
-//     const [active] = useState("details");
-
-//     const [division, setDivision] = useState('');
-//     const [city, setCity] = useState('');
-//     const [district, setDistrict] = useState('');
-//     const [address, setAddress] = useState('');
-//     const [regionId, setDivisionId] = useState('');
-//     const [cityId, setCityId] = useState('');
-//     const [errMessage, setErrMessage] = useState(false);
-//     const [openForm, setOpenForm] = useState(false);
-
-//     return (
-//         <div className="container">
-//             <CheckoutProgress active={active} />
-//             <div className="details--section">
-//                 <div className="details--section--wrapper">
-//                     <div className="details--form--group--wrapper">
-//                         <div className="details--form--group">
-//                             <label htmlFor="name">Full Name</label>
-//                             <input
-//                                 type="text"
-//                                 name="name"
-//                                 id="name"
-//                                 placeholder=""
-//                                 onChange={() => {}}
-//                             />
-//                         </div>
-//                         <div className="details--form--group">
-//                             <label htmlFor="">Email Address</label>
-//                             <input
-//                                 type="email"
-//                                 name="email"
-//                                 id="email"
-//                                 placeholder="example@gmail.com"
-//                                 onChange={() => {}}
-//                             />
-//                         </div>
-//                     </div>
-//                     <div className="details--form--group--wrapper">
-//                         <div className="details--form--group">
-//                             <label htmlFor="phone-number">Phone Number</label>
-//                             <input
-//                                 type="text"
-//                                 name="phone-number"
-//                                 id="phone-number"
-//                                 placeholder=""
-//                                 onChange={() => {}}
-//                             />
-//                         </div>
-//                         <div className="details--form--group">
-//                             <label htmlFor=""></label>
-//                             <input
-//                                 type="text"
-//                                 name=""
-//                                 id=""
-//                                 placeholder=""
-//                                 onChange={() => {}}
-//                             />
-//                         </div>
-//                     </div>
-//                     <div className="details--form--group--wrapper">
-//                         <div className="details--form--group">
-//                             <label htmlFor=""></label>
-//                             <input
-//                                 type="text"
-//                                 name=""
-//                                 id=""
-//                                 placeholder=""
-//                                 onChange={() => {}}
-//                             />
-//                         </div>
-//                         <div className="details--form--group">
-//                             <label htmlFor=""></label>
-//                             <input
-//                                 type="text"
-//                                 name=""
-//                                 id=""
-//                                 placeholder=""
-//                                 onChange={() => {}}
-//                             />
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <PriceInfo />
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Details;
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import CITY from "../../../assets/data/city";
 import DISTRICTS from "../../../assets/data/district";
 import DIVITIONS from "../../../assets/data/divisions";
-import CheckoutProgress from "../../../components/Checkout/CheckoutProgess/CheckoutProgress";
+import CheckoutProgress from "../../../components/Checkout/CheckoutProgress/CheckoutProgress";
 import { alertMessage, alertType } from "../../../redux/alertBox";
 import { addAddress } from "../../../redux/Auth";
 import PriceInfo from "./../../../components/Checkout/PriceInfo/PriceInfo";
@@ -110,8 +15,8 @@ const Details = () => {
     const [city, setCity] = useState("");
     const [district, setDistrict] = useState("");
     const [address, setAddress] = useState("");
-    const [regionId, setDivisionId] = useState("");
-    const [cityId, setCityId] = useState("");
+    const [divisionId, setDivisionId] = useState("");
+    const [districtId, setDistrictId] = useState("");
     const [errMessage, setErrMessage] = useState(false);
     const [openForm, setOpenForm] = useState(false);
 
@@ -130,12 +35,12 @@ const Details = () => {
     };
 
     //getting city id from DISTRICTS array
-    const handleCityId = (e) => {
-        setCity(e.target.value);
-        const cityIndex = DISTRICTS.find(
+    const handleDistrictId = (e) => {
+        setDistrict(e.target.value);
+        const DistrictIndex = DISTRICTS.find(
             (districts) => districts.name === e.target.value
         );
-        setCityId(cityIndex.id);
+        setDistrictId(DistrictIndex.id);
         setErrMessage(false);
     };
 
@@ -153,7 +58,7 @@ const Details = () => {
         setDistrict("");
         setAddress("");
         setDivisionId("");
-        setCityId("");
+        setDistrictId("");
     };
 
     const addAddressHandler = (e) => {
@@ -191,7 +96,7 @@ const Details = () => {
                 <div className="details--section--wrapper">
                     <h3>Shipping Address</h3>
                     <form className="address--form" id="address-form">
-                    <div className="form--group--wrapper">
+                        <div className="form--group--wrapper">
                             <div className="form-group">
                                 <label htmlFor="name">Full Name</label>
                                 <br />
@@ -202,13 +107,16 @@ const Details = () => {
                                     min="5"
                                     max="35"
                                     id="name"
+                                    placeholder="Your name"
                                     value={division}
                                     onChange={handleDivisionId}
                                 />
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="phone">Phone Number (+880)</label>
+                                <label htmlFor="phone">
+                                    Phone Number (+880)
+                                </label>
                                 <br />
                                 <input
                                     className="form-input"
@@ -217,6 +125,7 @@ const Details = () => {
                                     min="5"
                                     max="35"
                                     id="phone"
+                                    placeholder="number"
                                     value={division}
                                     onChange={handleDivisionId}
                                 />
@@ -248,18 +157,20 @@ const Details = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="city">City</label>
+                                <label htmlFor="district">District</label>
                                 <br />
                                 <select
                                     className="form-input"
-                                    name="city"
-                                    id="city"
-                                    value={city}
-                                    onChange={(e) => handleCityId(e)}
+                                    name="district"
+                                    id="district"
+                                    value={district}
+                                    onChange={(e) => handleDistrictId(e)}
                                 >
-                                    <option hidden={true}>select city</option>
+                                    <option hidden={true}>
+                                        select district
+                                    </option>
                                     {DISTRICTS.map((district) =>
-                                        district.division_id === regionId ? (
+                                        district.division_id === divisionId ? (
                                             <option
                                                 key={district.id}
                                                 value={district.name}
@@ -273,23 +184,21 @@ const Details = () => {
                         </div>
                         <div className="form--group--wrapper">
                             <div className="form-group">
-                                <label htmlFor="district">District</label>
+                                <label htmlFor="city">City</label>
                                 <br />
                                 <select
                                     className="form-input"
-                                    name="district"
-                                    id="district"
-                                    value={district}
+                                    name="city"
+                                    id="city"
+                                    value={city}
                                     onChange={(e) => {
-                                        setDistrict(e.target.value);
+                                        setCity(e.target.value);
                                         setErrMessage(false);
                                     }}
                                 >
-                                    <option hidden={true}>
-                                        select district
-                                    </option>
+                                    <option hidden={true}>select city</option>
                                     {CITY.map((city) =>
-                                        city.district_id === cityId ? (
+                                        city.district_id === districtId ? (
                                             <option
                                                 key={city.id}
                                                 value={city.name}
@@ -307,7 +216,7 @@ const Details = () => {
                                     className="form-input"
                                     name="address"
                                     id="address"
-                                    placeholder="For Example: House# 123, Street# 123, ABC Road"
+                                    placeholder="House# 123, Street# 123, ABC Road"
                                     value={address}
                                     onChange={(e) => {
                                         setAddress(e.target.value);
@@ -327,9 +236,7 @@ const Details = () => {
                                 type="submit"
                                 className="submit-btn"
                             >
-                                {user.hasOwnProperty("address")
-                                    ? "UPDATE ADDRESS"
-                                    : "+ ADD NEW ADDRESS"}
+                                Add Address
                             </button>
                             {openForm && (
                                 <button

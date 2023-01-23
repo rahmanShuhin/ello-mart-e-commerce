@@ -36,7 +36,7 @@
                 }
                 &:focus {
                     outline: none;
-                    border: 1px solid $red;
+                    border: 1px solid $themeColor;
                 }
                 & > input {
                     flex: 1;
@@ -67,10 +67,10 @@
         .submit {
             margin-top: 0.6rem;
             width: 100%;
-            @include basicBtn($red);
+            @include basicBtn($themeColor);
             &:hover {
                 background-color: #fff;
-                color: $red;
+                color: $themeColor;
             }
         }
     }

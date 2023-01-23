@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../../../components/Checkout/CartItem/CartItem";
-import CheckoutProgress from "../../../components/Checkout/CheckoutProgess/CheckoutProgress";
+import CheckoutProgress from "../../../components/Checkout/CheckoutProgress/CheckoutProgress";
 import PriceInfo from "../../../components/Checkout/PriceInfo/PriceInfo";
 
 const Cart = () => {

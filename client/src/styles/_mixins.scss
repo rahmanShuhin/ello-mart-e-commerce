@@ -55,7 +55,7 @@ $breakpoints-down: (
   transition: 0.2s ease-in-out;
   &:hover {
     background-color: #fff;
-    color: $red;
+    color: $themeColor;
   }
 }
 
@@ -63,13 +63,13 @@ $breakpoints-down: (
   background-color: $bgColor;
   border-radius: 8px;
   padding: 12px 0;
-  color: $red;
-  border: 1px solid $red;
+  color: $themeColor;
+  border: 1px solid $themeColor;
   cursor: pointer;
   transition: 0.2s ease-in-out;
   &:hover {
     background-color: #ffe1e1;
-    color: $red;
+    color: $themeColor;
   }
 }
 

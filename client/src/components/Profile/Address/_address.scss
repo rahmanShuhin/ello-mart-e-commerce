@@ -86,7 +86,7 @@
                     }
                     &:focus {
                         outline: none;
-                        border: 1px solid $red;
+                        border: 1px solid $themeColor;
                     }
                 }
                 .text-area {
@@ -114,24 +114,24 @@
         .submit-btn {
             color: #fff;
             padding: 0.7rem 2rem;
-            background-color: $red;
+            background-color: $themeColor;
             border: none;
             border-radius: 8px;
             transition: 0.3s;
-            border: 1px solid $red;
+            border: 1px solid $themeColor;
             cursor: pointer;
             &:hover {
                 transform: translateY(-1px);
                 box-shadow: 0 8px 15px #00000025;
-                border: 1px solid $red;
+                border: 1px solid $themeColor;
                 background-color: #fff;
-                color: $red;
+                color: $themeColor;
             }
         }
         .cancel-btn {
-            color: $red;
+            color: $themeColor;
             background-color: #fff;
-            border: 1px solid $red;
+            border: 1px solid $themeColor;
         }
 
         .address--message {

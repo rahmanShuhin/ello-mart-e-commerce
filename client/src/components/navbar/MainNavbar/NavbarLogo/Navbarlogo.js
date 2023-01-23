@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { categories } from "../../../../assets/data/navdata";
-import logo from "../../../../assets/icons/NinjaMartMain.svg";
+import logo from "../../../../assets/icons/NinjaMart2.svg";
 import CategoryIcon2 from "../../../IconComponents/CategoryIcon2";
 import DownFilledIcon from "../../../IconComponents/DownFilledIcon";
 import { useOnClickOutside } from './../../../../hooks/useOnClickOutside';
@@ -30,7 +30,7 @@ const Navbarlogo = () => {
     <div className="navbar--wrapper--header">
       <div className="navbar--wrapper--header--logo">
         <Link to='/'>
-          <img src={logo} alt="" />
+          <img src={logo} alt="" width="100%" />
         </Link>
       </div>
       {

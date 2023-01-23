@@ -42,7 +42,7 @@
                         width: 30px;
                         font-size: 26px;
                         font-weight: 700;
-                        color: $red;
+                        color: $themeColor;
                         border-radius: 50%;
                         box-shadow: 0 0 2px rgba(233, 69, 96, 0.816);
                         transition: 0.2s ease-in-out;
@@ -50,7 +50,7 @@
                         cursor: pointer;
                         &:hover {
                             color: #fff;
-                            background-color: $red;
+                            background-color: $themeColor;
                         }
                     }
                     .counter-text {
@@ -81,7 +81,7 @@
                         }
                         .price {
                             font-size: 0.9rem;
-                            color: $red;
+                            color: $themeColor;
                             font-weight: 600;
                         }
                     }
@@ -122,8 +122,8 @@
         flex-direction: column;
         gap: 8px;
         button {
-            background-color: $red;
-            border: 1px solid $red;
+            background-color: $themeColor;
+            border: 1px solid $themeColor;
             font-weight: 600;
             width: 100%;
             padding: 0.7rem 0;
@@ -134,13 +134,13 @@
             cursor: pointer;
         }
         .checkout--btn{
-            background-color: $red;
+            background-color: $themeColor;
         }
         .view-cart--btn{
             background-color: #fff;
-            color: $red;
+            color: $themeColor;
             &:hover {
-                background-color: $red;
+                background-color: $themeColor;
                 color: #fff;
             }
         }
@@ -154,8 +154,8 @@
     .sidebar--cart--checkout {
         margin: 20px;
         & > button {
-            background-color: $red;
-            border: 2px solid $red;
+            background-color: $themeColor;
+            border: 2px solid $themeColor;
             font-weight: 600;
             width: 100%;
             padding: 0.8rem 0;
@@ -165,7 +165,7 @@
             cursor: pointer;
             &:hover {
                 background-color: #fff;
-                color: $red;
+                color: $themeColor;
             }
         }
     }

@@ -54,7 +54,7 @@
         font-size: 14px;
         &:hover {
           background: $background-white;
-          color: $red;
+          color: $themeColor;
           cursor: pointer;
           & > ul {
             display: block;
@@ -80,7 +80,7 @@
             font-size: 14px;
             &:hover {
               background: $background-white;
-              color: $red;
+              color: $themeColor;
               cursor: pointer;
             }
           }
@@ -99,8 +99,8 @@
           transition: 0.2s ease-in-out;
           cursor: pointer;
           &:hover {
-            color: $red;
-            border-top: 1px solid $red;
+            color: $themeColor;
+            border-top: 1px solid $themeColor;
           }
         }
       }

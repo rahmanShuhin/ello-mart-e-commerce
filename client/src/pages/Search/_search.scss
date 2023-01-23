@@ -45,7 +45,7 @@
           align-items: center;
           gap: 20px;
           .apply-btn {
-            @include basicBtn($red);
+            @include basicBtn($themeColor);
             padding: 10px 24px;
           }
           .reset-btn {
@@ -78,7 +78,7 @@
     }
   }
   .bar-inner {
-    background-color: $red;
+    background-color: $themeColor;
     box-shadow: none;
     border: none;
   }
@@ -90,7 +90,7 @@
     .min-value,
     .max-value {
       width: auto;
-      background-color: $red;
+      background-color: $themeColor;
       border-radius: 8px;
       padding: 0 10px;
       box-shadow: none;

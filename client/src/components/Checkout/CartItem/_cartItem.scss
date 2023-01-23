@@ -21,7 +21,7 @@
             color: #989898;
         }
         .price{
-            color: $red;
+            color: $themeColor;
             margin-left: 20px;
             font-weight: 600;
         }
@@ -40,7 +40,7 @@
             height: 30px;
             width: 30px;
             font-size: 26px;
-            color: $red;
+            color: $themeColor;
             border-radius: 8px;
             box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
             transition: 0.2s ease-in-out;
@@ -48,7 +48,7 @@
             cursor: pointer;
             &:hover {
                 color: #fff;
-                background-color: $red;
+                background-color: $themeColor;
             }
         }
         .counter-text {

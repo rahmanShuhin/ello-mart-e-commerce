@@ -18,7 +18,7 @@
                 box-shadow: unset;
                 transition: all 150ms ease-in-out 0s;
                 padding: 5px 10px;
-                background-color: $red;
+                background-color: $themeColor;
                 color: #fff;
                 position: absolute;
                 top: 0;
@@ -69,7 +69,7 @@
                     margin-top: 10px;
                     &--active {
                         padding-right: 0.5rem;
-                        color: $red;
+                        color: $themeColor;
                     }
                     &--inactive {
                         color: rgb(125, 135, 156);
@@ -90,7 +90,7 @@
                     height: 30px;
                     width: 30px;
                     font-size: 26px;
-                    color: $red;
+                    color: $themeColor;
                     border-radius: 8px;
                     box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
                     transition: 0.2s ease-in-out;
@@ -98,7 +98,7 @@
                     cursor: pointer;
                     &:hover {
                         color: #fff;
-                        background-color: $red;
+                        background-color: $themeColor;
                     }
                 }
                 .counter-text {

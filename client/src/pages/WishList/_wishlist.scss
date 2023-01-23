@@ -16,7 +16,7 @@
             color: rgb(119, 119, 119)
         }
         & > button {
-            @include basicBtn($red);
+            @include basicBtn($themeColor);
             padding: 10px 15px;
             font-weight: 600;
         }

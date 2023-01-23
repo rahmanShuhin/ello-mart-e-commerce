@@ -29,7 +29,7 @@
           padding: 10px;
           cursor: pointer;
           &.active {
-            border: 1px solid $red;
+            border: 1px solid $themeColor;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
           }
           > img {
@@ -55,7 +55,7 @@
           @include toRem(font-size, 14);
         }
         &:nth-of-type(3) {
-          color: $red;
+          color: $themeColor;
           @include toRem(font-size, 25);
           font-weight: 700;
 
@@ -87,7 +87,7 @@
             cursor: pointer;
 
             &.active {
-              border: 2px solid $red;
+              border: 2px solid $themeColor;
               background-color: white;
             }
           }
@@ -121,7 +121,7 @@
             }
           }
           .active {
-            border: 2px solid $red;
+            border: 2px solid $themeColor;
           }
         }
       }
@@ -148,7 +148,7 @@
             padding: 1px 15px;
             font-size: 26px;
             font-weight: 700;
-            color: $red;
+            color: $themeColor;
             border-radius: 8px;
             box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
             transition: 0.2s ease-in-out;
@@ -156,7 +156,7 @@
             cursor: pointer;
             &:hover {
               color: #fff;
-              background-color: $red;
+              background-color: $themeColor;
             }
           }
           .counter-text {
@@ -183,8 +183,8 @@
         margin-right: 20px;
         cursor: pointer;
         &.active {
-          color: $red;
-          border-bottom: 2px solid $red;
+          color: $themeColor;
+          border-bottom: 2px solid $themeColor;
         }
       }
     }

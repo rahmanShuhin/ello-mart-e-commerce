@@ -40,7 +40,7 @@
                         }
                         &:focus {
                             outline: none;
-                            border: 1px solid $red;
+                            border: 1px solid $themeColor;
                         }
                     }
                 }
@@ -53,20 +53,20 @@
                 color: #fff;
                 padding: 0.5rem 2rem;
                 width: 135px;
-                background-color: $red;
+                background-color: $themeColor;
                 border: none;
                 border-radius: 8px;
                 margin: 1rem 0;
                 font-size: 14px;
                 transition: 0.2s;
-                border: 1px solid $red;
+                border: 1px solid $themeColor;
                 cursor: pointer;
                 &:hover {
                     transform: translateY(-1px);
                     box-shadow: 0 5px 10px #00000035;
                     background-color: transparent;
-                    color: $red;
-                    border: 1px solid $red;
+                    color: $themeColor;
+                    border: 1px solid $themeColor;
                 }
             }
         }

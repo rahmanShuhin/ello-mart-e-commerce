@@ -36,15 +36,15 @@
             border: 1px solid #d7d7d7;
             &:focus{
                 outline: none;
-                border: 1px solid $red;
+                border: 1px solid $themeColor;
             }
         }
         & > button{
-            @include basicBtn($red);
+            @include basicBtn($themeColor);
             width: 100%;
             &:hover{
                 background-color: #fff;
-                color: $red;
+                color: $themeColor;
                 border-radius: 6px;
             }
         }
