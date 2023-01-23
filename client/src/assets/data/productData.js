@@ -12,6 +12,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'5%'
     },
     {
         id:2,
@@ -26,6 +28,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'10%'
     },
     {
         id:3,
@@ -40,6 +44,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:4,
@@ -54,6 +60,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:5,
@@ -68,6 +76,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:6,
@@ -82,6 +92,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:7,
@@ -96,6 +108,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:8,
@@ -110,6 +124,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:9,
@@ -124,6 +140,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:10,
@@ -138,6 +156,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:10,
@@ -152,6 +172,8 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     },
     {
         id:10,
@@ -166,5 +188,7 @@ export const PRODUCT_DATA = [
         reviews: '2',
         sizes: '34',
         colors: 'red',
+        slug:'',
+        discount:'15%'
     }
 ]

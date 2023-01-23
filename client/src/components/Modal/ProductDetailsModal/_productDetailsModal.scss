@@ -150,7 +150,7 @@
           font-weight: 700;
           color: $themeColor;
           border-radius: 8px;
-          box-shadow: 0 0 2px rgba(233, 69, 96, 0.418);
+          box-shadow: 0 0 2px rgba($themeColor, 0.418);
           transition: 0.2s ease-in-out;
           cursor: pointer;
           &:hover {

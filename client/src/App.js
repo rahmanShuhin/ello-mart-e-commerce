@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AlertBox from "./components/AlertBox/AlertBox";
 import Footer from "./components/footer/Footer";
@@ -16,11 +17,18 @@ import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Search from "./pages/Search/Search";
 import Wishlist from "./pages/WishList/Wishlist";
+import { getTotal } from "./redux/cart";
 import "./styles/App.scss";
 
 function App() {
+    const dispatch = useDispatch();
     const openModal = useSelector((state) => state.modal.value);
     const alertBoxType = useSelector((state) => state.alert.type);
+    const {cartItems} = useSelector((state) => state.cart);
+
+    useEffect(()=>{
+        dispatch(getTotal(4.00));
+    },[cartItems])
 
     return (
         <div className="App">

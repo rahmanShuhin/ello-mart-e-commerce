@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CITY from "../../../assets/data/city";
 import DISTRICTS from "../../../assets/data/district";
 import DIVITIONS from "../../../assets/data/divisions";
@@ -19,6 +19,8 @@ const Details = () => {
     const [districtId, setDistrictId] = useState("");
     const [errMessage, setErrMessage] = useState(false);
     const [openForm, setOpenForm] = useState(false);
+
+    const cart = useSelector((state) => state.cart);
 
     const dispatch = useDispatch();
 
@@ -249,7 +251,7 @@ const Details = () => {
                 </div>
 
                 <div className="price-info--wrapper">
-                    <PriceInfo />
+                    <PriceInfo {...cart}/>
                 </div>
             </div>
         </div>

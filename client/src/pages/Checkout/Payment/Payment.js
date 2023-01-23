@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import cash from "../../../assets/icons/cash-icon.svg";
 import bkash from "../../../assets/images/BKash-Logo.wine.svg";
 import CheckoutProgress from "../../../components/Checkout/CheckoutProgress/CheckoutProgress";
 import PriceInfo from "./../../../components/Checkout/PriceInfo/PriceInfo";
 
 const Payment = () => {
+    const cart = useSelector((state) => state.cart);
     return (
         <div className="container">
             <CheckoutProgress active="payment" />
@@ -31,7 +33,7 @@ const Payment = () => {
                     </div>
                 </div>
                 <div className="price-info--wrapper">
-                    <PriceInfo />
+                    <PriceInfo {...cart}/>
                 </div>
             </div>
         </div>

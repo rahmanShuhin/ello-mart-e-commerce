@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 const CheckoutProgress = ({active}) => {
 
     const navigate = useNavigate();
-    console.log(active)
 
   return (
     <div className="checkout--progress">

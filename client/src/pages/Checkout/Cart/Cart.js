@@ -18,7 +18,7 @@ const Cart = () => {
                         cart?.cartItems.map((cart) => <CartItem {...cart} />)}
                 </div>
                 <div className="price-info--wrapper">
-                    <PriceInfo />
+                    <PriceInfo/>
                 </div>
             </div>
         </div>
