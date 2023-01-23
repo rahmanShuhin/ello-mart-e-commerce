@@ -8,7 +8,7 @@ import FavouriteIcon from "../IconComponents/favourite";
 import StarIcon from "../IconComponents/star";
 
 const Card = (product) => {
-    const { id, title, price, rating, images } = product;
+    const { id, title, price, rating, images, discount } = product;
 
     // const [count, setCount] = useState(0);
     const dispatch = useDispatch();
@@ -22,7 +22,9 @@ const Card = (product) => {
         <div key={id} className="card--wrapper">
             <div className="card--wrapper--inner">
                 <div className="card--image--holder">
-                    <div className="discount--text">50% off</div>
+                    {
+                        discount && <div className="discount--text">{discount} off</div>
+                    }
                     <div className="card--hover--view">
                         <div
                             title="Quick view"

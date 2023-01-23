@@ -2,7 +2,7 @@ import TopBanner from '../../components/Home/Banner/TopBanner';
 import CardContainer from "../../components/Home/CardContainer/CardContainer";
 import SupportCard from "../../components/Home/MinorComponents/SupportCard";
 
-const Home = ({setModalType}) => {
+const Home = () => {
   return (
     <div className="container">
       <TopBanner/>

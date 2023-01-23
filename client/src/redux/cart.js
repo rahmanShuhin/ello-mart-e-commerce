@@ -7,6 +7,8 @@ const initialState = {
     cartTotalQuantity: 0,
     cartTotalAmount: 0,
     cartTotalAmountWithTax: 0,
+    tax: 0,
+    shipping: 0,
 };
 
 const cartSlice = createSlice({
@@ -48,12 +50,12 @@ const cartSlice = createSlice({
         getTotal: (state, action) => {
             let total = 0;
             let totalWithTax = 0;
-            let tax = action.payload;
+            state.tax = action.payload;
 
             state.cartItems.forEach((item) => {
                 total += item.cartTotalQuantity * item.price;
             });
-            totalWithTax = total + tax;
+            totalWithTax = total + state.tax;
             state.cartTotalAmount = total.toFixed(2);
             state.cartTotalAmountWithTax = totalWithTax.toFixed(2)
         },

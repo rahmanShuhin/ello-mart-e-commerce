@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { fakeData } from "../../assets/data/fakeData";
-import StarIcon from "../IconComponents/star";
-import { ImageMagnifier } from "../ImageMagnifier/ImageMagnifier";
+import StarIcon from "../../components/IconComponents/star";
+import { ImageMagnifier } from "../../components/ImageMagnifier/ImageMagnifier";
 
 const Product = () => {
   const [activeImg, setActiveImg] = useState(0);
@@ -9,6 +10,7 @@ const Product = () => {
   const [size, setSize] = useState(0);
   const [color, setColor] = useState(0);
   const [count, setCount] = useState(1)
+  const {id} = useParams();
 
   const plus = () => setCount(prev => prev + 1);
   const minus = () => (count > 1) && setCount(prev => prev - 1);

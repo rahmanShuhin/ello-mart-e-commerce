@@ -3,26 +3,7 @@ import { useSelector } from 'react-redux';
 
 const PriceInfo = () => {
 
-    // const [total, setTotal] = useState();
-
-    // useEffect(() => {
-    //     let isMounted = true;
-    //     if (isMounted) {
-    //         const getTotal = () => {
-    //             let totalPrice = 0;
-    //             cart?.cartItems.forEach((item) => {
-    //                 totalPrice += item.price * item.cartTotalQuantity;
-    //                 setTotal(totalPrice);
-    //             });
-    //         };
-    //         getTotal();
-    //     }
-    //     return () => {
-    //         isMounted = false;
-    //     };
-    // }, [cart]);
-
-    const {cartTotalAmount, cartTotalAmountWithTax} = useSelector(state=> state.cart)
+    const {cartTotalAmount, cartTotalAmountWithTax, tax, shipping} = useSelector(state=> state.cart)
 
   return (
     <div className='price-info--section'>
@@ -30,10 +11,10 @@ const PriceInfo = () => {
             <span>Subtotal:</span><span>${cartTotalAmount}</span>
         </div>
         <div>
-            <span>Shipping:</span><span>$0</span>
+            <span>Shipping:</span><span>${shipping}</span>
         </div>
         <div>
-            <span>Tax:</span><span>$4.00</span>
+            <span>Tax:</span><span>${tax}</span>
         </div>
         <span className='divider'/>
         <div>

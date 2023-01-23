@@ -36,7 +36,8 @@ function App() {
             {alertBoxType === "error" && <AlertBox />}
             <BrowserRouter>
                 <ScrollToTop />
-                <Navbar />
+                {window.location.pathname !== '/admin' && <Navbar />}
+                
                 <Routes>
                     <Route path={"/"} element={<Home />} />
                     <Route path={"/product"} element={<Product />} />
@@ -50,7 +51,8 @@ function App() {
                     <Route path={"/payment"} element={<Payment />} />
 
                 </Routes>
-                <Footer />
+                {window.location.pathname !== '/admin' && <Footer />}
+                
 
                 <SideBarCart />
 

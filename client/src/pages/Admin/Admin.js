@@ -5,7 +5,6 @@ import TopNav from "../../components/Admin/Navigation/TopNav";
 
 export default function Admin() {
   const [active, setActive] = useState("Dashboard");
-  console.log(active);
   return (
     <section className="admin">
       <SideNav active={active} setActive={setActive}></SideNav>

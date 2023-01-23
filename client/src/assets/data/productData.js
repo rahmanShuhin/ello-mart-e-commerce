@@ -93,7 +93,7 @@ export const PRODUCT_DATA = [
         sizes: '34',
         colors: 'red',
         slug:'',
-        discount:'15%'
+        discount:''
     },
     {
         id:7,
@@ -109,7 +109,7 @@ export const PRODUCT_DATA = [
         sizes: '34',
         colors: 'red',
         slug:'',
-        discount:'15%'
+        discount:'23%'
     },
     {
         id:8,
@@ -125,7 +125,7 @@ export const PRODUCT_DATA = [
         sizes: '34',
         colors: 'red',
         slug:'',
-        discount:'15%'
+        discount:'4%'
     },
     {
         id:9,
@@ -157,7 +157,7 @@ export const PRODUCT_DATA = [
         sizes: '34',
         colors: 'red',
         slug:'',
-        discount:'15%'
+        discount:'20%'
     },
     {
         id:10,
@@ -173,7 +173,7 @@ export const PRODUCT_DATA = [
         sizes: '34',
         colors: 'red',
         slug:'',
-        discount:'15%'
+        discount:''
     },
     {
         id:10,
@@ -189,6 +189,6 @@ export const PRODUCT_DATA = [
         sizes: '34',
         colors: 'red',
         slug:'',
-        discount:'15%'
+        discount:'5%'
     }
 ]
