@@ -1,6 +1,6 @@
 import React from "react";
 // icons
-import logo from "../../assets/icons/NinjaMart.svg";
+import logo from "../../assets/icons/NinjaMartMain2.svg";
 import AppleStore from "../IconComponents/AppleStore";
 import Facebook from "../IconComponents/Facebook";
 import Google from "../IconComponents/Google";
@@ -8,7 +8,6 @@ import GooglePlay from "../IconComponents/GooglePlay";
 import Instagram from "../IconComponents/Instagram";
 import Twitter from "../IconComponents/Twitter";
 import Youtube from "../IconComponents/Youtube";
-import "./_footer.scss";
 export default function Footer() {
   return (
     <footer>
@@ -18,7 +17,7 @@ export default function Footer() {
             <article className="footer--box--elements">
               <div className="footer--box--elements--one">
                 <a className="footer--box--elements--one--logo">
-                  <img src={logo} alt="" />
+                  <img src={logo} alt="" width="60%"/>
                 </a>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
