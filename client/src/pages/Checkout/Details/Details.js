@@ -96,6 +96,11 @@ const Details = () => {
                 <div className="details--section--wrapper">
                     <h3>Shipping Address</h3>
                     <form className="address--form" id="address-form">
+                        {errMessage && (
+                            <span className="err--message">
+                                Error! Input field can't be empty!
+                            </span>
+                        )}
                         <div className="form--group--wrapper">
                             <div className="form-group">
                                 <label htmlFor="name">Full Name</label>
@@ -224,28 +229,21 @@ const Details = () => {
                                     }}
                                 />
                             </div>
-                            {errMessage && (
-                                <span className="err--message">
-                                    Error! Input field can't be empty!
-                                </span>
-                            )}
                         </div>
                         <div className="btn-wrapper">
+                            <button
+                                onClick={cancelForm}
+                                className="submit-btn cancel-btn"
+                            >
+                                Back to cart
+                            </button>
                             <button
                                 onClick={addAddressHandler}
                                 type="submit"
                                 className="submit-btn"
                             >
-                                Add Address
+                                Proceed to payment
                             </button>
-                            {openForm && (
-                                <button
-                                    onClick={cancelForm}
-                                    className="submit-btn cancel-btn"
-                                >
-                                    cancel
-                                </button>
-                            )}
                         </div>
                     </form>
                 </div>

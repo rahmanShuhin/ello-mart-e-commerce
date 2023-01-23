@@ -1,4 +1,5 @@
 import React from "react";
+import cash from "../../../assets/icons/cash-icon.svg";
 import bkash from "../../../assets/images/BKash-Logo.wine.svg";
 import CheckoutProgress from "../../../components/Checkout/CheckoutProgress/CheckoutProgress";
 import PriceInfo from "./../../../components/Checkout/PriceInfo/PriceInfo";
@@ -18,7 +19,7 @@ const Payment = () => {
                                 name="payment"
                             />
                             <label htmlFor="cash-on-delivery">
-                                Cash on delivery
+                            <img src={cash} alt="cash on delivery" width="100%" />
                             </label>
                         </div>
                         <div className="radio--group">
