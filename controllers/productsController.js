@@ -7,7 +7,7 @@ module.exports = {
   //---------get all products----------
   async getProducts(req, res, next) {
     try {
-      const resultPerPage = req.query.perPage || 5;
+      const resultPerPage = req.query.perPage || 8;
       const apiFeature = new ApiFeatures(Product.find(), req.query)
         .search()
         .filter()

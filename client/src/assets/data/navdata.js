@@ -2,55 +2,89 @@ export const categories = [
   {
     id: 1,
     url: "/",
-    text: "Car",
+    text: "Vehicle",
     subCategory:[
       {
-        name:'Toyota',
+        name:'car',
       },
       {
-        name:'BMW',
+        name:'Truck',
       },
       {
-        name:'Tesla',
+        name:'Jeep',
       },
       {
-        name:'Sedan',
+        name:'High-ace',
       },
       {
-        name:'Lemborgini',
+        name:'sedan',
       },
       {
-        name:'Bugatti',
-      },
+        name:'Other',
+      }
     ],
   },
   {
     id: 2,
     url: "/",
-    text: "Clothes",
+    text: "Men's Fashion",
     subCategory:[
-      {
-        name:'Winter',
-      },
-      {
-        name:'Summer',
-      },
-      {
-        name:'Beach',
-      },
       {
         name:'Shirt',
       },
       {
-        name:'Dress',
+        name:'Pant',
       },
       {
-        name:'Lehenga',
+        name:'Shorts',
       },
+      {
+        name:'T-shirt',
+      },
+      {
+        name:'Trouser',
+      },
+      {
+        name:'Jersey',
+      }
     ],
   },
   {
     id: 3,
+    url: "/",
+    text: "Women's Fashion",
+    subCategory:[
+      {
+        name:'Wedding dress',
+      },
+      {
+        name:'Sweater',
+      },
+      {
+        name:'T-shirt',
+      },
+      {
+        name:'Jeans',
+      },
+      {
+        name:'Skirt',
+      },
+      {
+        name:'Jeans',
+      },
+      {
+        name:'Necklace',
+      },
+      {
+        name:'Ring',
+      },
+      {
+        name:'Earrings',
+      }
+    ],
+  },
+  {
+    id: 4,
     url: "/",
     text: "Electronics",
     subCategory:[
@@ -72,52 +106,35 @@ export const categories = [
       {
         name:'Fridge',
       },
-    ],
-  },
-  {
-    id: 4,
-    url: "/",
-    text: "Laptop",
-    subCategory:[
       {
-        name:'Asus',
-      },
-      {
-        name:'Hp',
-      },
-      {
-        name:'Apple',
-      },
-      {
-        name:'Samsung',
-      },
-      {
-        name:'Chrome',
-      },
-      {
-        name:'Think-pad',
+        name:'Other',
       },
     ],
   },
   {
     id: 5,
     url: "/",
-    text: "Desktop",
+    text: "Groceries",
   },
   {
     id: 6,
     url: "/",
-    text: "Camera",
+    text: "Gifts",
   },
   {
     id: 7,
     url: "/",
-    text: "Toys",
+    text: "Pets",
   },
   {
     id: 8,
     url: "/",
-    text: "profile",
+    text: "Health & accesories",
+  },
+  {
+    id: 9,
+    url: "/",
+    text: "Baby Toys",
   },
 ];
 

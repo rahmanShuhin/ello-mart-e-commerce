@@ -47,19 +47,19 @@ const productSchema = new Schema({
     type: Number,
     default: 0,
   },
+  discount: {
+    type: Number,
+  },
   reviews: [
     {
       name: {
         type: String,
-        required: true,
       },
       rating: {
         type: Number,
-        required: true,
       },
       comment: {
         type: String,
-        required: true,
       },
     },
   ],
@@ -68,7 +68,6 @@ const productSchema = new Schema({
       size: {
         type: String,
         trim: true,
-        required: true,
       },
     },
   ],
@@ -77,7 +76,6 @@ const productSchema = new Schema({
       color: {
         type: String,
         trim: true,
-        required: true,
       },
     },
   ],
