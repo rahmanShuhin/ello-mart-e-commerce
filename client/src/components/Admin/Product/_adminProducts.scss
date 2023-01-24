@@ -1,143 +1,197 @@
 .productsList {
-  padding: 10px 0;
-  .productList__body{
-    & > {
-      background-color: #fff!important;
-      
-    }
-    .admin-table-global {
-      width: 100%;
-      text-align: left;
-      background-color: $admin-card-bg;
-      border-collapse: collapse;
-      border-radius: 8px;
-      box-shadow: rgba($themeColor, 0.16) 0px 1px 4px;
-      tr:hover {
-        background-color: $admin-light-bg;
-      }
-      th {
-        padding: 10px;
-        text-align: left;
-        background-color: $themeColor;
-        color: white;
-        margin: 0px;
-        border: none;
-      }
-      th:first-child{
-        border-top-left-radius: 8px;
-        text-align: center;
-      }
-      th:last-child{
-        border-top-right-radius: 8px;
-      }
-      td {
-        margin: 0px;
-        border: none;
-        padding: 15px 10px;
-        &:last-of-type {
-          color: $themeColor;
+    padding: 10px 0;
+    .productList__body {
+        & > {
+            background-color: #fff !important;
         }
-      }
-      td:first-child{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      td:last-child{
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
+        .admin-table-global {
+            width: 100%;
+            text-align: left;
+            background-color: $admin-card-bg;
+            border-collapse: collapse;
+            border-radius: 8px;
+            box-shadow: rgba($themeColor, 0.16) 0px 1px 4px;
+            tr:hover {
+                background-color: $admin-light-bg;
+            }
+            th {
+                padding: 10px;
+                text-align: left;
+                background-color: $themeColor;
+                color: white;
+                margin: 0px;
+                border: none;
+            }
+            th:first-child {
+                border-top-left-radius: 8px;
+                text-align: center;
+            }
+            th:last-child {
+                border-top-right-radius: 8px;
+            }
+            td {
+                margin: 0px;
+                border: none;
+                padding: 15px 10px;
+                &:last-of-type {
+                    color: $themeColor;
+                }
+            }
+            td:first-child {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            td:last-child {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+        .pagination__table {
+            width: 100%;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: flex-end;
+            background-color: $admin-card-bg;
+            border-bottom: 2px solid $themeColor;
+        }
     }
-    .pagination__table {
-      width: 100%;
-      padding: 20px 10px;
-      display: flex;
-      justify-content: flex-end;
-      background-color: $admin-card-bg;
-      border-bottom: 2px solid $themeColor;
-    }
-  }
 }
-// background: #fff;
-// padding: 2rem;
-// border-radius: 8px;
-// width: 100%;
 .productCreate {
-  padding: 30px;
-  > p {
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 20px;
-  }
-  &__box {
-    display: flex;
-    justify-content: space-between;
-    gap: 150px;
-    padding: 50px 0px;
-    border-top: 1px dashed lightgray;
-    border-bottom: 1px dashed lightgray;
-    > div {
-      &:nth-of-type(1) {
-        > p {
-          color: $admin-text;
-          font-weight: 500;
-        }
-        small {
-          color: $admin-text;
-        }
-      }
-      &:nth-of-type(2) {
-        flex: 0.9;
-        background-color: $admin-card-bg;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        border-radius: 5px;
-        padding: 30px 20px;
-      }
+    padding: 30px;
+    > p {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 20px;
     }
-  }
-  .upload__image-wrapper {
-    > div {
-      &:nth-of-type(1) {
-        > button {
-          width: 100%;
-          height: 200px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: 2px dashed lightgray;
-          background: none;
-          span {
-            color: $themeColor;
-            font-size: 16px;
-            font-weight: 700;
-            margin: 0px 10px;
-          }
+    &__box {
+        padding: 50px 0px;
+        border-top: 1px dashed lightgray;
+        border-bottom: 1px dashed lightgray;
+        .product__image__upload{
+            margin-top: 15px;
+            &:nth-of-type(1) {
+                > p {
+                    color: $admin-text;
+                    font-weight: 500;
+                }
+                small {
+                    color: $admin-text;
+                }
+            }
+            &:nth-of-type(2) {
+                flex: 0.9;
+                background-color: $admin-card-bg;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                border-radius: 5px;
+                padding: 30px 20px;
+            }
         }
-      }
-    }
-    .image-item-wrapper {
-      padding-top: 30px;
-      display: flex;
-      gap: 20px;
-      .image-item {
-        position: relative;
-        .image-item__btn-wrapper {
-          position: absolute;
-          top: -25px;
-          right: 0px;
-          button {
-            background: red;
-            border: none;
-            cursor: pointer;
-            color: white;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-          }
+        &__wrapper {
+            & > div {
+              display: flex;
+              gap: 4rem;
+              flex-wrap: wrap;
+              max-width: 50%;
+                .form-group {
+                  flex: 1;
+                  margin-top: 1rem;
+                    label {
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: $profile-text-color;
+                    }
+                    .form-input {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 10px;
+                        min-height: 35px;
+                        width: 100%;
+                        min-width: 190px;
+                        padding: 5px 10px;
+                        margin-top: 8px;
+                        border-radius: 6px;
+                        border: 1px solid #d3d3d3;
+                        resize: none;
+                        &:hover {
+                            border: 1px solid rgba($themeColor, 0.46);
+                        }
+                        &:focus {
+                            outline: none;
+                            border: 1px solid $themeColor;
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
+    .upload__image-wrapper {
+        > div {
+            &:nth-of-type(1) {
+                > button {
+                    width: 100%;
+                    height: 200px;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: 2px dashed lightgray;
+                    background: none;
+                    span {
+                        color: $themeColor;
+                        font-size: 16px;
+                        font-weight: 700;
+                        margin: 0px 10px;
+                    }
+                }
+            }
+        }
+        .image-item-wrapper {
+            padding-top: 30px;
+            display: flex;
+            gap: 20px;
+            & > h4 {
+                display: block;
+                color: $admin-dark;
+            }
+            .image-item {
+                display: grid;
+                place-items: center;
+                position: relative;
+                width: 85px;
+                height: 85px;
+                border-radius: 6px;
+                padding: 5px;
+                border: 1px dashed rgba($themeColor, 0.4);
+                object-fit: contain;
+                & > img {
+                    max-height: 75px;
+                }
+
+                .image-item__btn-wrapper {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform: translate(50%, -50%);
+                    button {
+                        display: grid;
+                        place-items: center;
+                        background: rgb(255, 0, 0);
+                        border: none;
+                        cursor: pointer;
+                        color: white;
+                        font-weight: 600;
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        &:hover {
+                            background: rgb(226, 0, 0);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

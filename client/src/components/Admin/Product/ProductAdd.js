@@ -1,87 +1,230 @@
-import React from "react";
-import ImageUploading from "react-images-uploading";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ClearIcon from "@mui/icons-material/Clear";
+import React from "react";
+import { GoCloudUpload } from "react-icons/go";
+import ImageUploading from "react-images-uploading";
 
 export default function ProductAdd() {
-  const [images, setImages] = React.useState([]);
-  const maxNumber = 5;
-  const onChange = (imageList, addUpdateIndex) => {
-    // data for submit
-    // console.log(imageList, addUpdateIndex);
-    setImages(imageList);
-  };
-  return (
-    <div className="productCreate">
-      <p>Create Product</p>
-      <>
-        {/* image upload  */}
-        <div className="productCreate__box">
-          <div>
-            <p>Featured Image</p>
-            <small>Upload your product featured image here</small>
-          </div>
-          <div>
-            <ImageUploading
-              multiple
-              value={images}
-              onChange={onChange}
-              maxNumber={maxNumber}
-              dataURLKey="data_url"
-            >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-                onImageUpdate,
-                onImageRemove,
-                isDragging,
-                dragProps,
-              }) => (
-                // write your building UI
-                <div className="upload__image-wrapper">
-                  <div>
-                    <button
-                      style={isDragging ? { color: "red" } : null}
-                      onClick={onImageUpload}
-                      {...dragProps}
-                    >
-                      <CloudUploadIcon />
-                      <span>Upload an image</span> or drag and drop PNG,JPG
-                    </button>
-                    &nbsp;
-                    {/* <button onClick={onImageRemoveAll}>
+    const [images, setImages] = React.useState([]);
+    const maxNumber = 4;
+    const onChange = (imageList, addUpdateIndex) => {
+        // data for submit
+        // console.log(imageList, addUpdateIndex);
+        setImages(imageList);
+    };
+    return (
+        <div className="productCreate">
+            <p>Create Product</p>
+            <>
+                {/* image upload  */}
+                <div className="productCreate__box">
+                    <div>
+                        <p>Featured Image</p>
+                        <small>Upload your product featured image here</small>
+                    </div>
+                    <div className="product__image__upload">
+                        <ImageUploading
+                            multiple
+                            value={images}
+                            onChange={onChange}
+                            maxNumber={maxNumber}
+                            dataURLKey="data_url"
+                        >
+                            {({
+                                imageList,
+                                onImageUpload,
+                                onImageRemoveAll,
+                                onImageUpdate,
+                                onImageRemove,
+                                isDragging,
+                                dragProps,
+                            }) => (
+                                // write your building UI
+                                <div className="upload__image-wrapper">
+                                    <div>
+                                        <button
+                                            style={
+                                                isDragging
+                                                    ? { color: "red" }
+                                                    : null
+                                            }
+                                            onClick={onImageUpload}
+                                            {...dragProps}
+                                        >
+                                            <GoCloudUpload fontSize={24} />
+                                            <span>Upload an image</span> or drag
+                                            and drop PNG,JPG
+                                        </button>
+                                        &nbsp;
+                                        {/* <button onClick={onImageRemoveAll}>
                       Remove all images
                     </button> */}
-                  </div>
-                  <div className="image-item-wrapper">
-                    {imageList.map((image, index) => (
-                      <div key={index} className="image-item">
-                        <img src={image.data_url} alt="" width="100" />
-                        <div className="image-item__btn-wrapper">
-                          <button onClick={() => onImageRemove(index)}>
-                            <ClearIcon />
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                                    </div>
+                                    <div className="image-item-wrapper">
+                                        {imageList.length > 0 && (
+                                            <h4>Preview Image:</h4>
+                                        )}
+                                        {imageList.map((image, index) => (
+                                            <div
+                                                key={index}
+                                                className="image-item"
+                                            >
+                                                <img
+                                                    src={image.data_url}
+                                                    alt=""
+                                                    width="100%"
+                                                />
+                                                <div className="image-item__btn-wrapper">
+                                                    <button
+                                                        onClick={() =>
+                                                            onImageRemove(index)
+                                                        }
+                                                    >
+                                                        <ClearIcon fontSize="16px" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </ImageUploading>
+                    </div>
                 </div>
-              )}
-            </ImageUploading>
-          </div>
+                {/* image upload  end*/}
+                <div className="productCreate__box">
+                    <div>
+                        <p>Description</p>
+                        <small>
+                            Create your product description and necessary
+                            information from here
+                        </small>
+                    </div>
+                    <div className="productCreate__box__wrapper">
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="title">Product title:</label>
+                                <br />
+
+                                <input
+                                    className="form-input"
+                                    type="text"
+                                    id="title"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="price">Price:</label>
+                                <br />
+                                <input
+                                    className="form-input"
+                                    type="number"
+                                    id="price"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="category">Category:</label>
+                                <br />
+                                <input
+                                    className="form-input"
+                                    type=""
+                                    id="category"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="stock">Stock:</label>
+                                <br />
+                                <input
+                                    className="form-input"
+                                    type="number"
+                                    id="stock"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="size">Size:</label>
+                                <br />
+                                <input
+                                    className="form-input"
+                                    type=""
+                                    id="size"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="discount">Discount:</label>
+                                <br />
+                                <input
+                                    className="form-input"
+                                    type="number"
+                                    id="discount"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="sku">SKU:</label>
+                                <br />
+                                <input
+                                    className="form-input"
+                                    type=""
+                                    id="SKU"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="brand">Brand:</label>
+                                <br />
+                                <input
+                                    className="form-input"
+                                    type=""
+                                    id="brand"
+                                    value=""
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="form-group">
+                                <label htmlFor="description">
+                                    Product Description:
+                                </label>
+                                <br />
+                                <textarea
+                                    className="form-input"
+                                    type=""
+                                    id="description"
+                                    value=""
+                                    rows="7"
+                                    onChange={() => {}}
+                                    placeholder=""
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
         </div>
-        {/* image upload  end*/}
-        <div className="productCreate__box">
-          <div>
-            <p>Description</p>
-            <small>
-              Edit your product description and necessary information from here
-            </small>
-          </div>
-          <div></div>
-        </div>
-      </>
-    </div>
-  );
+    );
 }
