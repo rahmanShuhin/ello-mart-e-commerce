@@ -1,28 +1,30 @@
+import { BsTruck } from "react-icons/bs";
+import { FiBox } from "react-icons/fi";
+import { MdOutlineAllInbox } from "react-icons/md";
+import { RxDashboard } from "react-icons/rx";
 import Dashboard from "./Dashboard/Dashboard";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import HomeIcon from "@mui/icons-material/Home";
-import ProductList from "./Product/ProductList";
 import ProductAdd from "./Product/ProductAdd";
+import ProductList from "./Product/ProductList";
 
 export const sideBarData = [
   {
     menu: "Dashboard",
-    icon: <HomeIcon />,
+    icon: <RxDashboard fontSize={20} />,
     render: <Dashboard />,
   },
   {
     menu: "Products",
-    icon: <LocalShippingIcon />,
+    icon: <FiBox fontSize={20}/>,
     render: <ProductList />,
   },
   {
-    menu: "Product Create",
-    icon: <LocalShippingIcon />,
+    menu: "Create Product",
+    icon: <MdOutlineAllInbox fontSize={20}/>,
     render: <ProductAdd />,
   },
   {
     menu: "Orders",
-    icon: <LocalShippingIcon />,
+    icon: <BsTruck fontSize={20}/>,
     render: <ProductList />,
   },
 ];

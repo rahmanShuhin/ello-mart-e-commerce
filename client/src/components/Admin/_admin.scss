@@ -7,6 +7,11 @@
   }
   > div {
     flex: 0.15;
+    @media(min-width:972px){
+       padding: 20px 30px;
+    }
+   
+
     &:nth-of-type(2) {
       flex: 1;
       background-color: $admin-light-bg;

@@ -85,42 +85,6 @@ input::-webkit-inner-spin-button {
 ::-webkit-scrollbar-thumb:hover {
   background: #8c8c8c;
 //primary table design for all
-
-.admin-table-global {
-  width: 100%;
-  text-align: left;
-  background-color: $admin-card-bg;
-  border-collapse: collapse;
-
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  tr:hover {
-    background-color: $admin-light-bg;
-  }
-  th {
-    padding: 10px;
-    text-align: left;
-    background-color: $themeColor;
-    color: white;
-    margin: 0px;
-    border: none;
-  }
-  td {
-    margin: 0px;
-    border: none;
-    padding: 15px 10px;
-    &:last-of-type {
-      color: red;
-    }
-  }
-}
-.pagination__table {
-  width: 100%;
-  padding: 20px 10px;
-  display: flex;
-  justify-content: flex-end;
-  background-color: $admin-card-bg;
-  border-bottom: 2px solid $themeColor;
-}
 }
 
 .py-10{

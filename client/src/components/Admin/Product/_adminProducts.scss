@@ -1,7 +1,68 @@
 .productsList {
-  padding: 0px 50px;
+  padding: 10px 0;
+  .productList__body{
+    & > {
+      background-color: #fff!important;
+      
+    }
+    .admin-table-global {
+      width: 100%;
+      text-align: left;
+      background-color: $admin-card-bg;
+      border-collapse: collapse;
+      border-radius: 8px;
+      box-shadow: rgba($themeColor, 0.16) 0px 1px 4px;
+      tr:hover {
+        background-color: $admin-light-bg;
+      }
+      th {
+        padding: 10px;
+        text-align: left;
+        background-color: $themeColor;
+        color: white;
+        margin: 0px;
+        border: none;
+      }
+      th:first-child{
+        border-top-left-radius: 8px;
+        text-align: center;
+      }
+      th:last-child{
+        border-top-right-radius: 8px;
+      }
+      td {
+        margin: 0px;
+        border: none;
+        padding: 15px 10px;
+        &:last-of-type {
+          color: $themeColor;
+        }
+      }
+      td:first-child{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      td:last-child{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+    .pagination__table {
+      width: 100%;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: flex-end;
+      background-color: $admin-card-bg;
+      border-bottom: 2px solid $themeColor;
+    }
+  }
 }
-
+// background: #fff;
+// padding: 2rem;
+// border-radius: 8px;
+// width: 100%;
 .productCreate {
   padding: 30px;
   > p {

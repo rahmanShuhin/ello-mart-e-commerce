@@ -8,7 +8,7 @@ export default function Admin() {
   return (
     <section className="admin">
       <SideNav active={active} setActive={setActive}></SideNav>
-      <div>
+      <div className="admin--main--section">
         <TopNav></TopNav>
         {sideBarData.map((data) => active === data.menu && data.render)}
       </div>

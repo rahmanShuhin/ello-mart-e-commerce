@@ -38,7 +38,7 @@ const data2 = [
 ];
 
 export default function Dashboard() {
-    const [themeColor] = useState("#e94560");
+    const [themeColor] = useState("#0f3460");
     return (
         <div className="admin__dashboard">
             <div className="admin__dashboard__top">
@@ -63,6 +63,13 @@ export default function Dashboard() {
                             <div>
                                 <p>Happy Clients</p>
                                 <small>$18,925</small>
+                            </div>
+                        </div>
+                        <div>
+                            <AccountBalanceWalletIcon />
+                            <div>
+                                <p>Total Products</p>
+                                <small>3,925</small>
                             </div>
                         </div>
                     </div>
