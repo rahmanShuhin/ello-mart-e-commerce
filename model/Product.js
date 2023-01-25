@@ -20,18 +20,7 @@ const productSchema = new Schema({
     type: Number,
     default: 0,
   },
-  images: [
-    {
-      public_id: {
-        type: String,
-        required: true,
-      },
-      url: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  images: [String],
   category: {
     type: String,
     required: [true, "Please Enter Product Category"],
@@ -40,7 +29,7 @@ const productSchema = new Schema({
   stock: {
     type: Number,
     required: [true, "Please Enter Product Stock"],
-    maxlength: [4, "Stock Cannot exceed 4 characters"],
+    maxLength: [4, "Stock Cannot exceed 4 characters"],
     default: 1,
   },
   totalReviews: {
@@ -48,7 +37,7 @@ const productSchema = new Schema({
     default: 0,
   },
   discount: {
-    type: Number,
+    type: String,
   },
   reviews: [
     {
@@ -63,22 +52,8 @@ const productSchema = new Schema({
       },
     },
   ],
-  sizes: [
-    {
-      size: {
-        type: String,
-        trim: true,
-      },
-    },
-  ],
-  colors: [
-    {
-      color: {
-        type: String,
-        trim: true,
-      },
-    },
-  ],
+  sizes: [String],
+  colors: [String],
 
   time: {
     type: Date,
