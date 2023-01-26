@@ -1,16 +1,30 @@
 import ClearIcon from "@mui/icons-material/Clear";
-import React from "react";
+import { useState } from "react";
 import { GoCloudUpload } from "react-icons/go";
 import ImageUploading from "react-images-uploading";
+import { MAIN_CATEGORIES } from "../../../assets/data/category";
+import { SUB_CATEGORIES } from "../../../assets/data/subCategory";
 
 export default function ProductAdd() {
-    const [images, setImages] = React.useState([]);
+    const [images, setImages] = useState([]);
+    const [category, setCategory] = useState();
+    const [categoryID, setCategoryId] = useState();
+    const [subCategory, setSubCategory] = useState();
     const maxNumber = 4;
+
     const onChange = (imageList, addUpdateIndex) => {
         // data for submit
-        // console.log(imageList, addUpdateIndex);
+        console.log(imageList);
         setImages(imageList);
     };
+
+    const handleCategoryId = (e) => {
+
+        setCategory(e.target.value)
+        const categoryIndex = MAIN_CATEGORIES.find(({category}) => category === e.target.value)
+        setCategoryId(categoryIndex.id);
+    }
+
     return (
         <div className="productCreate">
             <p>Create Product</p>
@@ -110,6 +124,7 @@ export default function ProductAdd() {
                                     type="text"
                                     id="title"
                                     value=""
+                                    max="40"
                                     onChange={() => {}}
                                     placeholder=""
                                 />
@@ -128,17 +143,43 @@ export default function ProductAdd() {
                             </div>
                         </div>
                         <div>
+                        <div className="form-group">
+                        <label htmlFor="category">Category</label><br/>
+                            <select 
+                                className='form-input' 
+                                name="division" 
+                                id="division"
+                                value={category}
+                                onChange={handleCategoryId}
+                            >
+                            <option hidden={true}>select category</option>
+                            {
+                                MAIN_CATEGORIES.map(({id, category})=>(
+                                    <option key={id} value={category}>{category}</option>
+                                ))
+                            }
+                            </select>
+                        </div>
                             <div className="form-group">
-                                <label htmlFor="category">Category:</label>
-                                <br />
-                                <input
-                                    className="form-input"
-                                    type=""
-                                    id="category"
-                                    value=""
-                                    onChange={() => {}}
-                                    placeholder=""
-                                />
+                                <label htmlFor="subCategory">Sub Category</label><br/>
+                                <select 
+                                    className='form-input' 
+                                    name="subCategory" 
+                                    id="subCategory"
+                                    value={subCategory}
+                                    onChange={(e) => setSubCategory(e.target.value)}
+                                >
+                                    <option hidden={true}>select sub category</option>
+                                    {
+                                        SUB_CATEGORIES.map(({id, subCategory, cat_id})=>
+                                        (
+                                            (cat_id === categoryID) 
+                                            ?
+                                            <option key={id} value={subCategory}>{subCategory}</option>    
+                                            : null
+                                        )) 
+                                    } 
+                                </select>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="stock">Stock:</label>

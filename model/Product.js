@@ -39,6 +39,14 @@ const productSchema = new Schema({
   discount: {
     type: String,
   },
+  sku: {
+    type: String,
+    required: true,
+  },
+  productType: {
+    type: String,
+    required: true,
+  },
   reviews: [
     {
       name: {
