@@ -3,13 +3,23 @@ import { useState } from "react";
 import { GoCloudUpload } from "react-icons/go";
 import ImageUploading from "react-images-uploading";
 import { MAIN_CATEGORIES } from "../../../assets/data/category";
+import SIZE from "../../../assets/data/Size";
 import { SUB_CATEGORIES } from "../../../assets/data/subCategory";
 
 export default function ProductAdd() {
+    const [productName, setProductName] = useState("");
+    const [productPrice, setProductPrice] = useState(0);
+    const [productSize, setProductSize] = useState([]);
+    const [stock, setStock] = useState("");
+    const [brand, setBrand] = useState("");
+    const [SKU, setSKU] = useState("");
+    const [productColor, setProductColor] = useState('');
+    const [discount, setDiscount] = useState(0);
     const [images, setImages] = useState([]);
     const [category, setCategory] = useState();
     const [categoryID, setCategoryId] = useState();
     const [subCategory, setSubCategory] = useState();
+    const [productDescription, setProductDescription] = useState("");
     const maxNumber = 4;
 
     const onChange = (imageList, addUpdateIndex) => {
@@ -19,11 +29,13 @@ export default function ProductAdd() {
     };
 
     const handleCategoryId = (e) => {
-
-        setCategory(e.target.value)
-        const categoryIndex = MAIN_CATEGORIES.find(({category}) => category === e.target.value)
+        setCategory(e.target.value);
+        const categoryIndex = MAIN_CATEGORIES.find(
+            ({ category }) => category === e.target.value
+        );
         setCategoryId(categoryIndex.id);
-    }
+    };
+    console.log(productSize);
 
     return (
         <div className="productCreate">
@@ -123,9 +135,11 @@ export default function ProductAdd() {
                                     className="form-input"
                                     type="text"
                                     id="title"
-                                    value=""
                                     max="40"
-                                    onChange={() => {}}
+                                    value={productName}
+                                    onChange={(e) =>
+                                        setProductName(e.target.value)
+                                    }
                                     placeholder=""
                                 />
                             </div>
@@ -136,51 +150,68 @@ export default function ProductAdd() {
                                     className="form-input"
                                     type="number"
                                     id="price"
-                                    value=""
-                                    onChange={() => {}}
+                                    value={productPrice}
+                                    onChange={(e) =>
+                                        setProductPrice(e.target.value)
+                                    }
                                     placeholder=""
                                 />
                             </div>
                         </div>
                         <div>
-                        <div className="form-group">
-                        <label htmlFor="category">Category</label><br/>
-                            <select 
-                                className='form-input' 
-                                name="division" 
-                                id="division"
-                                value={category}
-                                onChange={handleCategoryId}
-                            >
-                            <option hidden={true}>select category</option>
-                            {
-                                MAIN_CATEGORIES.map(({id, category})=>(
-                                    <option key={id} value={category}>{category}</option>
-                                ))
-                            }
-                            </select>
-                        </div>
                             <div className="form-group">
-                                <label htmlFor="subCategory">Sub Category</label><br/>
-                                <select 
-                                    className='form-input' 
-                                    name="subCategory" 
-                                    id="subCategory"
-                                    value={subCategory}
-                                    onChange={(e) => setSubCategory(e.target.value)}
+                                <label htmlFor="category">Category</label>
+                                <br />
+                                <select
+                                    className="form-input"
+                                    name="division"
+                                    id="division"
+                                    value={category}
+                                    onChange={handleCategoryId}
                                 >
-                                    <option hidden={true}>select sub category</option>
-                                    {
-                                        SUB_CATEGORIES.map(({id, subCategory, cat_id})=>
-                                        (
-                                            (cat_id === categoryID) 
-                                            ?
-                                            <option key={id} value={subCategory}>{subCategory}</option>    
-                                            : null
-                                        )) 
-                                    } 
+                                    <option hidden={true}>
+                                        select category
+                                    </option>
+                                    {MAIN_CATEGORIES.map(({ id, category }) => (
+                                        <option key={id} value={category}>
+                                            {category}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
+                            <div className="form-group">
+                                <label htmlFor="subCategory">
+                                    Sub Category
+                                </label>
+                                <br />
+                                <select
+                                    className="form-input"
+                                    name="subCategory"
+                                    id="subCategory"
+                                    value={subCategory}
+                                    onChange={(e) =>
+                                        setSubCategory(e.target.value)
+                                    }
+                                >
+                                    <option hidden={true}>
+                                        select sub category
+                                    </option>
+                                    {SUB_CATEGORIES.map(
+                                        ({ id, subCategory, cat_id }) =>
+                                            cat_id === categoryID ? (
+                                                <option
+                                                    key={id}
+                                                    value={subCategory}
+                                                >
+                                                    {subCategory}
+                                                </option>
+                                            ) : null
+                                    )}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
                             <div className="form-group">
                                 <label htmlFor="stock">Stock:</label>
                                 <br />
@@ -188,22 +219,10 @@ export default function ProductAdd() {
                                     className="form-input"
                                     type="number"
                                     id="stock"
-                                    value=""
-                                    onChange={() => {}}
-                                    placeholder=""
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <div className="form-group">
-                                <label htmlFor="size">Size:</label>
-                                <br />
-                                <input
-                                    className="form-input"
-                                    type=""
-                                    id="size"
-                                    value=""
-                                    onChange={() => {}}
+                                    value={stock}
+                                    onChange={(e) => {
+                                        setStock(e.target.value);
+                                    }}
                                     placeholder=""
                                 />
                             </div>
@@ -214,10 +233,64 @@ export default function ProductAdd() {
                                     className="form-input"
                                     type="number"
                                     id="discount"
-                                    value=""
-                                    onChange={() => {}}
+                                    value={discount}
+                                    onChange={(e) => {
+                                        setDiscount(e.target.value);
+                                    }}
                                     placeholder=""
                                 />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="form-group">
+                                <label>
+                                    Product Size:
+                                    <div className="form-input-checkbox-group">
+                                        {SIZE.map((size, i) => (
+                                            <>
+                                                <input
+                                                    key={i}
+                                                    type="checkbox"
+                                                    value={size}
+                                                    checked={productSize.includes(
+                                                        size
+                                                    )}
+                                                    onChange={(e) => {
+                                                        if (e.target.checked) {
+                                                            setProductSize([
+                                                                ...productSize,
+                                                                e.target.value,
+                                                            ]);
+                                                        } else {
+                                                            setProductSize(
+                                                                productSize.filter(
+                                                                    (size) =>
+                                                                        size !==
+                                                                        e.target
+                                                                            .value
+                                                                )
+                                                            );
+                                                        }
+                                                    }}
+                                                />
+                                                {size}
+                                            </>
+                                        ))}
+                                    </div>
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    Product Color:
+                                    <input
+                                    className="form-input"
+                                        type="text"
+                                        value={productColor}
+                                        onChange={(e) =>
+                                            setProductColor(e.target.value)
+                                        }
+                                    />
+                                </label>
                             </div>
                         </div>
                         <div>
@@ -228,8 +301,10 @@ export default function ProductAdd() {
                                     className="form-input"
                                     type=""
                                     id="SKU"
-                                    value=""
-                                    onChange={() => {}}
+                                    value={SKU}
+                                    onChange={(e) => {
+                                        setSKU(e.target.value);
+                                    }}
                                     placeholder=""
                                 />
                             </div>
@@ -240,8 +315,10 @@ export default function ProductAdd() {
                                     className="form-input"
                                     type=""
                                     id="brand"
-                                    value=""
-                                    onChange={() => {}}
+                                    value={brand}
+                                    onChange={(e) => {
+                                        setBrand(e.target.value);
+                                    }}
                                     placeholder=""
                                 />
                             </div>
@@ -256,9 +333,11 @@ export default function ProductAdd() {
                                     className="form-input"
                                     type=""
                                     id="description"
-                                    value=""
+                                    value={productDescription}
                                     rows="7"
-                                    onChange={() => {}}
+                                    onChange={(e) => {
+                                        setProductDescription(e.target.value);
+                                    }}
                                     placeholder=""
                                 />
                             </div>

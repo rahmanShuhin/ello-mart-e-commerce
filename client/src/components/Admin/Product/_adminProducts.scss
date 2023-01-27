@@ -115,12 +115,24 @@
                         border-radius: 6px;
                         border: 1px solid #d3d3d3;
                         resize: none;
+                        
                         &:hover {
                             border: 1px solid rgba($themeColor, 0.46);
                         }
                         &:focus {
                             outline: none;
                             border: 1px solid $themeColor;
+                        }
+                    }
+                    .form-input-checkbox-group{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap: 5px;
+                        padding-top: 20px;
+                        font-size: 1rem;
+                        & > input{
+                            margin-left: 15px;
                         }
                     }
                 }
