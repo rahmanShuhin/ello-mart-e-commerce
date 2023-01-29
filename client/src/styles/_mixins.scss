@@ -76,9 +76,14 @@ $breakpoints-down: (
 @mixin basicBtn($bgColor) {
     background-color: $bgColor;
     border-radius: 8px;
-    padding: 12px 0;
+    padding: 12px 20px;
     color: #fff;
     border: 1px solid $bgColor;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    &:hover{
+      background-color:#fff;
+      color: $themeColor;
+      border: 1px solid $themeColor;
+    }
 }

@@ -138,6 +138,11 @@
                 }
             }
         }
+        .create-product--btn{
+            @include basicBtn($themeColor);
+            margin-top: 1.5rem;
+            padding: 12px 45px;
+        }
     }
     .upload__image-wrapper {
         > div {
