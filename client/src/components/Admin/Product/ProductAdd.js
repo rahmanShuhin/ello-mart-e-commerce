@@ -15,6 +15,7 @@ export default function ProductAdd() {
     const [SKU, setSKU] = useState("");
     const [productColor, setProductColor] = useState('');
     const [discount, setDiscount] = useState(0);
+    const [productType, setProductType] = useState("");
     const [images, setImages] = useState([]);
     const [category, setCategory] = useState();
     const [categoryID, setCategoryId] = useState();
@@ -239,6 +240,26 @@ export default function ProductAdd() {
                                     }}
                                     placeholder=""
                                 />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="productType">
+                                    Product Type
+                                </label>
+                                <br />
+                                <select
+                                    className="form-input"
+                                    name="productType"
+                                    id="productType"
+                                    value={productType}
+                                    onChange={(e) =>
+                                        setProductType(e.target.value)
+                                    }
+                                >
+                                    <option disabled> select Type </option>
+                                    <option value="on-sale"> On sale </option>
+                                    <option value="new-collection"> New Collection </option>
+                                    <option value="limited-addition"> Limited edition </option>
+                                </select>
                             </div>
                         </div>
                         <div>
