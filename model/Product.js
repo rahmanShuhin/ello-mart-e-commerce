@@ -65,7 +65,9 @@ const productSchema = new Schema({
     },
   ],
   sizes: [String],
-  colors: [String],
+  colors: {
+    type: String,
+  },
 
   time: {
     type: Date,

@@ -50,7 +50,8 @@ module.exports = {
   //----------create product----------
   async postProduct(req, res, next) {
     try {
-      const product = await Product.create(req.body);
+      const images = req.files.map((file) => file.path);
+      const product = await Product.create({...req.body, images});
       res.status(201).json({
         success: true,
         product,

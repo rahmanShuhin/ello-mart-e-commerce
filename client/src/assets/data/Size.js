@@ -1,9 +1,21 @@
 const SIZE = [
-    "Null",
-    "XS",
-    "S",
-    "M",
-    "L",
-    "XL"    
+    {
+        size:"Null"
+    },
+    {
+        size:"XS"
+    },
+    {
+        size:"S"
+    },
+    {
+        size:"M"
+    },
+    {
+        size:"L"
+    },
+    {
+        size:"XL"
+    } 
 ]
 export default SIZE;

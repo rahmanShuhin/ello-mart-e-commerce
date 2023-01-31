@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const upload = require("../middlewares/uploadImage")
 const {
   getProducts,
   postProduct,
@@ -14,7 +15,7 @@ router.get("/api/products/", getProducts);
 router.get("/api/products/:id", getOneProduct);
 
 //localhost:4000/api/products:------post product-------admin only
-router.post("/api/products/", postProduct);
+router.post("/api/products/",upload.imageUpload.array('images', 4),postProduct);
 
 //localhost:4000/api/products:------update a product-------admin only
 router.put("/api/products/:id", verification, updateProduct);

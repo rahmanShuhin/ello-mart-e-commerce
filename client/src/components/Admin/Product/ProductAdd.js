@@ -1,31 +1,36 @@
 import ClearIcon from "@mui/icons-material/Clear";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GoCloudUpload } from "react-icons/go";
 import ImageUploading from "react-images-uploading";
+import { useDispatch } from 'react-redux';
 import { MAIN_CATEGORIES } from "../../../assets/data/category";
 import SIZE from "../../../assets/data/Size";
 import { SUB_CATEGORIES } from "../../../assets/data/subCategory";
+import { addProduct } from './../../../redux/product';
 
 export default function ProductAdd() {
+
     const [productName, setProductName] = useState("");
-    const [productPrice, setProductPrice] = useState();
+    const [productPrice, setProductPrice] = useState(0);
     const [productSize, setProductSize] = useState([]);
     const [stock, setStock] = useState("");
     const [brand, setBrand] = useState("");
     const [SKU, setSKU] = useState("");
     const [productColor, setProductColor] = useState("");
-    const [discount, setDiscount] = useState();
+    const [discount, setDiscount] = useState(0);
     const [productType, setProductType] = useState("");
     const [images, setImages] = useState([]);
     const [category, setCategory] = useState();
     const [categoryID, setCategoryId] = useState();
     const [subCategory, setSubCategory] = useState();
     const [productDescription, setProductDescription] = useState("");
+
     const maxNumber = 4;
 
+    const dispatch = useDispatch();
+
     const onChange = (imageList, addUpdateIndex) => {
-        // data for submit
-        console.log(imageList);
+        console.log(imageList)
         setImages(imageList);
     };
 
@@ -51,12 +56,27 @@ export default function ProductAdd() {
     formData.append("productType", productType);
 
     images.forEach((size) => {
-        formData.append("sizes", size);
+        formData.append("sizes", size.size);
     });
 
-    images.forEach((image) => {
-        formData.append("images", image.data_url);
-    });
+    useEffect(() => {
+        let isMounted = true;
+        if(isMounted){
+            for (let i=0; i<images.length; i++){
+                formData.append("images", images[i].file);
+            };
+        }
+        return () => {
+            isMounted = false
+        };
+    }, [formData, images]);
+    
+
+    const handleAddProductForm = (e) => {
+        e.preventDefault();
+        dispatch(addProduct(formData))
+        .then(res => console.log(res));
+    }
     return (
         <div className="productCreate">
             <p>Create Product</p>
@@ -144,7 +164,7 @@ export default function ProductAdd() {
                             information from here
                         </small>
                     </div>
-                    <form>
+                    <form onSubmit={handleAddProductForm}>
                         <div className="productCreate__box__wrapper">
                             <div>
                                 <div className="form-group">
@@ -302,7 +322,7 @@ export default function ProductAdd() {
                                     <label>
                                         Product Size:
                                         <div className="form-input-checkbox-group">
-                                            {SIZE.map((size, i) => (
+                                            {SIZE.map(({size}, i) => (
                                                 <>
                                                     <input
                                                         key={i}
@@ -407,7 +427,7 @@ export default function ProductAdd() {
                                 </div>
                             </div>
                         </div>
-                        <button className="create-product--btn">
+                        <button type="submit" className="create-product--btn">
                             Create Product
                         </button>
                     </form>
