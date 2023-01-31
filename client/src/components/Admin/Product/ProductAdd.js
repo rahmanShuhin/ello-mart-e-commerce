@@ -2,14 +2,14 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useEffect, useState } from "react";
 import { GoCloudUpload } from "react-icons/go";
 import ImageUploading from "react-images-uploading";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { MAIN_CATEGORIES } from "../../../assets/data/category";
 import SIZE from "../../../assets/data/Size";
 import { SUB_CATEGORIES } from "../../../assets/data/subCategory";
-import { addProduct } from './../../../redux/product';
+import { alertMessage, alertType } from "../../../redux/alertBox";
+import { addProduct } from "./../../../redux/product";
 
 export default function ProductAdd() {
-
     const [productName, setProductName] = useState("");
     const [productPrice, setProductPrice] = useState(0);
     const [productSize, setProductSize] = useState([]);
@@ -30,7 +30,7 @@ export default function ProductAdd() {
     const dispatch = useDispatch();
 
     const onChange = (imageList, addUpdateIndex) => {
-        console.log(imageList)
+        console.log(imageList);
         setImages(imageList);
     };
 
@@ -42,6 +42,7 @@ export default function ProductAdd() {
         setCategoryId(categoryIndex.id);
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const formData = new FormData();
     formData.append("title", productName);
     formData.append("description", productDescription);
@@ -61,22 +62,32 @@ export default function ProductAdd() {
 
     useEffect(() => {
         let isMounted = true;
-        if(isMounted){
-            for (let i=0; i<images.length; i++){
+        if (isMounted) {
+            for (let i = 0; i < images.length; i++) {
                 formData.append("images", images[i].file);
-            };
+            }
         }
         return () => {
-            isMounted = false
+            isMounted = false;
         };
     }, [formData, images]);
-    
 
     const handleAddProductForm = (e) => {
         e.preventDefault();
-        dispatch(addProduct(formData))
-        .then(res => console.log(res));
-    }
+        dispatch(addProduct(formData)).then((res) => {
+            console.log(res.type);
+            console.log('addProduct/panding' === res.type && 'hello');
+            if (res.payload.status === 201) {
+                dispatch(alertType("success"));
+                dispatch(alertMessage("Product added successfully"));
+            } else {
+                dispatch(alertType("error"));
+                dispatch(alertMessage("Something went wrong! try again")); 
+            }
+        });
+        dispatch(alertType(""));
+        dispatch(alertMessage(""));
+    };
     return (
         <div className="productCreate">
             <p>Create Product</p>
@@ -322,7 +333,7 @@ export default function ProductAdd() {
                                     <label>
                                         Product Size:
                                         <div className="form-input-checkbox-group">
-                                            {SIZE.map(({size}, i) => (
+                                            {SIZE.map(({ size }, i) => (
                                                 <>
                                                     <input
                                                         key={i}
