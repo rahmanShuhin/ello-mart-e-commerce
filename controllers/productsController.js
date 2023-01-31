@@ -50,7 +50,8 @@ module.exports = {
   //----------create product----------
   async postProduct(req, res, next) {
     try {
-      const images = req.files.map((file) => file.path);
+      const host = 'http://localhost:4000';
+      const images = req.files.map((file) => host + file.path.replace("public", ""));
       const product = await Product.create({...req.body, images});
       res.status(201).json({
         success: true,

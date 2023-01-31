@@ -4,6 +4,7 @@ const middleware = require("./middlewares/index");
 const userRouter = require("./routers/userRoute");
 const productRouter = require("./routers/productRoute");
 const errorMiddleWare = require("./middlewares/error");
+const path = require("path");
 const app = express();
 
 require("dotenv").config();
@@ -15,6 +16,7 @@ bd.connectToAtlas();
 app.use(...middleware);
 
 //router connection
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(userRouter);
 app.use(productRouter);
 
