@@ -11,6 +11,8 @@ import PriceInfo from "./../../../components/Checkout/PriceInfo/PriceInfo";
 const Details = () => {
     const [active] = useState("details");
 
+    const [name, setName] = useState("");
+    const [number, setNumber] = useState("");
     const [division, setDivision] = useState("");
     const [city, setCity] = useState("");
     const [district, setDistrict] = useState("");
@@ -66,21 +68,23 @@ const Details = () => {
     const addAddressHandler = (e) => {
         e.preventDefault();
         if (
+            name !== "" &&
+            number !== "" &&
             division !== "" &&
             district !== "" &&
             city !== "" &&
             address !== ""
         ) {
             dispatch(
-                addAddress({ _id: user._id, division, city, district, address })
+                addAddress({ _id: user._id, name, number, division, city, district, address })
             ).then((res) => {
                 console.log(res);
                 localStorage.setItem(
                     "user",
-                    JSON.stringify(res.payload.data.user)
+                    JSON.stringify(res?.payload?.data?.user)
                 );
                 dispatch(alertType("success"));
-                dispatch(alertMessage(res.payload.data.message));
+                dispatch(alertMessage(res?.payload?.data?.message));
                 document.getElementById("address-form").reset();
                 resetForm();
                 setOpenForm(false);
@@ -115,8 +119,8 @@ const Details = () => {
                                     max="35"
                                     id="name"
                                     placeholder="Your name"
-                                    value={division}
-                                    onChange={handleDivisionId}
+                                    value={name}
+                                    onChange={e=> setName(e.target.value)}
                                 />
                             </div>
 
@@ -133,8 +137,8 @@ const Details = () => {
                                     max="35"
                                     id="phone"
                                     placeholder="number"
-                                    value={division}
-                                    onChange={handleDivisionId}
+                                    value={number}
+                                    onChange={e=> setNumber(e.target.value)}
                                 />
                             </div>
                         </div>
